@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "name": "t:sections.footer.name",
   "type": "footer",
@@ -9,21 +18,21 @@
           "type": "column",
           "settings": {
             "heading": "Shop",
-            "menu": ""
+            "menu": "frauen-footer-2026-shop"
           }
         },
         "col-besog": {
           "type": "column",
           "settings": {
             "heading": "Besøg",
-            "menu": ""
+            "menu": "frauen-footer-2026-bes-g"
           }
         },
         "col-info": {
           "type": "column",
           "settings": {
             "heading": "Info",
-            "menu": "footer"
+            "menu": "frauen-footer-2026-info"
           }
         }
       },
@@ -38,7 +47,7 @@
         "newsletter_placeholder": "E-mail",
         "newsletter_button": "Tilmeld",
         "newsletter_success": "Tak, du er tilmeldt.",
-        "address": "Adresse",
+        "address": "Livjægergade 42, kld. 2100 københavn ø",
         "instagram_url": "https://www.instagram.com/",
         "instagram_label": "Instagram"
       }
