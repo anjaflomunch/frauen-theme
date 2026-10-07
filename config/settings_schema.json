@@ -1519,6 +1519,20 @@
         "id": "frauen_light",
         "label": "Lys tekst",
         "default": "#F4F3F0"
+      },
+      {
+        "type": "header",
+        "content": "Afstande"
+      },
+      {
+        "type": "range",
+        "id": "frauen_gap",
+        "label": "Afstand mellem billeder",
+        "min": 8,
+        "max": 32,
+        "step": 2,
+        "unit": "px",
+        "default": 16
       }
     ]
   }
