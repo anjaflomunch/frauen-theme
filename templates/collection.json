@@ -38,10 +38,22 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "frauen_collection_afp99R": {
+      "type": "frauen-collection",
+      "name": "Frauen kollektion",
+      "settings": {
+        "heading": "",
+        "per_page": 24,
+        "empty_text": "Der er ingen jakker her lige nu.",
+        "padding_top": 83,
+        "padding_bottom": 160
+      }
     }
   },
   "order": [
     "banner",
-    "product-grid"
+    "product-grid",
+    "frauen_collection_afp99R"
   ]
 }
