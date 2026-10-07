@@ -1,0 +1,238 @@
+{%- comment -%}
+  Frauen kurv
+  Varelinjer med billede, navn, størrelse, antal og pris.
+  Opsummering med subtotal og "Gå til kassen".
+{%- endcomment -%}
+
+<div class="frauen-cart frauen-wrap" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
+  <h1 class="frauen-heading">{{ section.settings.heading | escape }}</h1>
+
+  {%- if cart.item_count == 0 -%}
+    <div class="frauen-cart__empty">
+      <p class="frauen-body">{{ section.settings.empty_text | escape }}</p>
+      <a href="{{ section.settings.empty_link | default: routes.all_products_collection_url }}" class="frauen-btn frauen-btn--left frauen-cart__empty-btn">
+        <span class="frauen-btn__line"></span>
+        <span class="frauen-btn__label">{{ section.settings.empty_button | escape }}</span>
+      </a>
+    </div>
+  {%- else -%}
+    <form action="{{ routes.cart_url }}" method="post" id="FrauenCart" class="frauen-cart__form" novalidate>
+      <ul class="frauen-cart__lines" role="list">
+        {%- for item in cart.items -%}
+          <li class="frauen-cart__line">
+            <a href="{{ item.url }}" class="frauen-cart__image" tabindex="-1" aria-hidden="true">
+              {%- if item.image -%}
+                {{ item.image | image_url: width: 400 | image_tag: loading: 'lazy', alt: item.product.title }}
+              {%- endif -%}
+            </a>
+
+            <div class="frauen-cart__info">
+              <a href="{{ item.url }}" class="frauen-cart__title">{{ item.product.title | escape }}</a>
+              {%- unless item.product.has_only_default_variant -%}
+                <p class="frauen-label frauen-cart__variant">
+                  {%- for option in item.options_with_values -%}
+                    {{ option.name | escape }}: {{ option.value | escape }}{% unless forloop.last %}, {% endunless %}
+                  {%- endfor -%}
+                </p>
+              {%- endunless -%}
+              {%- for property in item.properties -%}
+                {%- unless property.last == blank or property.first contains '_' -%}
+                  <p class="frauen-label frauen-cart__variant">{{ property.first }}: {{ property.last }}</p>
+                {%- endunless -%}
+              {%- endfor -%}
+
+              <div class="frauen-cart__qty">
+                <label class="visually-hidden" for="Qty-{{ item.key }}">Antal</label>
+                <button type="button" class="frauen-cart__step" data-step="-1" aria-label="Færre">−</button>
+                <input
+                  id="Qty-{{ item.key }}"
+                  type="number"
+                  name="updates[]"
+                  value="{{ item.quantity }}"
+                  min="0"
+                  inputmode="numeric"
+                >
+                <button type="button" class="frauen-cart__step" data-step="1" aria-label="Flere">+</button>
+              </div>
+
+              <a href="{{ item.url_to_remove }}" class="frauen-label frauen-cart__remove">{{ section.settings.remove_label | escape }}</a>
+            </div>
+
+            <p class="frauen-cart__price">
+              {{ item.final_line_price | money_without_trailing_zeros }}
+              {%- if item.original_line_price != item.final_line_price -%}
+                <s>{{ item.original_line_price | money_without_trailing_zeros }}</s>
+              {%- endif -%}
+            </p>
+          </li>
+        {%- endfor -%}
+      </ul>
+
+      <div class="frauen-cart__summary">
+        {%- if section.settings.show_note -%}
+          <div class="frauen-cart__note">
+            <label class="frauen-label" for="FrauenCartNote">{{ section.settings.note_label | escape }}</label>
+            <textarea id="FrauenCartNote" name="note" rows="3">{{ cart.note }}</textarea>
+          </div>
+        {%- endif -%}
+
+        <div class="frauen-cart__totals">
+          {%- for discount in cart.cart_level_discount_applications -%}
+            <p class="frauen-cart__row frauen-label"><span>{{ discount.title | escape }}</span><span>−{{ discount.total_allocated_amount | money_without_trailing_zeros }}</span></p>
+          {%- endfor -%}
+          <p class="frauen-cart__row frauen-cart__subtotal">
+            <span class="frauen-label">{{ section.settings.subtotal_label | escape }}</span>
+            <span>{{ cart.total_price | money_without_trailing_zeros }}</span>
+          </p>
+          {%- if section.settings.tax_text != blank -%}
+            <p class="frauen-label frauen-cart__tax">{{ section.settings.tax_text | escape }}</p>
+          {%- endif -%}
+
+          <noscript><button type="submit" class="frauen-label frauen-cart__update">Opdater kurv</button></noscript>
+
+          <button type="submit" name="checkout" class="frauen-cart__checkout">
+            {{ section.settings.checkout_label | escape }}
+          </button>
+        </div>
+      </div>
+    </form>
+  {%- endif -%}
+</div>
+
+<script>
+  (() => {
+    const form = document.getElementById('FrauenCart');
+    if (!form) return;
+    let timer;
+    const submit = () => {
+      clearTimeout(timer);
+      timer = setTimeout(() => form.submit(), 500);
+    };
+    form.querySelectorAll('.frauen-cart__qty').forEach((wrap) => {
+      const input = wrap.querySelector('input');
+      wrap.querySelectorAll('[data-step]').forEach((btn) =>
+        btn.addEventListener('click', () => {
+          input.value = Math.max(0, Number(input.value) + Number(btn.dataset.step));
+          submit();
+        })
+      );
+      input.addEventListener('change', submit);
+    });
+  })();
+</script>
+
+<style>
+  .frauen-cart { padding-top: var(--pt); padding-bottom: var(--pb); }
+  .frauen-cart__empty { margin-top: 32px; max-width: 554px; }
+  .frauen-cart__empty-btn { margin-top: 32px; }
+  .frauen-cart__form { margin-top: 32px; }
+  .frauen-cart__lines { list-style: none; margin: 0; padding: 0; border-bottom: 1px solid rgba(28, 28, 26, 0.2); }
+  .frauen-cart__line {
+    display: grid;
+    grid-template-columns: 120px 1fr auto;
+    gap: 24px;
+    padding: 24px 0;
+    border-top: 1px solid rgba(28, 28, 26, 0.2);
+  }
+  .frauen-cart__image { display: block; aspect-ratio: 4 / 5; background: #d9d8d3; overflow: hidden; }
+  .frauen-cart__image img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .frauen-cart__info { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .frauen-cart__title {
+    color: inherit;
+    text-decoration: none;
+    font-family: var(--frauen-font-heading);
+    font-weight: var(--frauen-font-heading-weight);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .frauen-cart__variant { margin: 0; color: var(--frauen-muted); }
+  .frauen-cart__qty { display: flex; align-items: center; gap: 12px; margin-top: 12px; }
+  .frauen-cart__qty input {
+    width: 32px;
+    text-align: center;
+    background: none;
+    border: 0;
+    font-family: var(--frauen-font-body);
+    font-size: 14px;
+    -moz-appearance: textfield;
+  }
+  .frauen-cart__qty input::-webkit-outer-spin-button,
+  .frauen-cart__qty input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+  .frauen-cart__step { background: none; border: 0; padding: 4px; font-size: 16px; cursor: pointer; color: inherit; }
+  .frauen-cart__remove { color: var(--frauen-muted); text-decoration: none; margin-top: auto; }
+  .frauen-cart__remove:hover { color: var(--frauen-ink); }
+  .frauen-cart__price { margin: 0; font-size: 14px; font-weight: 400; text-align: right; }
+  .frauen-cart__price s { display: block; color: var(--frauen-muted); }
+
+  .frauen-cart__summary {
+    display: grid;
+    grid-template-columns: 1fr minmax(0, 456px);
+    gap: 48px;
+    margin-top: 40px;
+  }
+  .frauen-cart__note { display: grid; gap: 12px; max-width: 456px; align-content: start; }
+  .frauen-cart__note textarea {
+    background: none;
+    border: 1px solid rgba(28, 28, 26, 0.3);
+    padding: 12px;
+    font-family: var(--frauen-font-body);
+    font-weight: 300;
+    font-size: 14px;
+    resize: vertical;
+  }
+  .frauen-cart__totals { grid-column: 2; display: grid; gap: 12px; }
+  .frauen-cart__row { display: flex; justify-content: space-between; margin: 0; }
+  .frauen-cart__subtotal span:last-child { font-size: 14px; font-weight: 400; }
+  .frauen-cart__tax { margin: 0; color: var(--frauen-muted); }
+  .frauen-cart__checkout {
+    margin-top: 16px;
+    width: 100%;
+    padding: 18px 24px;
+    background: var(--frauen-dark);
+    color: var(--frauen-light);
+    border: 0;
+    cursor: pointer;
+    font-family: var(--frauen-font-body);
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: opacity 0.3s var(--frauen-ease);
+  }
+  .frauen-cart__checkout:hover { opacity: 0.85; }
+  .frauen-cart__update { background: none; border: 0; text-decoration: underline; cursor: pointer; }
+
+  @media screen and (max-width: 749px) {
+    .frauen-cart__line { grid-template-columns: 88px 1fr; }
+    .frauen-cart__price { grid-column: 2; text-align: left; }
+    .frauen-cart__summary { grid-template-columns: 1fr; }
+    .frauen-cart__totals { grid-column: 1; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Frauen kurv",
+  "tag": "section",
+  "class": "frauen-cart-section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Overskrift", "default": "Kurv" },
+    { "type": "text", "id": "remove_label", "label": "Fjern", "default": "Fjern" },
+    { "type": "text", "id": "subtotal_label", "label": "Subtotal", "default": "Subtotal" },
+    { "type": "text", "id": "tax_text", "label": "Tekst under subtotal", "default": "Inkl. moms. Fragt beregnes i kassen." },
+    { "type": "text", "id": "checkout_label", "label": "Knap til kassen", "default": "Gå til kassen" },
+    { "type": "checkbox", "id": "show_note", "label": "Vis felt til bemærkning", "default": false },
+    { "type": "text", "id": "note_label", "label": "Bemærkning", "default": "Bemærkning til ordren" },
+    { "type": "header", "content": "Tom kurv" },
+    { "type": "text", "id": "empty_text", "label": "Tekst", "default": "Din kurv er tom." },
+    { "type": "text", "id": "empty_button", "label": "Knaptekst", "default": "Se Frauen Classics" },
+    { "type": "url", "id": "empty_link", "label": "Knaplink" },
+    { "type": "header", "content": "Luft" },
+    { "type": "range", "id": "padding_top", "label": "Luft over", "min": 0, "max": 200, "step": 1, "unit": "px", "default": 83 },
+    { "type": "range", "id": "padding_bottom", "label": "Luft under", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 160 }
+  ],
+  "enabled_on": { "templates": ["cart"] },
+  "presets": [{ "name": "Frauen kurv" }]
+}
+{% endschema %}

@@ -29,4 +29,43 @@
     --frauen-light: {{ settings.frauen_light }};
     --frauen-gap-setting: {{ settings.frauen_gap | default: 16 }}px;
   }
+  {%- liquid
+    assign c_bg = settings.frauen_bg
+    assign c_ink = settings.frauen_ink
+    assign c_dark = settings.frauen_dark
+    assign c_light = settings.frauen_light
+  -%}
+  /* Dawns egne sider (kurv, søgning, konto, 404) får Frauens skrift og farver */
+  :root,
+  [class*='color-scheme'] {
+    --color-background: {{ c_bg.red }},{{ c_bg.green }},{{ c_bg.blue }};
+    --gradient-background: {{ c_bg }};
+    --color-foreground: {{ c_ink.red }},{{ c_ink.green }},{{ c_ink.blue }};
+    --color-button: {{ c_dark.red }},{{ c_dark.green }},{{ c_dark.blue }};
+    --color-button-text: {{ c_light.red }},{{ c_light.green }},{{ c_light.blue }};
+    --color-secondary-button: {{ c_bg.red }},{{ c_bg.green }},{{ c_bg.blue }};
+    --color-secondary-button-text: {{ c_ink.red }},{{ c_ink.green }},{{ c_ink.blue }};
+    --color-link: {{ c_ink.red }},{{ c_ink.green }},{{ c_ink.blue }};
+    --color-badge-foreground: {{ c_ink.red }},{{ c_ink.green }},{{ c_ink.blue }};
+    --color-badge-background: {{ c_bg.red }},{{ c_bg.green }},{{ c_bg.blue }};
+    --color-badge-border: {{ c_ink.red }},{{ c_ink.green }},{{ c_ink.blue }};
+  }
+  :root {
+    --font-body-family: {{ body.family }}, {{ body.fallback_families }};
+    --font-body-weight: 300;
+    --font-body-weight-bold: 500;
+    --font-heading-family: {{ heading.family }}, {{ heading.fallback_families }};
+    --font-heading-weight: {{ heading.weight }};
+    --buttons-radius: 0px;
+    --buttons-radius-outset: 0px;
+    --inputs-radius: 0px;
+    --inputs-radius-outset: 0px;
+    --variant-pills-radius: 0px;
+    --badge-corner-radius: 0px;
+    --popup-corner-radius: 0px;
+    --text-boxes-radius: 0px;
+    --product-card-corner-radius: 0px;
+    --collection-card-corner-radius: 0px;
+    --media-radius: 0px;
+  }
 </style>
