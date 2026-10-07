@@ -1,0 +1,114 @@
+/* Frauen lag ------------------------------------------------------------------ */
+
+.frauen-layers {
+  position: relative;
+  display: block;
+  height: 100vh;
+  height: 100svh;
+  min-height: 560px;
+  max-height: 1100px;
+  overflow: hidden;
+  color: var(--frauen-light);
+  background: var(--frauen-dark);
+}
+
+.frauen-layers__stage,
+.frauen-layers__layer { position: absolute; inset: 0; }
+
+/* Lag efter det aktive ligger under kanten og glider op, når de åbnes */
+.frauen-layers__layer {
+  transform: translateY(100%);
+  transition: transform var(--layers-duration, 1s) var(--frauen-ease);
+  will-change: transform;
+}
+
+.frauen-layers__layer.is-active,
+.frauen-layers__layer.is-before { transform: translateY(0); }
+
+.frauen-layers__layer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: var(--overlay, 0.25);
+  pointer-events: none;
+}
+
+.frauen-layers__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Overskrifter og knapper ---------------------------------------------------- */
+
+.frauen-layers__ui {
+  position: absolute;
+  left: 40px;
+  right: 40px;
+  bottom: 64px;
+  z-index: 20;
+}
+
+.frauen-layers__index {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+  justify-items: start;
+}
+
+.frauen-layers__tab {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  cursor: pointer;
+  font-family: var(--frauen-font-body);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: left;
+  opacity: 0.55;
+  transition: opacity 0.4s var(--frauen-ease);
+}
+
+.frauen-layers__tab.is-active { opacity: 1; cursor: default; }
+@media (hover: hover) {
+  .frauen-layers__tab:not(.is-active):hover { opacity: 0.85; }
+}
+
+.frauen-layers__buttons { position: relative; height: 26px; }
+
+.frauen-layers__btn {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transform: translateY(16px);
+  pointer-events: none;
+  transition: opacity var(--layers-duration, 1s) var(--frauen-ease), transform var(--layers-duration, 1s) var(--frauen-ease);
+}
+
+.frauen-layers__btn.is-active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+@media screen and (max-width: 749px) {
+  .frauen-layers__ui { left: var(--frauen-gutter); right: var(--frauen-gutter); bottom: 32px; }
+  .frauen-layers__tab { font-size: 14px; }
+  .frauen-layers__index { gap: 8px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frauen-layers__layer,
+  .frauen-layers__btn { transition-duration: 0.01s; }
+}

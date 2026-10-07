@@ -1,0 +1,155 @@
+{%- comment -%}
+  Frauen lag (forside)
+  Fuldskærms-lag med billede eller video. Man skifter lag ved at klikke på
+  overskrifterne nederst til venstre. Nye lag glider op over de forrige.
+  Hvert lag har sin egen linjeknap, som toner frem nederst.
+{%- endcomment -%}
+
+{{ 'frauen-layers.css' | asset_url | stylesheet_tag }}
+
+<frauen-layers class="frauen-layers" style="--layers-duration: {{ section.settings.duration }}s;">
+  <div class="frauen-layers__stage">
+    {%- for block in section.blocks -%}
+      <div
+        class="frauen-layers__layer{% if forloop.first %} is-active{% endif %}"
+        data-index="{{ forloop.index0 }}"
+        style="--overlay: {{ block.settings.overlay | divided_by: 100.0 }}; z-index: {{ forloop.index }};"
+        {{ block.shopify_attributes }}
+      >
+        {%- if block.settings.media_type == 'video' and block.settings.video != blank -%}
+          {{
+            block.settings.video
+            | video_tag:
+              autoplay: forloop.first,
+              loop: true,
+              muted: true,
+              playsinline: true,
+              controls: false,
+              preload: 'metadata',
+              class: 'frauen-layers__media'
+          }}
+        {%- elsif block.settings.image != blank -%}
+          {{
+            block.settings.image
+            | image_url: width: 3000
+            | image_tag:
+              class: 'frauen-layers__media',
+              loading: 'lazy',
+              sizes: '100vw',
+              widths: '750, 1100, 1500, 2000, 2500, 3000',
+              alt: block.settings.image.alt
+          }}
+        {%- else -%}
+          {{ 'lifestyle-2' | placeholder_svg_tag: 'frauen-layers__media frauen-layers__placeholder' }}
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+
+  <div class="frauen-layers__ui">
+    <ul class="frauen-layers__index" role="tablist">
+      {%- for block in section.blocks -%}
+        <li>
+          <button
+            type="button"
+            role="tab"
+            class="frauen-layers__tab{% if forloop.first %} is-active{% endif %}"
+            data-index="{{ forloop.index0 }}"
+            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+          >
+            {{- block.settings.title | escape -}}
+          </button>
+        </li>
+      {%- endfor -%}
+    </ul>
+
+    <div class="frauen-layers__buttons">
+      {%- for block in section.blocks -%}
+        {%- if block.settings.button_label != blank -%}
+          <a
+            href="{{ block.settings.button_link | default: '#' }}"
+            class="frauen-btn frauen-layers__btn{% if forloop.first %} is-active{% endif %}"
+            data-index="{{ forloop.index0 }}"
+            {% unless forloop.first %}tabindex="-1" aria-hidden="true"{% endunless %}
+          >
+            <span class="frauen-btn__line"></span>
+            <span class="frauen-btn__label">{{ block.settings.button_label | escape }}</span>
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</frauen-layers>
+
+<script src="{{ 'frauen-layers.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Frauen lag",
+  "tag": "section",
+  "class": "frauen-layers-section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "duration",
+      "label": "Overgangens længde",
+      "min": 0.4,
+      "max": 2,
+      "step": 0.2,
+      "unit": "s",
+      "default": 1
+    }
+  ],
+  "blocks": [
+    {
+      "type": "layer",
+      "name": "Lag",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Overskrift", "default": "Lag" },
+        {
+          "type": "select",
+          "id": "media_type",
+          "label": "Baggrund",
+          "options": [
+            { "value": "image", "label": "Billede" },
+            { "value": "video", "label": "Video" }
+          ],
+          "default": "image"
+        },
+        { "type": "image_picker", "id": "image", "label": "Billede" },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video",
+          "info": "Upload videoen til Shopify. Den afspilles uden lyd i loop, når laget er åbent."
+        },
+        {
+          "type": "range",
+          "id": "overlay",
+          "label": "Mørk toning",
+          "min": 0,
+          "max": 60,
+          "step": 5,
+          "unit": "%",
+          "default": 25
+        },
+        { "type": "text", "id": "button_label", "label": "Knaptekst" },
+        { "type": "url", "id": "button_link", "label": "Knaplink" }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Frauen lag",
+      "blocks": [
+        { "type": "layer", "settings": { "title": "Stop motion", "button_label": "Om Frauen" } },
+        { "type": "layer", "settings": { "title": "Materialet", "button_label": "Vores materialer" } },
+        { "type": "layer", "settings": { "title": "Produktionen", "button_label": "Vores produktion" } },
+        { "type": "layer", "settings": { "title": "Jakken", "button_label": "Shop Frauen Classics" } },
+        { "type": "layer", "settings": { "title": "Livet", "button_label": "Shop Frauen Classics", "overlay": 40 } }
+      ]
+    }
+  ]
+}
+{% endschema %}
