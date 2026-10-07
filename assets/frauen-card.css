@@ -1,0 +1,75 @@
+/* Frauen kort ---------------------------------------------------------------- */
+
+.frauen-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  height: 100%;
+  color: var(--frauen-light);
+  text-decoration: none;
+  background: #d9d8d3;
+}
+
+.frauen-card__media,
+.frauen-card__image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Gradient i bunden, så teksten kan læses uden at gøre hele billedet mørkt */
+.frauen-card__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 62%, rgba(0, 0, 0, 0.42) 100%);
+  pointer-events: none;
+}
+
+.frauen-card__info {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 19px;
+  transition: background-color 0.4s var(--frauen-ease), color 0.4s var(--frauen-ease);
+}
+
+.frauen-card__text p,
+.frauen-card__price { margin: 0; }
+
+.frauen-card__title {
+  font-family: var(--frauen-font-heading);
+  font-weight: var(--frauen-font-heading-weight);
+  font-size: 14px;
+  line-height: 1.3;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.frauen-card__subtitle,
+.frauen-card__price {
+  font-family: var(--frauen-font-body);
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.frauen-card__price { white-space: nowrap; }
+
+@media (hover: hover) {
+  a.frauen-card:hover .frauen-card__info,
+  a.frauen-card:focus-visible .frauen-card__info {
+    background-color: var(--frauen-bg);
+    color: var(--frauen-ink);
+  }
+}

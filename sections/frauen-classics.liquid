@@ -1,0 +1,69 @@
+{%- comment -%}
+  Frauen Classics (forside)
+  Asymmetrisk gitter: ét stort kort til venstre og to stablet til højre.
+  Hvert kort er en blok, hvor man vælger produkt og evt. et andet billede.
+  Linjeknap under gitteret.
+{%- endcomment -%}
+
+{{ 'frauen-card.css' | asset_url | stylesheet_tag }}
+{{ 'frauen-classics.css' | asset_url | stylesheet_tag }}
+
+<div class="frauen-classics frauen-wrap" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
+  <div class="frauen-classics__grid">
+    {%- for block in section.blocks limit: 3 -%}
+      <div class="frauen-classics__item frauen-classics__item--{{ forloop.index }}" {{ block.shopify_attributes }}>
+        {%- if forloop.index == 1 -%}
+          {%- assign sizes = '(min-width: 750px) 52vw, 100vw' -%}
+        {%- else -%}
+          {%- assign sizes = '(min-width: 750px) 46vw, 100vw' -%}
+        {%- endif -%}
+        {% render 'frauen-card',
+          product: block.settings.product,
+          image: block.settings.image,
+          subtitle: block.settings.subtitle,
+          sizes: sizes
+        %}
+      </div>
+    {%- endfor -%}
+  </div>
+
+  {%- if section.settings.button_label != blank -%}
+    <a href="{{ section.settings.button_link | default: routes.all_products_collection_url }}" class="frauen-btn frauen-classics__btn">
+      <span class="frauen-btn__line"></span>
+      <span class="frauen-btn__label">{{ section.settings.button_label | escape }}</span>
+    </a>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Frauen Classics",
+  "tag": "section",
+  "class": "frauen-classics-section",
+  "settings": [
+    { "type": "text", "id": "button_label", "label": "Knaptekst", "default": "Shop Frauen Classics" },
+    { "type": "url", "id": "button_link", "label": "Knaplink" },
+    { "type": "header", "content": "Luft" },
+    { "type": "range", "id": "padding_top", "label": "Luft over", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 28 },
+    { "type": "range", "id": "padding_bottom", "label": "Luft under", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 60 }
+  ],
+  "blocks": [
+    {
+      "type": "card",
+      "name": "Jakke",
+      "settings": [
+        { "type": "product", "id": "product", "label": "Produkt" },
+        { "type": "image_picker", "id": "image", "label": "Andet billede (valgfrit)", "info": "Tomt felt = produktets første billede." },
+        { "type": "text", "id": "subtitle", "label": "Kort beskrivelse (valgfrit)", "info": "Tomt felt = produktets korte beskrivelse eller produkttype." }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "Frauen Classics",
+      "blocks": [{ "type": "card" }, { "type": "card" }, { "type": "card" }]
+    }
+  ]
+}
+{% endschema %}
