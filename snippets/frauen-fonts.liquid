@@ -8,12 +8,14 @@
   assign body_regular = body | font_modify: 'weight', '400'
   assign body_medium = body | font_modify: 'weight', '500'
   assign heading = settings.frauen_font_heading
+  assign heading_regular = heading | font_modify: 'weight', '400'
 -%}
 <style>
   {{ body_light | font_face: font_display: 'swap' }}
   {{ body_regular | font_face: font_display: 'swap' }}
   {{ body_medium | font_face: font_display: 'swap' }}
   {{ heading | font_face: font_display: 'swap' }}
+  {%- if heading_regular -%}{{ heading_regular | font_face: font_display: 'swap' }}{%- endif %}
 
   :root {
     --frauen-font-body: {{ body.family }}, {{ body.fallback_families }};

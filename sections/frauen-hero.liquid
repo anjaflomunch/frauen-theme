@@ -1,0 +1,130 @@
+{%- comment -%}
+  Frauen hero (forside)
+  - Billede eller video i fuld skærmhøjde
+  - Stort logo i bunden og en kort linje over det
+  - Efter X sekunder (eller ved første scroll) glider logoet op i headeren,
+    headeren bliver mørk, og linjen glider ned, hvor logoet stod.
+{%- endcomment -%}
+
+{{ 'frauen-hero.css' | asset_url | stylesheet_tag }}
+
+<frauen-hero
+  class="frauen-hero"
+  data-delay="{{ section.settings.delay | times: 1000 }}"
+  data-duration="{{ section.settings.duration | times: 1000 }}"
+  style="--hero-overlay: {{ section.settings.overlay | divided_by: 100.0 }}; --hero-duration: {{ section.settings.duration }}s;"
+>
+  <div class="frauen-hero__media">
+    {%- if section.settings.media_type == 'video' and section.settings.video != blank -%}
+      {{
+        section.settings.video
+        | video_tag:
+          autoplay: true,
+          loop: true,
+          muted: true,
+          playsinline: true,
+          controls: false,
+          preload: 'metadata',
+          class: 'frauen-hero__video'
+      }}
+    {%- elsif section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 3000
+        | image_tag:
+          class: 'frauen-hero__image',
+          loading: 'eager',
+          fetchpriority: 'high',
+          sizes: '100vw',
+          widths: '750, 1100, 1500, 2000, 2500, 3000',
+          alt: section.settings.image.alt
+      }}
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'frauen-hero__placeholder' }}
+    {%- endif -%}
+  </div>
+
+  <div class="frauen-hero__content frauen-wrap">
+    {%- if section.settings.tagline != blank -%}
+      <p class="frauen-hero__tagline" data-hero-tagline>{{ section.settings.tagline | escape }}</p>
+    {%- endif -%}
+    <div class="frauen-hero__logo" data-hero-logo>
+      {% render 'frauen-logo', class: 'frauen-hero__logo-svg' %}
+    </div>
+  </div>
+</frauen-hero>
+
+<script src="{{ 'frauen-hero.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Frauen hero",
+  "tag": "section",
+  "class": "frauen-hero-section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "media_type",
+      "label": "Baggrund",
+      "options": [
+        { "value": "image", "label": "Billede" },
+        { "value": "video", "label": "Video" }
+      ],
+      "default": "image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Billede",
+      "info": "Bruges også som reserve, hvis videoen ikke kan afspilles."
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video",
+      "info": "Upload videoen til Shopify. Den afspilles uden lyd i loop."
+    },
+    {
+      "type": "range",
+      "id": "overlay",
+      "label": "Mørk toning",
+      "min": 0,
+      "max": 60,
+      "step": 5,
+      "unit": "%",
+      "default": 0
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Linje over logoet",
+      "default": "Made to love for a life time"
+    },
+    {
+      "type": "header",
+      "content": "Animation"
+    },
+    {
+      "type": "range",
+      "id": "delay",
+      "label": "Ventetid før logoet glider op",
+      "min": 1,
+      "max": 8,
+      "step": 0.5,
+      "unit": "s",
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "duration",
+      "label": "Animationens længde",
+      "min": 0.5,
+      "max": 4,
+      "step": 0.5,
+      "unit": "s",
+      "default": 2
+    }
+  ],
+  "presets": [{ "name": "Frauen hero" }]
+}
+{% endschema %}
