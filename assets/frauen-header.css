@@ -64,6 +64,63 @@
   .frauen-header__link:hover { font-weight: 500; opacity: 1; }
 }
 
+/* Valuta uden vælger: ingen hover */
+.frauen-header__link--static { cursor: default; }
+@media (hover: hover) { .frauen-header__link--static:hover { font-weight: 400; opacity: 0.75; } }
+
+/* Land/valuta-vælger */
+.frauen-currency { position: relative; }
+.frauen-currency summary { list-style: none; }
+.frauen-currency summary::-webkit-details-marker { display: none; }
+.frauen-currency[open] summary { font-weight: 500; opacity: 1; }
+
+.frauen-currency__panel {
+  position: absolute;
+  right: -24px;
+  top: calc(100% + 22px);
+  min-width: 260px;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding: 20px 24px 24px;
+  background: var(--frauen-dark);
+  color: var(--frauen-light);
+  animation: frauen-currency-in 0.4s var(--frauen-ease);
+}
+@keyframes frauen-currency-in { from { opacity: 0; transform: translateY(-6px); } }
+
+.frauen-currency__label {
+  margin: 0 0 12px;
+  font-family: var(--frauen-font-body);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #9C9B96;
+}
+.frauen-currency__panel ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+
+.frauen-currency__option {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  width: 100%;
+  padding: 6px 0;
+  background: none;
+  border: 0;
+  color: inherit;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--frauen-font-body);
+  font-weight: 400;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.75;
+  transition: opacity 0.3s var(--frauen-ease);
+}
+.frauen-currency__option.is-active { font-weight: 500; opacity: 1; }
+@media (hover: hover) { .frauen-currency__option:hover { opacity: 1; } }
+
 /* Logo i midten */
 .frauen-header__logo {
   position: absolute;
