@@ -39,13 +39,14 @@
 <style>
   .frauen-intro {
     display: grid;
-    grid-template-columns: 649fr 734fr;
-    column-gap: 33px;
+    /* Faktarækkerne starter på midten og flugter med mosaikkens 3. kolonne */
+    grid-template-columns: 1fr 1fr;
+    column-gap: var(--frauen-gap);
     align-items: start;
     padding-top: var(--pt);
     padding-bottom: var(--pb);
   }
-  .frauen-intro__text { max-width: 649px; }
+  .frauen-intro__text { padding-right: 96px; }
   .frauen-intro__body { margin-top: 24px; max-width: 554px; }
   .frauen-intro__body p { margin: 0 0 0.8em; }
   .frauen-intro__body p:last-child { margin-bottom: 0; }
@@ -63,6 +64,7 @@
   .frauen-intro__value p { margin: 0; }
   @media screen and (max-width: 989px) {
     .frauen-intro { grid-template-columns: 1fr; row-gap: 48px; }
+    .frauen-intro__text { padding-right: 0; }
     .frauen-intro__fact { grid-template-columns: 1fr; gap: 6px; }
   }
 </style>
