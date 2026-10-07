@@ -1,0 +1,107 @@
+{%- comment -%}
+  Frauen intro med fakta
+  Venstre: overskrift, tekst og linjeknap. Højre: faktarækker med linjer.
+  Bruges på Custom made (pris, leveringstid, bestilling) og Om Frauen (værdier).
+{%- endcomment -%}
+
+<div class="frauen-intro frauen-wrap" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
+  <div class="frauen-intro__text">
+    {%- if section.settings.heading != blank -%}
+      {%- if section.settings.is_page_heading -%}
+        <h1 class="frauen-heading">{{ section.settings.heading | escape }}</h1>
+      {%- else -%}
+        <h2 class="frauen-heading">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+    {%- endif -%}
+    {%- if section.settings.text != blank -%}
+      <div class="frauen-body frauen-intro__body">{{ section.settings.text }}</div>
+    {%- endif -%}
+    {%- if section.settings.button_label != blank -%}
+      <a href="{{ section.settings.button_link | default: '#' }}" class="frauen-btn frauen-btn--left frauen-intro__btn">
+        <span class="frauen-btn__line"></span>
+        <span class="frauen-btn__label">{{ section.settings.button_label | escape }}</span>
+      </a>
+    {%- endif -%}
+  </div>
+
+  {%- if section.blocks.size > 0 -%}
+    <dl class="frauen-intro__facts">
+      {%- for block in section.blocks -%}
+        <div class="frauen-intro__fact" {{ block.shopify_attributes }}>
+          <dt class="frauen-label">{{ block.settings.label | escape }}</dt>
+          <dd class="frauen-intro__value">{{ block.settings.value }}</dd>
+        </div>
+      {%- endfor -%}
+    </dl>
+  {%- endif -%}
+</div>
+
+<style>
+  .frauen-intro {
+    display: grid;
+    grid-template-columns: 649fr 734fr;
+    column-gap: 33px;
+    align-items: start;
+    padding-top: var(--pt);
+    padding-bottom: var(--pb);
+  }
+  .frauen-intro__text { max-width: 649px; }
+  .frauen-intro__body { margin-top: 24px; max-width: 554px; }
+  .frauen-intro__body p { margin: 0 0 0.8em; }
+  .frauen-intro__body p:last-child { margin-bottom: 0; }
+  .frauen-intro__btn { margin-top: 38px; }
+  .frauen-intro__facts { margin: 0; border-bottom: 1px solid rgba(28, 28, 26, 0.2); }
+  .frauen-intro__fact {
+    display: grid;
+    grid-template-columns: 235px 1fr;
+    gap: 24px;
+    padding: 20px 0;
+    border-top: 1px solid rgba(28, 28, 26, 0.2);
+  }
+  .frauen-intro__fact dt { color: var(--frauen-muted); padding-top: 2px; }
+  .frauen-intro__value { margin: 0; font-weight: 300; font-size: 14px; line-height: 1.45; }
+  .frauen-intro__value p { margin: 0; }
+  @media screen and (max-width: 989px) {
+    .frauen-intro { grid-template-columns: 1fr; row-gap: 48px; }
+    .frauen-intro__fact { grid-template-columns: 1fr; gap: 6px; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Frauen intro med fakta",
+  "tag": "section",
+  "class": "frauen-intro-section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Overskrift", "default": "Custom made" },
+    { "type": "checkbox", "id": "is_page_heading", "label": "Sidens hovedoverskrift", "default": true, "info": "Slå til, når sektionen står øverst på siden (godt for SEO)." },
+    { "type": "richtext", "id": "text", "label": "Tekst", "default": "<p>En længere beskrivelse af custom made står her.</p>" },
+    { "type": "text", "id": "button_label", "label": "Knaptekst", "default": "Skriv til os" },
+    { "type": "url", "id": "button_link", "label": "Knaplink", "info": "Fx mailto:hej@frauencph.com" },
+    { "type": "header", "content": "Luft" },
+    { "type": "range", "id": "padding_top", "label": "Luft over", "min": 0, "max": 200, "step": 1, "unit": "px", "default": 83 },
+    { "type": "range", "id": "padding_bottom", "label": "Luft under", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 160 }
+  ],
+  "blocks": [
+    {
+      "type": "fact",
+      "name": "Fakta-række",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Etiket", "default": "Pris" },
+        { "type": "richtext", "id": "value", "label": "Tekst", "default": "<p>En kort tekst her.</p>" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Frauen intro med fakta",
+      "blocks": [
+        { "type": "fact", "settings": { "label": "Om custom made" } },
+        { "type": "fact", "settings": { "label": "Pris" } },
+        { "type": "fact", "settings": { "label": "Leveringstid" } },
+        { "type": "fact", "settings": { "label": "Bestilling" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

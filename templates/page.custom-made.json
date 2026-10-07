@@ -1,0 +1,133 @@
+{
+  "sections": {
+    "intro": {
+      "type": "frauen-intro",
+      "blocks": {
+        "f1": {
+          "type": "fact",
+          "settings": {
+            "label": "Om custom made",
+            "value": "<p>En introduktion til custom made: at jakken syes efter mål af et udvalgt tæppe.</p>"
+          }
+        },
+        "f2": {
+          "type": "fact",
+          "settings": {
+            "label": "Pris",
+            "value": "<p>Prisniveau og hvad der påvirker prisen, en til to linjer.</p>"
+          }
+        },
+        "f3": {
+          "type": "fact",
+          "settings": {
+            "label": "Leveringstid",
+            "value": "<p>Forventet tid fra bestilling til færdig jakke, en linje.</p>"
+          }
+        },
+        "f4": {
+          "type": "fact",
+          "settings": {
+            "label": "Bestilling",
+            "value": "<p>Skriv via mail eller Instagram med ønske til tæppe, mål og detaljer.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4"
+      ],
+      "settings": {
+        "heading": "Custom made",
+        "is_page_heading": true,
+        "text": "<p>En længere beskrivelse af custom made står her.</p>",
+        "button_label": "Skriv til os",
+        "padding_top": 83,
+        "padding_bottom": 160
+      }
+    },
+    "mosaic": {
+      "type": "frauen-mosaic",
+      "blocks": {
+        "p1": {
+          "type": "piece",
+          "settings": {
+            "title": "Modelnavn",
+            "price": "Fra pris"
+          }
+        },
+        "p2": {
+          "type": "piece",
+          "settings": {
+            "title": "Modelnavn",
+            "price": "Fra pris"
+          }
+        },
+        "p3": {
+          "type": "piece",
+          "settings": {
+            "title": "Modelnavn",
+            "price": "Fra pris"
+          }
+        },
+        "p4": {
+          "type": "piece",
+          "settings": {
+            "title": "Modelnavn",
+            "price": "Fra pris"
+          }
+        },
+        "p5": {
+          "type": "piece",
+          "settings": {
+            "title": "Modelnavn",
+            "price": "Fra pris"
+          }
+        },
+        "p6": {
+          "type": "piece",
+          "settings": {
+            "title": "Modelnavn",
+            "price": "Fra pris"
+          }
+        },
+        "p7": {
+          "type": "piece",
+          "settings": {
+            "title": "Modelnavn",
+            "price": "Fra pris"
+          }
+        },
+        "p8": {
+          "type": "piece",
+          "settings": {
+            "title": "Modelnavn",
+            "price": "Fra pris"
+          }
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5",
+        "p6",
+        "p7",
+        "p8"
+      ],
+      "settings": {
+        "heading": "",
+        "email": "",
+        "subject_prefix": "Forespørgsel:",
+        "padding_top": 0,
+        "padding_bottom": 160
+      }
+    }
+  },
+  "order": [
+    "intro",
+    "mosaic"
+  ]
+}
