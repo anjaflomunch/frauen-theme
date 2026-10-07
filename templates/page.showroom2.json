@@ -37,7 +37,7 @@
           "type": "fact",
           "settings": {
             "label": "Custom made",
-            "value": "<p>En kort tekst om at få taget mål og se tæpperne på lager. <a href=\"/pages/custom-made\" title=\"Custom made\">Læs om custom made</a></p>"
+            "value": "<p>En kort tekst om at få taget mål og se tæpperne på lager. Læs mere om custom made <a href=\"/pages/custom-made\" title=\"Custom made\">her</a>.</p>"
           }
         }
       },
