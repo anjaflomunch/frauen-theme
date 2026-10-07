@@ -1,0 +1,118 @@
+/* Frauen header ------------------------------------------------------------- */
+
+.frauen-header-section { position: relative; z-index: 10; }
+.frauen-header-section:has(.frauen-header--sticky) { position: sticky; top: 0; }
+
+.frauen-header {
+  background: var(--frauen-dark);
+  color: var(--frauen-light);
+}
+
+.frauen-header__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--frauen-header-height);
+}
+
+.frauen-header__list,
+.frauen-header__utils {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.frauen-header__nav,
+.frauen-header__utils { flex: 1 1 0; }
+.frauen-header__utils { justify-content: flex-end; }
+
+/* Menupunkt: bredden reserveres i Medium, så naboer ikke hopper ved hover */
+.frauen-header__link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: inherit;
+  text-decoration: none;
+  font-family: var(--frauen-font-body);
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  opacity: 0.75;
+  cursor: pointer;
+  transition: opacity 0.3s var(--frauen-ease);
+}
+
+.frauen-header__link::after {
+  content: attr(data-text);
+  height: 0;
+  overflow: hidden;
+  visibility: hidden;
+  font-weight: 500;
+  pointer-events: none;
+}
+
+.frauen-header__link.is-active,
+.frauen-header__link:focus-visible { font-weight: 500; opacity: 1; }
+
+@media (hover: hover) {
+  .frauen-header__link:hover { font-weight: 500; opacity: 1; }
+}
+
+/* Logo i midten */
+.frauen-header__logo {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: block;
+  color: inherit;
+  line-height: 0;
+}
+
+.frauen-header__logo-svg,
+.frauen-header__logo-img {
+  display: block;
+  width: 128px;
+  height: auto;
+}
+
+/* Mobil */
+.frauen-header__mobile { display: none; }
+
+@media screen and (max-width: 989px) {
+  .frauen-header__nav,
+  .frauen-header__hide-mobile { display: none; }
+  .frauen-header__mobile { display: block; flex: 1 1 0; }
+  .frauen-header__mobile summary { list-style: none; }
+  .frauen-header__mobile summary::-webkit-details-marker { display: none; }
+  .frauen-header__utils { gap: 20px; }
+  .frauen-header__logo-svg,
+  .frauen-header__logo-img { width: 104px; }
+
+  .frauen-header__drawer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: var(--frauen-header-height);
+    background: var(--frauen-dark);
+    padding: 24px var(--frauen-gutter) 40px;
+  }
+  .frauen-header__drawer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+  .frauen-header__drawer-link {
+    color: var(--frauen-light);
+    text-decoration: none;
+    font-family: var(--frauen-font-heading);
+    font-weight: var(--frauen-font-heading-weight);
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+  .frauen-header__drawer-link.is-active { opacity: 1; }
+}

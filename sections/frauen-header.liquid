@@ -1,0 +1,138 @@
+{%- comment -%}
+  Frauen header
+  - Menu til venstre (fra Navigation), logo i midten, søg / valuta / kurv til højre
+  - Sticky, mørk baggrund
+  - Menupunkter: Regular + 75 % → Medium + 100 % ved hover og på aktiv side
+{%- endcomment -%}
+
+{{ 'frauen-header.css' | asset_url | stylesheet_tag }}
+
+<header class="frauen-header{% if section.settings.sticky %} frauen-header--sticky{% endif %}">
+  <div class="frauen-header__inner frauen-wrap">
+    <nav class="frauen-header__nav" aria-label="{{ 'sections.header.menu' | t }}">
+      <ul class="frauen-header__list" role="list">
+        {%- for link in section.settings.menu.links -%}
+          <li>
+            <a
+              href="{{ link.url }}"
+              class="frauen-header__link{% if link.active or link.child_active %} is-active{% endif %}"
+              data-text="{{ link.title | escape }}"
+              {% if link.active %}aria-current="page"{% endif %}
+            >
+              {{- link.title | escape -}}
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    <details class="frauen-header__mobile">
+      <summary class="frauen-header__link" data-text="{{ section.settings.mobile_menu_label | escape }}">
+        {{- section.settings.mobile_menu_label | escape -}}
+      </summary>
+      <div class="frauen-header__drawer">
+        <ul role="list">
+          {%- for link in section.settings.menu.links -%}
+            <li>
+              <a href="{{ link.url }}" class="frauen-header__drawer-link{% if link.active or link.child_active %} is-active{% endif %}">
+                {{- link.title | escape -}}
+              </a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </details>
+
+    <a href="{{ routes.root_url }}" class="frauen-header__logo" aria-label="{{ shop.name | escape }}">
+      {%- if section.settings.logo != blank -%}
+        {{ section.settings.logo | image_url: width: 400 | image_tag: class: 'frauen-header__logo-img', alt: shop.name }}
+      {%- else -%}
+        {% render 'frauen-logo', class: 'frauen-header__logo-svg' %}
+      {%- endif -%}
+    </a>
+
+    <ul class="frauen-header__utils" role="list">
+      {%- if section.settings.show_search -%}
+        <li>
+          <a href="{{ routes.search_url }}" class="frauen-header__link{% if request.page_type == 'search' %} is-active{% endif %}" data-text="{{ section.settings.search_label | escape }}">
+            {{- section.settings.search_label | escape -}}
+          </a>
+        </li>
+      {%- endif -%}
+      {%- if section.settings.show_currency -%}
+        <li class="frauen-header__hide-mobile">
+          <span class="frauen-header__link" data-text="{{ cart.currency.iso_code }}">{{ cart.currency.iso_code }}</span>
+        </li>
+      {%- endif -%}
+      <li>
+        <a href="{{ routes.cart_url }}" id="FrauenCartLink" class="frauen-header__link{% if request.page_type == 'cart' %} is-active{% endif %}" data-text="{{ section.settings.cart_label | escape }} ({{ cart.item_count }})">
+          {{- section.settings.cart_label | escape }} ({{ cart.item_count }})
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Frauen header",
+  "class": "frauen-header-section",
+  "enabled_on": { "groups": ["header"] },
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu",
+      "info": "Rediger menupunkterne under Indhold → Menuer."
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo (valgfrit)",
+      "info": "Tomt felt = Frauen-logoet bruges."
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky",
+      "label": "Fast header ved scroll",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Tekster"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Vis søg",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "search_label",
+      "label": "Søg",
+      "default": "Søg"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_currency",
+      "label": "Vis valuta",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "cart_label",
+      "label": "Kurv",
+      "default": "Kurv"
+    },
+    {
+      "type": "text",
+      "id": "mobile_menu_label",
+      "label": "Menuknap på mobil",
+      "default": "Menu"
+    }
+  ],
+  "presets": [{ "name": "Frauen header" }]
+}
+{% endschema %}

@@ -1,0 +1,100 @@
+{%- comment -%}
+  Frauen footer
+  - Nyhedsbrev (Shopifys kundeformular) til venstre
+  - Linkkolonner som blokke (overskrift + menu fra Navigation)
+  - Stort logo
+  - Bundlinje: adresse, Instagram, copyright
+{%- endcomment -%}
+
+{{ 'frauen-footer.css' | asset_url | stylesheet_tag }}
+
+<footer class="frauen-footer">
+  <div class="frauen-footer__inner frauen-wrap">
+    <div class="frauen-footer__top">
+      {%- if section.settings.show_newsletter -%}
+        <div class="frauen-footer__newsletter">
+          <p class="frauen-footer__muted">{{ section.settings.newsletter_heading | escape }}</p>
+          {%- form 'customer', id: 'FrauenNewsletter', class: 'frauen-footer__form' -%}
+            <input type="hidden" name="contact[tags]" value="newsletter">
+            <label class="visually-hidden" for="FrauenNewsletterEmail">{{ section.settings.newsletter_placeholder | escape }}</label>
+            <input
+              id="FrauenNewsletterEmail"
+              type="email"
+              name="contact[email]"
+              autocomplete="email"
+              placeholder="{{ section.settings.newsletter_placeholder | escape }}"
+              required
+            >
+            <button type="submit">{{ section.settings.newsletter_button | escape }}</button>
+            {%- if form.posted_successfully? -%}
+              <p class="frauen-footer__message">{{ section.settings.newsletter_success | escape }}</p>
+            {%- elsif form.errors -%}
+              <p class="frauen-footer__message">{{ form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email }}</p>
+            {%- endif -%}
+          {%- endform -%}
+        </div>
+      {%- endif -%}
+
+      <div class="frauen-footer__columns">
+        {%- for block in section.blocks -%}
+          <div class="frauen-footer__column" {{ block.shopify_attributes }}>
+            {%- if block.settings.heading != blank -%}
+              <p class="frauen-footer__muted">{{ block.settings.heading | escape }}</p>
+            {%- endif -%}
+            <ul role="list">
+              {%- for link in block.settings.menu.links -%}
+                <li><a href="{{ link.url }}">{{ link.title | escape }}</a></li>
+              {%- endfor -%}
+            </ul>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+
+    <a href="{{ routes.root_url }}" class="frauen-footer__logo" aria-label="{{ shop.name | escape }}">
+      {% render 'frauen-logo', class: 'frauen-footer__logo-svg' %}
+    </a>
+
+    <div class="frauen-footer__bottom frauen-footer__muted">
+      <span>{{ section.settings.address | escape }}</span>
+      {%- if section.settings.instagram_url != blank -%}
+        <a href="{{ section.settings.instagram_url }}" target="_blank" rel="noopener">{{ section.settings.instagram_label | escape }}</a>
+      {%- else -%}
+        <span></span>
+      {%- endif -%}
+      <span>&copy; {{ 'now' | date: '%Y' }} {{ shop.name | escape }}</span>
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Frauen footer",
+  "class": "frauen-footer-section",
+  "enabled_on": { "groups": ["footer"] },
+  "settings": [
+    { "type": "header", "content": "Nyhedsbrev" },
+    { "type": "checkbox", "id": "show_newsletter", "label": "Vis nyhedsbrev", "default": true },
+    { "type": "text", "id": "newsletter_heading", "label": "Overskrift", "default": "Friends of Frauen" },
+    { "type": "text", "id": "newsletter_placeholder", "label": "Tekst i feltet", "default": "E-mail" },
+    { "type": "text", "id": "newsletter_button", "label": "Knap", "default": "Tilmeld" },
+    { "type": "text", "id": "newsletter_success", "label": "Tak-besked", "default": "Tak, du er tilmeldt." },
+    { "type": "header", "content": "Bundlinje" },
+    { "type": "text", "id": "address", "label": "Adresse", "default": "Adresse" },
+    { "type": "url", "id": "instagram_url", "label": "Instagram-link" },
+    { "type": "text", "id": "instagram_label", "label": "Instagram-tekst", "default": "Instagram" }
+  ],
+  "blocks": [
+    {
+      "type": "column",
+      "name": "Linkkolonne",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Overskrift", "default": "Shop" },
+        { "type": "link_list", "id": "menu", "label": "Menu", "info": "Opret menuen under Indhold → Menuer." }
+      ]
+    }
+  ],
+  "max_blocks": 4,
+  "presets": [{ "name": "Frauen footer" }]
+}
+{% endschema %}
