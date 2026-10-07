@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "intro": {
@@ -16,10 +25,11 @@
     "emilie": {
       "type": "frauen-portrait",
       "settings": {
+        "image": "shopify://shop_images/IMG_8409.jpg",
+        "image_right": false,
         "quote": "<p>Et citat fra Emilie.</p>",
         "heading": "Emilie – founder & designer",
-        "text": "<p>En tekst om Emilie.</p>",
-        "image_right": false,
+        "text": "<p>FRAUEN blev skabt med en vision om at gøre mode mere ansvarlig og personlig. Kernen i vores arbejde bygger på troen på, at vi alle er unikke, og at vores tøj bør afspejle det. Tøj vi kan mærke er kvalitet og som betyder noget for os, bruges mere og passes bedre på.&nbsp;<br/><br/>Ved at forvandle genbrugstæpper, deadstock og materialer i naturlige materialer til nye men personlige designs, udfordrer FRAUEN modebranchens hurtige køb-smid væk- kultur og viser, at stil og bæredygtighed kan være uadskillelige. Samarbejdet med lokale syersker i Danmark sikrer ikke kun håndværk og kvalitet, men også et engagement i at støtte lokal produktion.<br/><br/>FRAUENs værdier er forankret i bæredygtighed, individualitet, kreativitet og kvalitet, og i at fejre en mere bevidst måde at klæde sig på, hvor hvert stykke tøj er skabt til at holde og bære betydning.</p>",
         "padding_top": 0,
         "padding_bottom": 160
       }
@@ -67,6 +77,7 @@
         "is_page_heading": false,
         "text": "<p>En tekst om Frauens visioner og værdier.</p>",
         "button_label": "",
+        "button_link": "",
         "padding_top": 0,
         "padding_bottom": 160
       }
@@ -74,9 +85,9 @@
     "production": {
       "type": "frauen-trio",
       "settings": {
+        "big_right": false,
         "heading": "Produktion",
         "text": "<p>En tekst om produktionen.</p>",
-        "big_right": false,
         "padding_top": 0,
         "padding_bottom": 160
       }
