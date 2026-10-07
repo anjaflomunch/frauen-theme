@@ -1,0 +1,155 @@
+/* Frauen produkt --------------------------------------------------------------- */
+
+.frauen-product {
+  display: grid;
+  grid-template-columns: auto minmax(0, 552px);
+  column-gap: 94px;
+  align-items: start;
+  padding-top: var(--pt, 100px);
+  padding-bottom: var(--pb, 160px);
+}
+
+/* Galleri: billedet + navigation skal kunne ses ved 100vh */
+.frauen-product__gallery {
+  display: block;
+  --gallery-h: clamp(360px, calc(100svh - var(--frauen-header-height) - var(--pt, 100px) - 116px), 900px);
+}
+
+.frauen-gallery__stage {
+  position: relative;
+  height: var(--gallery-h);
+  aspect-ratio: 630 / 620;
+  max-width: 50vw;
+  overflow: hidden;
+  background: #d9d8d3;
+}
+
+.frauen-gallery__slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.6s var(--frauen-ease);
+}
+.frauen-gallery__slide.is-active { opacity: 1; z-index: 1; }
+
+.frauen-gallery__slide img,
+.frauen-gallery__slide video,
+.frauen-gallery__slide svg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.frauen-gallery__hit {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 50%;
+  z-index: 2;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+.frauen-gallery__hit--prev { left: 0; cursor: w-resize; }
+.frauen-gallery__hit--next { right: 0; cursor: e-resize; }
+
+.frauen-gallery__nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+.frauen-gallery__nav button {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  cursor: pointer;
+}
+
+/* Info --------------------------------------------------------------------- */
+
+.frauen-product__info {
+  position: sticky;
+  top: calc(var(--frauen-header-height) + 24px);
+  display: grid;
+  gap: 40px;
+}
+
+.frauen-product__title { font-size: 12px; }
+.frauen-product__price {
+  margin: 12px 0 0;
+  font-family: var(--frauen-font-body);
+  font-weight: 400;
+  font-size: 14px;
+}
+.frauen-product__desc { max-width: 480px; }
+.frauen-product__desc p { margin: 0 0 0.8em; }
+.frauen-product__desc p:last-child { margin-bottom: 0; }
+
+.frauen-product__form { display: grid; gap: 40px; margin: 0; }
+
+.frauen-product__option { border: 0; margin: 0; padding: 0; }
+.frauen-product__option-label { color: var(--frauen-muted); padding: 0; margin-bottom: 16px; }
+.frauen-product__values { display: flex; flex-wrap: wrap; gap: 28px; }
+
+.frauen-product__value { position: relative; cursor: pointer; }
+.frauen-product__value input { position: absolute; opacity: 0; pointer-events: none; }
+.frauen-product__value span {
+  display: inline-block;
+  padding-bottom: 6px;
+  font-family: var(--frauen-font-body);
+  font-weight: 400;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-bottom: 1px solid transparent;
+  opacity: 0.6;
+  transition: opacity 0.3s var(--frauen-ease), border-color 0.3s var(--frauen-ease);
+}
+.frauen-product__value input:checked + span { opacity: 1; border-bottom-color: currentColor; }
+.frauen-product__value input:focus-visible + span { outline: 1px solid currentColor; outline-offset: 4px; }
+.frauen-product__value.is-unavailable span { text-decoration: line-through; }
+
+.frauen-product__add { background: none; border: 0; color: inherit; cursor: pointer; padding-left: 0; padding-right: 0; }
+.frauen-product__add[disabled] { cursor: default; opacity: 0.5; }
+
+.frauen-product__details { border-bottom: 1px solid rgba(28, 28, 26, 0.2); }
+.frauen-product__row { border-top: 1px solid rgba(28, 28, 26, 0.2); }
+.frauen-product__row summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 0 15px;
+  list-style: none;
+  cursor: pointer;
+}
+.frauen-product__row summary::-webkit-details-marker { display: none; }
+.frauen-product__icon { position: relative; width: 10px; height: 10px; }
+.frauen-product__icon::before,
+.frauen-product__icon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background: currentColor;
+  transition: transform 0.4s var(--frauen-ease);
+}
+.frauen-product__icon::after { transform: rotate(90deg); }
+.frauen-product__row[open] .frauen-product__icon::after { transform: rotate(0deg); }
+.frauen-product__row-body { padding-bottom: 20px; font-size: 14px; max-width: 480px; }
+.frauen-product__row-body p { margin: 0 0 0.8em; }
+
+/* Mobil --------------------------------------------------------------------- */
+
+@media screen and (max-width: 989px) {
+  .frauen-product { grid-template-columns: 1fr; row-gap: 40px; padding-top: 24px; }
+  .frauen-gallery__stage { height: auto; width: 100%; max-width: none; aspect-ratio: 4 / 5; }
+  .frauen-product__info { position: static; }
+}
