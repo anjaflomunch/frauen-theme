@@ -281,10 +281,10 @@
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {%- render 'frauen-fonts' -%}
     {{ 'frauen-base.css' | asset_url | stylesheet_tag }}
-    {%- comment -%} Billeder toner blødt frem, når de er hentet. Slås fra efter 4 s som sikkerhed. {%- endcomment -%}
+    {%- comment -%} Billeder toner blødt frem, når de er hentet og kommer ind på skærmen (frauen-fade.js). {%- endcomment -%}
     <script>
       document.documentElement.classList.add('frauen-fade-on');
-      setTimeout(function () { document.documentElement.classList.remove('frauen-fade-on'); }, 4000);
+      window.frauenFadeSafety = setTimeout(function () { document.documentElement.classList.remove('frauen-fade-on'); }, 3000);
     </script>
     <script src="{{ 'frauen-fade.js' | asset_url }}" defer="defer"></script>
     <link rel="stylesheet" href="{{ 'component-cart-items.css' | asset_url }}" media="print" onload="this.media='all'">
