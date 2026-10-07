@@ -69,10 +69,16 @@
           endfor
         -%}
         {%- if section.settings.show_currency and currency_count > 1 -%}
-          {%- form 'localization', class: 'frauen-header__drawer-currency' -%}
-            {%- render 'frauen-currency-options', plain: true, currency_list: currency_list -%}
-            <input type="hidden" name="return_to" value="{{ request.path }}">
-          {%- endform -%}
+          <details class="frauen-header__drawer-currency">
+            <summary class="frauen-header__drawer-row">
+              <span>{{ section.settings.mobile_currency_label | escape }}</span>
+              <span>{{ cart.currency.iso_code }}</span>
+            </summary>
+            {%- form 'localization', class: 'frauen-header__drawer-currency-list' -%}
+              {%- render 'frauen-currency-options', plain: true, currency_list: currency_list -%}
+              <input type="hidden" name="return_to" value="{{ request.path }}">
+            {%- endform -%}
+          </details>
         {%- endif -%}
       </div>
     </details>
@@ -211,6 +217,12 @@
       "id": "cart_label",
       "label": "Kurv",
       "default": "Kurv"
+    },
+    {
+      "type": "text",
+      "id": "mobile_currency_label",
+      "label": "Valuta (mobilmenu)",
+      "default": "Valuta"
     },
     {
       "type": "text",

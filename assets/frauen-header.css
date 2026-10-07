@@ -184,7 +184,7 @@
     overflow-y: auto;
     background: var(--frauen-dark);
     /* Teksten flugter med krydsets synlige venstre kant */
-    padding: 94px var(--frauen-gutter) 34px calc(var(--frauen-gutter) + 3px);
+    padding: 94px var(--frauen-gutter) 48px calc(var(--frauen-gutter) + 3px);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -197,7 +197,8 @@
 
   .frauen-header__drawer-link,
   .frauen-header__drawer-small,
-  .frauen-header__drawer-currency .frauen-currency__option {
+  .frauen-header__drawer-row,
+  .frauen-header__drawer-currency-list .frauen-currency__option {
     display: block;
     padding: 0;
     color: var(--frauen-light);
@@ -211,11 +212,16 @@
     opacity: 0.75;
   }
   .frauen-header__drawer-link.is-active { font-weight: 500; opacity: 1; }
-  .frauen-header__drawer-small { margin-top: 81px; }
+  .frauen-header__drawer-small { margin-top: 90px; }
 
-  /* Valuta nederst på én linje: DKK EUR GBP USD */
-  .frauen-header__drawer-currency { margin-top: auto; padding-top: 48px; display: flex; gap: 20px; }
-  .frauen-header__drawer-currency .frauen-currency__option { width: auto; background: none; border: 0; cursor: pointer; }
-  .frauen-header__drawer-currency .frauen-currency__option span + span { display: none; }
-  .frauen-header__drawer-currency .frauen-currency__option.is-active { font-weight: 500; opacity: 1; }
+  /* Valuta: række med valgt valuta til højre; tryk viser de andre */
+  .frauen-header__drawer-currency { align-self: stretch; margin-top: 30px; }
+  .frauen-header__drawer-currency summary { list-style: none; cursor: pointer; }
+  .frauen-header__drawer-currency summary::-webkit-details-marker { display: none; }
+  .frauen-header__drawer-row { display: flex; justify-content: space-between; }
+  .frauen-header__drawer-currency[open] .frauen-header__drawer-row { opacity: 1; }
+  .frauen-header__drawer-currency-list { display: flex; justify-content: flex-end; gap: 20px; margin-top: 16px; animation: frauen-drawer-in 0.4s var(--frauen-ease); }
+  .frauen-header__drawer-currency-list .frauen-currency__option { width: auto; background: none; border: 0; cursor: pointer; }
+  .frauen-header__drawer-currency-list .frauen-currency__option span + span { display: none; }
+  .frauen-header__drawer-currency-list .frauen-currency__option.is-active { font-weight: 500; opacity: 1; }
 }
