@@ -1,0 +1,64 @@
+{%- comment -%}
+  Frauen kort: billede med gradient i bunden og tekst ovenpå.
+  Ved hover toner et lyst felt frem bag teksten, og teksten bliver mørk.
+
+  Parametre:
+  - product: produkt (valgfrit)
+  - image: billede, der overstyrer produktets billede (valgfrit)
+  - title / subtitle / price: tekster, der overstyrer produktets (valgfrit)
+  - url: link (valgfrit, ellers produktets link)
+  - sizes: sizes-attribut til billedet
+  - class: ekstra klasse
+{%- endcomment -%}
+{%- liquid
+  assign card_image = image
+  if card_image == blank and product
+    assign card_image = product.featured_media.preview_image
+  endif
+
+  assign card_title = title
+  if card_title == blank and product
+    assign card_title = product.title
+  endif
+
+  assign card_subtitle = subtitle
+  if card_subtitle == blank and product
+    assign card_subtitle = product.metafields.custom.kort_beskrivelse.value | default: product.type
+  endif
+
+  assign card_price = price
+  if card_price == blank and product
+    assign card_price = product.price | money_without_trailing_zeros
+  endif
+
+  assign card_url = url
+  if card_url == blank and product
+    assign card_url = product.url
+  endif
+-%}
+{%- capture tag -%}{% if card_url != blank %}a{% else %}div{% endif %}{%- endcapture -%}
+<{{ tag }} class="frauen-card {{ class }}"{% if card_url != blank %} href="{{ card_url }}"{% endif %}>
+  <div class="frauen-card__media">
+    {%- if card_image != blank -%}
+      {{
+        card_image
+        | image_url: width: 2000
+        | image_tag:
+          loading: 'lazy',
+          sizes: sizes,
+          widths: '400, 600, 800, 1000, 1400, 2000',
+          class: 'frauen-card__image',
+          alt: card_title
+      }}
+    {%- else -%}
+      {{ 'product-apparel-1' | placeholder_svg_tag: 'frauen-card__image frauen-card__placeholder' }}
+    {%- endif -%}
+  </div>
+  <div class="frauen-card__info">
+    <div class="frauen-card__text">
+      {%- if card_title != blank -%}<p class="frauen-card__title">{{ card_title | escape }}</p>{%- endif -%}
+      {%- if card_subtitle != blank -%}<p class="frauen-card__subtitle">{{ card_subtitle | escape }}</p>{%- endif -%}
+    </div>
+    {%- if card_price != blank -%}<p class="frauen-card__price">{{ card_price }}</p>{%- endif -%}
+  </div>
+</{{ tag }}>

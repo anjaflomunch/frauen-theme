@@ -18,9 +18,37 @@
         "delay": 3,
         "duration": 2
       }
+    },
+    "classics": {
+      "type": "frauen-classics",
+      "blocks": {
+        "card-1": {
+          "type": "card",
+          "settings": {}
+        },
+        "card-2": {
+          "type": "card",
+          "settings": {}
+        },
+        "card-3": {
+          "type": "card",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "card-1",
+        "card-2",
+        "card-3"
+      ],
+      "settings": {
+        "button_label": "Shop Frauen Classics",
+        "padding_top": 28,
+        "padding_bottom": 60
+      }
     }
   },
   "order": [
-    "hero"
+    "hero",
+    "classics"
   ]
 }

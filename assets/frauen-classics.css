@@ -1,0 +1,30 @@
+/* Frauen Classics (forside) -------------------------------------------------- */
+
+.frauen-classics {
+  padding-top: var(--pt, 28px);
+  padding-bottom: var(--pb, 60px);
+}
+
+/* Proportioner fra designet: 716 / 652 i bredden, 357 / 469 i højden */
+.frauen-classics__grid {
+  display: grid;
+  grid-template-columns: 716fr 652fr;
+  grid-template-rows: 357fr 469fr;
+  gap: var(--frauen-gap);
+  aspect-ratio: 1392 / 850;
+}
+
+.frauen-classics__item { min-width: 0; min-height: 0; }
+.frauen-classics__item--1 { grid-row: 1 / 3; }
+
+.frauen-classics__btn { margin-top: 39px; }
+
+@media screen and (max-width: 749px) {
+  .frauen-classics__grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    aspect-ratio: auto;
+  }
+  .frauen-classics__item--1 { grid-row: auto; }
+  .frauen-classics__item { aspect-ratio: 4 / 5; }
+}
