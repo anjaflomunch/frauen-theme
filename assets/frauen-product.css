@@ -81,7 +81,7 @@
   gap: 40px;
 }
 
-.frauen-product__title { font-size: 12px; }
+.frauen-product__title { font-size: 14px; }
 .frauen-product__price {
   margin: 12px 0 0;
   font-family: var(--frauen-font-body);
