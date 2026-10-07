@@ -5,7 +5,7 @@
   Parametre:
   - product: produkt (valgfrit)
   - image: billede, der overstyrer produktets billede (valgfrit)
-  - title / subtitle / price: tekster, der overstyrer produktets (valgfrit)
+  - title / price: tekster, der overstyrer produktets (valgfrit)
   - url: link (valgfrit, ellers produktets link)
   - sizes: sizes-attribut til billedet
   - class: ekstra klasse
@@ -21,10 +21,6 @@
     assign card_title = product.title
   endif
 
-  assign card_subtitle = subtitle
-  if card_subtitle == blank and product
-    assign card_subtitle = product.metafields.custom.kort_beskrivelse.value | default: product.type
-  endif
 
   assign card_price = price
   if card_price == blank and product
@@ -73,7 +69,6 @@
   <div class="frauen-card__info">
     <div class="frauen-card__text">
       {%- if card_title != blank -%}<p class="frauen-card__title">{{ card_title | escape }}</p>{%- endif -%}
-      {%- if card_subtitle != blank -%}<p class="frauen-card__subtitle">{{ card_subtitle | escape }}</p>{%- endif -%}
     </div>
     {%- if card_price != blank -%}<p class="frauen-card__price">{{ card_price }}</p>{%- endif -%}
   </div>

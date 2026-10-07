@@ -20,7 +20,6 @@
         {% render 'frauen-card',
           product: block.settings.product,
           image: block.settings.image,
-          subtitle: block.settings.subtitle,
           sizes: sizes
         %}
       </div>
@@ -54,8 +53,7 @@
       "name": "Jakke",
       "settings": [
         { "type": "product", "id": "product", "label": "Produkt" },
-        { "type": "image_picker", "id": "image", "label": "Andet billede (valgfrit)", "info": "Tomt felt = produktets første billede." },
-        { "type": "text", "id": "subtitle", "label": "Kort beskrivelse (valgfrit)", "info": "Tomt felt = produktets korte beskrivelse eller produkttype." }
+        { "type": "image_picker", "id": "image", "label": "Andet billede (valgfrit)", "info": "Tomt felt = produktets første billede." }
       ]
     }
   ],

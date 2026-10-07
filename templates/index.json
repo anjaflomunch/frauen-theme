@@ -26,22 +26,19 @@
         "card-1": {
           "type": "card",
           "settings": {
-            "product": "babett-paris",
-            "subtitle": ""
+            "product": "babett-paris"
           }
         },
         "card-2": {
           "type": "card",
           "settings": {
-            "product": "babett-sport-leo",
-            "subtitle": ""
+            "product": "babett-sport-leo"
           }
         },
         "card-3": {
           "type": "card",
           "settings": {
-            "product": "carli-jacket",
-            "subtitle": ""
+            "product": "carli-jacket"
           }
         }
       },
