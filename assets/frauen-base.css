@@ -6,7 +6,7 @@
 
 :root {
   --frauen-gutter: 24px;
-  --frauen-gap: 24px;
+  --frauen-gap: var(--frauen-gap-setting, 16px);
   --frauen-section: 160px;
   --frauen-header-height: 64px;
   --frauen-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
@@ -15,7 +15,7 @@
 @media screen and (max-width: 749px) {
   :root {
     --frauen-gutter: 16px;
-    --frauen-gap: 16px;
+    --frauen-gap: min(var(--frauen-gap-setting, 16px), 12px);
     --frauen-section: 96px;
   }
 }
