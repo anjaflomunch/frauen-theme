@@ -80,8 +80,8 @@
         "image_2": "shopify://shop_images/IMG_8382_2.jpg",
         "image_3": "shopify://shop_images/IMG_8383_2.jpg",
         "big_right": false,
-        "heading": "En overskrift her",
-        "text": "<p>En tekst om rummet, materialerne og stemningen i showroomet, to til fire linjer.</p>",
+        "heading": "",
+        "text": "",
         "anchor": "",
         "padding_top": 0,
         "padding_bottom": 160
