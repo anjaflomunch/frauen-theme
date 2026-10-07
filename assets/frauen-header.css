@@ -141,7 +141,30 @@
 
 /* Mobil */
 .frauen-header__mobile { display: none; }
-.frauen-header__toggle-close { display: none; }
+
+/* Burger: tre tynde streger, der bliver til et kryds */
+.frauen-header__burger {
+  position: relative;
+  display: block;
+  width: 22px;
+  height: 14px;
+  cursor: pointer;
+  color: var(--frauen-light);
+}
+.frauen-header__burger span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transition: transform 0.4s var(--frauen-ease), opacity 0.3s var(--frauen-ease);
+}
+.frauen-header__burger span:nth-child(1) { top: 0; }
+.frauen-header__burger span:nth-child(2) { top: 50%; }
+.frauen-header__burger span:nth-child(3) { top: 100%; }
+.frauen-header__mobile[open] .frauen-header__burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.frauen-header__mobile[open] .frauen-header__burger span:nth-child(2) { opacity: 0; }
+.frauen-header__mobile[open] .frauen-header__burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 @media screen and (max-width: 989px) {
   .frauen-header__nav,
@@ -149,8 +172,6 @@
   .frauen-header__mobile { display: block; flex: 1 1 0; }
   .frauen-header__mobile summary { list-style: none; }
   .frauen-header__mobile summary::-webkit-details-marker { display: none; }
-  .frauen-header__mobile[open] .frauen-header__toggle-open { display: none; }
-  .frauen-header__mobile[open] .frauen-header__toggle-close { display: inline; }
   .frauen-header__utils { gap: 20px; }
   .frauen-header__logo-svg,
   .frauen-header__logo-img { width: 96px; }

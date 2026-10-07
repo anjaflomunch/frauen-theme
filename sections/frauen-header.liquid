@@ -27,9 +27,8 @@
     </nav>
 
     <details class="frauen-header__mobile">
-      <summary class="frauen-header__link" data-text="{{ section.settings.mobile_menu_label | escape }}" aria-label="{{ section.settings.mobile_menu_label | escape }}">
-        <span class="frauen-header__toggle-open">{{ section.settings.mobile_menu_label | escape }}</span>
-        <span class="frauen-header__toggle-close">{{ section.settings.mobile_close_label | escape }}</span>
+      <summary class="frauen-header__burger" aria-label="{{ section.settings.mobile_menu_label | escape }}">
+        <span></span><span></span><span></span>
       </summary>
       <div class="frauen-header__drawer">
         <ul role="list">
@@ -212,12 +211,6 @@
       "id": "cart_label",
       "label": "Kurv",
       "default": "Kurv"
-    },
-    {
-      "type": "text",
-      "id": "mobile_close_label",
-      "label": "Luk (mobilmenu)",
-      "default": "Luk"
     },
     {
       "type": "text",
