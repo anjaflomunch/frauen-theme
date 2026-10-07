@@ -40,11 +40,35 @@
             </li>
           {%- endfor -%}
         </ul>
-        {%- assign currency_count = localization.available_countries | map: 'currency' | map: 'iso_code' | uniq | size -%}
+        {%- liquid
+          # Valutaer fra indstillingen (i den rækkefølge), som også findes i Markets
+          assign wanted = section.settings.currencies | upcase | remove: ' ' | split: ','
+          assign available = '|'
+          for c in localization.available_countries
+            assign k = '|' | append: c.currency.iso_code | append: '|'
+            unless available contains k
+              assign available = available | append: c.currency.iso_code | append: '|'
+            endunless
+          endfor
+          if section.settings.currencies == blank
+            assign wanted = available | split: '|'
+          endif
+          assign currency_list = '|'
+          assign currency_count = 0
+          for code in wanted
+            assign k = '|' | append: code | append: '|'
+            if code != blank and available contains k
+              unless currency_list contains k
+                assign currency_list = currency_list | append: code | append: '|'
+                assign currency_count = currency_count | plus: 1
+              endunless
+            endif
+          endfor
+        -%}
         {%- if section.settings.show_currency and currency_count > 1 -%}
           {%- form 'localization', class: 'frauen-header__drawer-currency' -%}
             <p class="frauen-currency__label">{{ section.settings.currency_label | escape }}</p>
-            {%- render 'frauen-currency-options', plain: true -%}
+            {%- render 'frauen-currency-options', plain: true, currency_list: currency_list -%}
             <input type="hidden" name="return_to" value="{{ request.path }}">
           {%- endform -%}
         {%- endif -%}
@@ -69,14 +93,38 @@
       {%- endif -%}
       {%- if section.settings.show_currency -%}
         <li class="frauen-header__hide-mobile">
-          {%- assign currency_count = localization.available_countries | map: 'currency' | map: 'iso_code' | uniq | size -%}
+          {%- liquid
+          # Valutaer fra indstillingen (i den rækkefølge), som også findes i Markets
+          assign wanted = section.settings.currencies | upcase | remove: ' ' | split: ','
+          assign available = '|'
+          for c in localization.available_countries
+            assign k = '|' | append: c.currency.iso_code | append: '|'
+            unless available contains k
+              assign available = available | append: c.currency.iso_code | append: '|'
+            endunless
+          endfor
+          if section.settings.currencies == blank
+            assign wanted = available | split: '|'
+          endif
+          assign currency_list = '|'
+          assign currency_count = 0
+          for code in wanted
+            assign k = '|' | append: code | append: '|'
+            if code != blank and available contains k
+              unless currency_list contains k
+                assign currency_list = currency_list | append: code | append: '|'
+                assign currency_count = currency_count | plus: 1
+              endunless
+            endif
+          endfor
+        -%}
           {%- if currency_count > 1 -%}
             {%- comment -%} Valutavælger: vises kun, når der er flere valutaer {%- endcomment -%}
             <details class="frauen-currency">
               <summary class="frauen-header__link" data-text="{{ cart.currency.iso_code }}">{{ cart.currency.iso_code }}</summary>
               {%- form 'localization', class: 'frauen-currency__panel' -%}
                 <p class="frauen-currency__label">{{ section.settings.currency_label | escape }}</p>
-                {%- render 'frauen-currency-options' -%}
+                {%- render 'frauen-currency-options', currency_list: currency_list -%}
                 <input type="hidden" name="return_to" value="{{ request.path }}">
               {%- endform -%}
             </details>
@@ -149,6 +197,13 @@
       "id": "show_currency",
       "label": "Vis valuta",
       "default": true
+    },
+    {
+      "type": "text",
+      "id": "currencies",
+      "label": "Valutaer i vælgeren",
+      "default": "DKK, EUR, GBP, USD",
+      "info": "Adskil med komma. Kun valutaer, der er sat op under Indstillinger → Markets, kan vises. Tomt felt = alle."
     },
     {
       "type": "text",
