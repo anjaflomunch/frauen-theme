@@ -17,31 +17,23 @@
             "value": "<p>Dage og tidspunkter, en til to linjer</p>"
           }
         },
-        "book": {
+        "betingelser": {
           "type": "fact",
           "settings": {
-            "label": "Book tid",
+            "label": "Betingelser",
             "value": "<p>Hvordan man booker en tid, en linje</p>"
-          }
-        },
-        "kontakt": {
-          "type": "fact",
-          "settings": {
-            "label": "Kontakt",
-            "value": "<p>Mail og telefon</p>"
           }
         }
       },
       "block_order": [
         "adresse",
         "tider",
-        "book",
-        "kontakt"
+        "betingelser"
       ],
       "settings": {
         "heading": "Showroom",
         "is_page_heading": true,
-        "text": "<p>En kort tekst om showroomet: hvad man kan se, prøve og få hjælp til, og hvordan et besøg foregår.</p>",
+        "text": "<p>Kom forbi vores showroom på Østerbro i København og prøv dine yndlings FRAUEN styles.</p><p>Vi sørger for, at der er rigelig tid til, at du kan stille alle dine spørgsmål, tage mål, se på forskellige tæpper og materialer samt udforske alle mulige specialtilpasninger - og selvfølgelig byder vi på en kop kaffe eller te, mens du er her.</p>",
         "button_label": "Book din tid",
         "button_link": "",
         "padding_top": 83,
@@ -55,7 +47,7 @@
         "text": "",
         "button_label": "",
         "padding_top": 0,
-        "padding_bottom": 160
+        "padding_bottom": 16
       }
     },
     "detaljer": {
