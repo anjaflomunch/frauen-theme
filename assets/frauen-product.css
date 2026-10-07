@@ -2,7 +2,8 @@
 
 .frauen-product {
   display: grid;
-  grid-template-columns: auto minmax(0, 552px);
+  grid-template-columns: max-content minmax(0, 552px);
+  justify-content: space-between;
   column-gap: 94px;
   align-items: start;
   padding-top: var(--pt, 100px);
@@ -13,13 +14,14 @@
 .frauen-product__gallery {
   display: block;
   --gallery-h: clamp(360px, calc(100svh - var(--frauen-header-height) - var(--pt, 100px) - 116px), 900px);
+  /* Fast bredde ud fra højden, så navigationen flugter med billedets kanter */
+  width: min(calc(var(--gallery-h) * 630 / 620), 50vw);
 }
 
 .frauen-gallery__stage {
   position: relative;
-  height: var(--gallery-h);
+  width: 100%;
   aspect-ratio: 630 / 620;
-  max-width: 50vw;
   overflow: hidden;
   background: #d9d8d3;
 }
@@ -150,6 +152,7 @@
 
 @media screen and (max-width: 989px) {
   .frauen-product { grid-template-columns: 1fr; row-gap: 40px; padding-top: 24px; }
-  .frauen-gallery__stage { height: auto; width: 100%; max-width: none; aspect-ratio: 4 / 5; }
+  .frauen-product__gallery { width: 100%; }
+  .frauen-gallery__stage { aspect-ratio: 4 / 5; }
   .frauen-product__info { position: static; }
 }
