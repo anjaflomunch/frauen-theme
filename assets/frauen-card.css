@@ -47,7 +47,7 @@
 .frauen-card__title {
   font-family: var(--frauen-font-heading);
   font-weight: var(--frauen-font-heading-weight);
-  font-size: 14px;
+  font-size: 12px;
   line-height: 1.3;
   letter-spacing: 0.1em;
   text-transform: uppercase;
