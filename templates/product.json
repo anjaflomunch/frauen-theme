@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
@@ -6,25 +15,33 @@
         "r1": {
           "type": "row",
           "settings": {
-            "heading": "Materiale"
+            "heading": "Materiale",
+            "content": "",
+            "page": ""
           }
         },
         "r2": {
           "type": "row",
           "settings": {
-            "heading": "Pasform og mål"
+            "heading": "Pasform og mål",
+            "content": "",
+            "page": ""
           }
         },
         "r3": {
           "type": "row",
           "settings": {
-            "heading": "Pleje"
+            "heading": "Pleje",
+            "content": "",
+            "page": ""
           }
         },
         "r4": {
           "type": "row",
           "settings": {
-            "heading": "Levering og retur"
+            "heading": "Levering og retur",
+            "content": "",
+            "page": ""
           }
         }
       },
@@ -49,19 +66,22 @@
         "f1": {
           "type": "fact",
           "settings": {
-            "label": "Tæppe"
+            "label": "Tæppe",
+            "value": ""
           }
         },
         "f2": {
           "type": "fact",
           "settings": {
-            "label": "Fundet"
+            "label": "Fundet",
+            "value": ""
           }
         },
         "f3": {
           "type": "fact",
           "settings": {
-            "label": "Antal syet"
+            "label": "Antal syet",
+            "value": ""
           }
         }
       },
@@ -72,6 +92,17 @@
       ],
       "settings": {
         "heading": "Jakkens historie",
+        "text": "",
+        "padding_bottom": 160
+      }
+    },
+    "frauen_related_tGBFCr": {
+      "type": "frauen-related",
+      "name": "Frauen andre styles",
+      "settings": {
+        "heading": "Andre styles",
+        "collection": "frauen-classics",
+        "button_label": "Se alle Frauen Classics",
         "padding_bottom": 160
       }
     },
@@ -79,6 +110,7 @@
       "type": "frauen-related",
       "settings": {
         "heading": "Andre styles",
+        "collection": "",
         "button_label": "Se alle Frauen Classics",
         "padding_bottom": 160
       }
@@ -87,6 +119,7 @@
   "order": [
     "main",
     "story",
+    "frauen_related_tGBFCr",
     "related"
   ]
 }
