@@ -38,49 +38,10 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "frauen_classics_WUXghn": {
-      "type": "frauen-classics",
-      "blocks": {
-        "card_mt9CTR": {
-          "type": "card",
-          "settings": {
-            "product": "",
-            "subtitle": ""
-          }
-        },
-        "card_KRbWbg": {
-          "type": "card",
-          "settings": {
-            "product": "",
-            "subtitle": ""
-          }
-        },
-        "card_TCtjYP": {
-          "type": "card",
-          "settings": {
-            "product": "",
-            "subtitle": ""
-          }
-        }
-      },
-      "block_order": [
-        "card_mt9CTR",
-        "card_KRbWbg",
-        "card_TCtjYP"
-      ],
-      "name": "Frauen Classics",
-      "settings": {
-        "button_label": "Shop Frauen Classics",
-        "button_link": "",
-        "padding_top": 28,
-        "padding_bottom": 60
-      }
     }
   },
   "order": [
     "banner",
-    "product-grid",
-    "frauen_classics_WUXghn"
+    "product-grid"
   ]
 }
