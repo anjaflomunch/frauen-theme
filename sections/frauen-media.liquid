@@ -101,6 +101,7 @@
   /* Samme udtryk som taglinen i forsidens hero ("Made to love …") */
   .frauen-media__title {
     margin: 0;
+    color: inherit; /* lys tekst oven på video/billede (Dawn gør ellers overskrifter mørke) */
     font-family: var(--frauen-font-heading);
     font-weight: 400;
     font-size: 20px;
@@ -109,7 +110,7 @@
     text-transform: uppercase;
   }
   .frauen-media--bleed .frauen-media__caption { left: var(--frauen-gutter); }
-  .frauen-media__text { margin-top: 12px; }
+  .frauen-media__text { margin-top: 12px; color: inherit; }
   .frauen-media__text p { margin: 0; }
   .frauen-media__sound {
     position: absolute;
