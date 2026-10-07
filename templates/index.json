@@ -63,8 +63,8 @@
       "settings": {
         "heading": "",
         "text": "<p>En overskriftsagtig tekst om Frauen her, to til tre linjer i stor og rolig størrelse. En overskriftsagtig tekst om Frauen her, to til tre linjer i stor og rolig størrelse. En overskriftsagtig tekst om Frauen her, to til tre linjer i stor og rolig størrelse.</p>",
-        "button_label": "Frauens historie",
-        "button_link": "",
+        "button_label": "Vores værdier",
+        "button_link": "shopify://pages/om-frauen",
         "button_side": "left",
         "max_width": 77,
         "padding_top": 100,
