@@ -37,7 +37,7 @@
           "type": "fact",
           "settings": {
             "label": "Custom made",
-            "value": "<p>Ønsker du en custom made Frauen jakke, så kom forbi showroomet for at se hvilke tæpper vi har til rådighed netop nu, få taget mål, prøv de forskellige modeller m.m. Læs mere om vores custom made jakker her.</p>"
+            "value": "<p>Ønsker du en custom made Frauen jakke, så kom forbi showroomet for at se hvilke tæpper vi har til rådighed netop nu, få taget mål, prøv de forskellige modeller m.m. Læs mere om vores custom made jakker <a href=\"/pages/custom-made\" title=\"Custom made\">her</a>.</p>"
           }
         }
       },
