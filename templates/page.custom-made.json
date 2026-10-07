@@ -35,28 +35,28 @@
           "type": "fact",
           "settings": {
             "label": "Om custom made",
-            "value": "<p>En introduktion til custom made: at jakken syes efter mål af et udvalgt tæppe.</p>"
+            "value": "<p>En introduktion til custom made: at jakken syes efter mål af et udvalgt tæppe/materiale</p>"
           }
         },
         "f2": {
           "type": "fact",
           "settings": {
             "label": "Pris",
-            "value": "<p>Prisniveau og hvad der påvirker prisen, en til to linjer.</p>"
+            "value": "<p>Prisniveau og evt. hvad der påvirker prisen</p>"
           }
         },
         "f3": {
           "type": "fact",
           "settings": {
             "label": "Leveringstid",
-            "value": "<p>Forventet tid fra bestilling til færdig jakke, en linje.</p>"
+            "value": "<p>Forventet tid fra bestilling til færdig jakke</p>"
           }
         },
         "f4": {
           "type": "fact",
           "settings": {
             "label": "Bestilling",
-            "value": "<p>Skriv via mail eller Instagram med ønske til tæppe, mål og detaljer.</p>"
+            "value": "<p>Ønsker du at bestille en custom made FRAUEN jakke skal dette gøres via Instagram eller mail.</p>"
           }
         }
       },
