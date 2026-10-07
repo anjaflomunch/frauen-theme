@@ -63,6 +63,7 @@
         "p1": {
           "type": "piece",
           "settings": {
+            "image": "shopify://shop_images/0E9A8093_68785ed5-0313-4457-9026-a21708d050b6.jpg",
             "title": "Modelnavn",
             "price": "Fra pris",
             "link": ""
@@ -71,6 +72,7 @@
         "p2": {
           "type": "piece",
           "settings": {
+            "image": "shopify://shop_images/Designudennavn_18.jpg",
             "title": "Modelnavn",
             "price": "Fra pris",
             "link": ""
@@ -79,6 +81,7 @@
         "p3": {
           "type": "piece",
           "settings": {
+            "image": "shopify://shop_images/Skaermbillede_2025-09-05_kl._19.09.01.png",
             "title": "Modelnavn",
             "price": "Fra pris",
             "link": ""
@@ -87,6 +90,7 @@
         "p4": {
           "type": "piece",
           "settings": {
+            "image": "shopify://shop_images/Designudennavn_22_d6abebb4-4fae-4a0a-bd5f-e8f1cb0b1ac9.jpg",
             "title": "Modelnavn",
             "price": "Fra pris",
             "link": ""
@@ -95,6 +99,7 @@
         "p5": {
           "type": "piece",
           "settings": {
+            "image": "shopify://shop_images/Skaermbillede_2025-09-05_kl._18.44.50.png",
             "title": "Modelnavn",
             "price": "Fra pris",
             "link": ""
@@ -103,6 +108,7 @@
         "p6": {
           "type": "piece",
           "settings": {
+            "image": "shopify://shop_images/DE23AB5A-B45F-4488-9798-A944A2F57072.jpg",
             "title": "Modelnavn",
             "price": "Fra pris",
             "link": ""
@@ -111,6 +117,7 @@
         "p7": {
           "type": "piece",
           "settings": {
+            "image": "shopify://shop_images/IMG_2185.jpg",
             "title": "Modelnavn",
             "price": "Fra pris",
             "link": ""
@@ -119,6 +126,7 @@
         "p8": {
           "type": "piece",
           "settings": {
+            "image": "shopify://shop_images/IMG_4968.jpg",
             "title": "Modelnavn",
             "price": "Fra pris",
             "link": ""
