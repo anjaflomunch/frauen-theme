@@ -28,6 +28,7 @@ body.gradient {
   color: var(--frauen-ink);
   font-family: var(--frauen-font-body);
   font-weight: 300;
+  letter-spacing: 0.01em;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -56,7 +57,7 @@ body.gradient {
   font-weight: 300;
   font-size: 16px;
   line-height: 1.5;
-  letter-spacing: 0;
+  letter-spacing: 0.01em;
 }
 
 .frauen-statement {

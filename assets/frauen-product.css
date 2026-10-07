@@ -144,7 +144,7 @@
 }
 .frauen-product__icon::after { transform: rotate(90deg); }
 .frauen-product__row[open] .frauen-product__icon::after { transform: rotate(0deg); }
-.frauen-product__row-body { padding-bottom: 20px; font-size: 14px; max-width: 480px; }
+.frauen-product__row-body { padding-bottom: 20px; font-size: 14px; letter-spacing: 0.015em; max-width: 480px; }
 .frauen-product__row-body p { margin: 0 0 0.8em; }
 
 /* Mobil --------------------------------------------------------------------- */

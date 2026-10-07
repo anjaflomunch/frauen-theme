@@ -33,7 +33,7 @@
   font-weight: 300;
   font-size: 14px;
   line-height: 1.5;
-  letter-spacing: 0;
+  letter-spacing: 0.015em;
   text-transform: none;
 }
 .frauen-footer__intro p { margin: 0 0 0.6em; }
