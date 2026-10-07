@@ -80,8 +80,8 @@
         "f3": {
           "type": "fact",
           "settings": {
-            "label": "Antal syet",
-            "value": "En kort beskrivelse her"
+            "label": "Andet info",
+            "value": "{{ product.metafields.custom.info.value }}"
           }
         }
       },
