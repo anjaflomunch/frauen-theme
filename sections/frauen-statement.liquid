@@ -8,7 +8,7 @@
   assign btn_side = section.settings.button_side
 -%}
 
-<div
+<div{% if section.settings.anchor != blank %} id="{{ section.settings.anchor | handleize }}"{% endif %}
   class="frauen-statement-block frauen-wrap"
   style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px; --max: {{ section.settings.max_width }}%;"
 >
@@ -72,6 +72,7 @@
       "default": "left"
     },
     { "type": "range", "id": "max_width", "label": "Bredde", "min": 40, "max": 100, "step": 1, "unit": "%", "default": 63 },
+    { "type": "text", "id": "anchor", "label": "Anker (til links)", "info": "Fx produktion. Link hertil med /pages/om-frauen#produktion" },
     { "type": "header", "content": "Luft" },
     { "type": "range", "id": "padding_top", "label": "Luft over", "min": 0, "max": 280, "step": 4, "unit": "px", "default": 100 },
     { "type": "range", "id": "padding_bottom", "label": "Luft under", "min": 0, "max": 280, "step": 4, "unit": "px", "default": 160 }

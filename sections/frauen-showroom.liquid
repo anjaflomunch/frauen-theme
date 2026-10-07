@@ -5,7 +5,7 @@
   eller en video i fuld bredde under.
 {%- endcomment -%}
 
-<div class="frauen-showroom frauen-wrap" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
+<div{% if section.settings.anchor != blank %} id="{{ section.settings.anchor | handleize }}"{% endif %} class="frauen-showroom frauen-wrap" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
   {%- if section.settings.heading != blank -%}
     <h2 class="frauen-heading">{{ section.settings.heading | escape }}</h2>
   {%- endif -%}
@@ -88,6 +88,7 @@
     },
     { "type": "image_picker", "id": "image", "label": "Billede" },
     { "type": "video", "id": "video", "label": "Video" },
+    { "type": "text", "id": "anchor", "label": "Anker (til links)", "info": "Fx produktion. Link hertil med /pages/om-frauen#produktion" },
     { "type": "header", "content": "Luft" },
     { "type": "range", "id": "padding_top", "label": "Luft over", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 80 },
     { "type": "range", "id": "padding_bottom", "label": "Luft under", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 160 }

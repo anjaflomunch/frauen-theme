@@ -4,7 +4,7 @@
   Bruges på Custom made (pris, leveringstid, bestilling) og Om Frauen (værdier).
 {%- endcomment -%}
 
-<div class="frauen-intro frauen-wrap" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
+<div{% if section.settings.anchor != blank %} id="{{ section.settings.anchor | handleize }}"{% endif %} class="frauen-intro frauen-wrap" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
   <div class="frauen-intro__text">
     {%- if section.settings.heading != blank -%}
       {%- if section.settings.is_page_heading -%}
@@ -84,6 +84,7 @@
     { "type": "richtext", "id": "text", "label": "Tekst", "default": "<p>En længere beskrivelse af custom made står her.</p>" },
     { "type": "text", "id": "button_label", "label": "Knaptekst", "default": "Skriv til os" },
     { "type": "url", "id": "button_link", "label": "Knaplink", "info": "Fx mailto:hej@frauencph.com" },
+    { "type": "text", "id": "anchor", "label": "Anker (til links)", "info": "Fx produktion. Link hertil med /pages/om-frauen#produktion" },
     { "type": "header", "content": "Luft" },
     { "type": "range", "id": "padding_top", "label": "Luft over", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 83 },
     { "type": "range", "id": "padding_bottom", "label": "Luft under", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 160 }

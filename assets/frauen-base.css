@@ -211,3 +211,8 @@ textarea.frauen-field__input { resize: vertical; min-height: 120px; }
   .frauen-wrap[style*='--pb'] { padding-bottom: calc(var(--pb, 0px) * 0.6) !important; }
   .frauen-statement { font-size: 21px; }
 }
+
+/* Ankerlinks (fx /pages/om-frauen#produktion): blød scroll og plads til sticky header */
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+[id] { scroll-margin-top: calc(var(--frauen-header-height) + 24px); }
