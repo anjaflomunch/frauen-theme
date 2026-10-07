@@ -1,0 +1,99 @@
+{%- comment -%}
+  Frauen kollektion (Shop)
+  Overskrift og masonry-gitter med tre kolonner. Kortenes højder følger et
+  fast mønster, så bunden flugter for hver sjette jakke.
+  Ingen filtrering eller sortering.
+{%- endcomment -%}
+
+{{ 'frauen-card.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign heading = section.settings.heading | default: collection.title
+  comment
+    Mønster pr. kolonne (højde ift. bredde 448): kolonne 1: 600, 456 / kolonne 2: 456, 600 / kolonne 3: 540, 516
+  endcomment
+  assign ratios_1 = '448/600,448/456' | split: ','
+  assign ratios_2 = '448/456,448/600' | split: ','
+  assign ratios_3 = '448/540,448/516' | split: ','
+-%}
+
+<div class="frauen-collection frauen-wrap" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
+  <h1 class="frauen-heading frauen-collection__heading">{{ heading | escape }}</h1>
+
+  {%- paginate collection.products by section.settings.per_page -%}
+    {%- if collection.products.size > 0 -%}
+      <div class="frauen-collection__grid">
+        {%- for col in (1..3) -%}
+          <div class="frauen-collection__col">
+            {%- assign n = 0 -%}
+            {%- for product in collection.products -%}
+              {%- assign c = forloop.index0 | modulo: 3 | plus: 1 -%}
+              {%- if c == col -%}
+                {%- liquid
+                  assign slot = n | modulo: 2
+                  case col
+                    when 1
+                      assign ratio = ratios_1[slot]
+                    when 2
+                      assign ratio = ratios_2[slot]
+                    else
+                      assign ratio = ratios_3[slot]
+                  endcase
+                  assign n = n | plus: 1
+                -%}
+                <div class="frauen-collection__item" style="aspect-ratio: {{ ratio }};">
+                  {% render 'frauen-card', product: product, sizes: '(min-width: 750px) 33vw, 100vw' %}
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <p class="frauen-body">{{ section.settings.empty_text | escape }}</p>
+    {%- endif -%}
+
+    {%- if paginate.pages > 1 -%}
+      <nav class="frauen-collection__pages frauen-label" aria-label="Sider">
+        {%- if paginate.previous -%}<a href="{{ paginate.previous.url }}">Forrige</a>{%- endif -%}
+        <span>{{ paginate.current_page }}/{{ paginate.pages }}</span>
+        {%- if paginate.next -%}<a href="{{ paginate.next.url }}">Næste</a>{%- endif -%}
+      </nav>
+    {%- endif -%}
+  {%- endpaginate -%}
+</div>
+
+<style>
+  .frauen-collection { padding-top: var(--pt); padding-bottom: var(--pb); }
+  .frauen-collection__heading { margin-bottom: 32px; }
+  .frauen-collection__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--frauen-gap);
+    align-items: start;
+  }
+  .frauen-collection__col { display: grid; gap: var(--frauen-gap); }
+  .frauen-collection__item { position: relative; }
+  .frauen-collection__pages { display: flex; justify-content: space-between; margin-top: 40px; }
+  .frauen-collection__pages a { color: inherit; text-decoration: none; }
+  @media screen and (max-width: 749px) {
+    .frauen-collection__grid { grid-template-columns: 1fr; }
+    .frauen-collection__item { aspect-ratio: 4 / 5 !important; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Frauen kollektion",
+  "tag": "section",
+  "class": "frauen-collection-section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Overskrift", "info": "Tomt felt = kollektionens navn." },
+    { "type": "range", "id": "per_page", "label": "Jakker pr. side", "min": 6, "max": 48, "step": 6, "default": 24 },
+    { "type": "text", "id": "empty_text", "label": "Tekst når kollektionen er tom", "default": "Der er ingen jakker her lige nu." },
+    { "type": "header", "content": "Luft" },
+    { "type": "range", "id": "padding_top", "label": "Luft over", "min": 0, "max": 200, "step": 1, "unit": "px", "default": 83 },
+    { "type": "range", "id": "padding_bottom", "label": "Luft under", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 160 }
+  ]
+}
+{% endschema %}

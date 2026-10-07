@@ -1,0 +1,17 @@
+{
+  "sections": {
+    "main": {
+      "type": "frauen-collection",
+      "settings": {
+        "heading": "",
+        "per_page": 24,
+        "empty_text": "Der er ingen jakker her lige nu.",
+        "padding_top": 83,
+        "padding_bottom": 160
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
