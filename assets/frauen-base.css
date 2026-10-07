@@ -217,3 +217,8 @@ textarea.frauen-field__input { resize: vertical; min-height: 120px; }
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 [id] { scroll-margin-top: calc(var(--frauen-header-height) + 24px); }
+
+/* Mobil: korte sider (kurv, søgning, 404, kontakt) får plads, så footeren ikke kryber op */
+@media screen and (max-width: 749px) {
+  #MainContent:is([data-template="cart"], [data-template="search"], [data-template="404"]) { min-height: 72svh; }
+}
