@@ -56,7 +56,7 @@
           "type": "fact",
           "settings": {
             "label": "Bestilling",
-            "value": "<p>Ønsker du at bestille en custom made FRAUEN jakke skal dette gøres via Instagram eller mail.</p>"
+            "value": "<p>Ønsker du at bestille en custom made FRAUEN jakke skal dette gøres via <a href=\"https://www.instagram.com/frauenfrauenfrauen\" target=\"_blank\" title=\"Frauen på Instagram\">Instagram</a> eller <a href=\"mailto:hello@frauencph.com\" title=\"Mail til Frauen\">mail</a>.</p>"
           }
         }
       },
@@ -69,7 +69,7 @@
       "settings": {
         "heading": "Custom made",
         "is_page_heading": true,
-        "text": "<p>Når du bestiller en custom made FRAUEN jakke køber du en jakke, der er syet præcist til dig. Jakken kan specialsyes til dine mål, og vi kan justere detaljer såsom at tilføje en ekstra lomme, tilpasse bredden eller længden eller andre mindre detaljer, så det stemmer overens med dine ønsker. Det er også muligt at kombinere forskellige tæpper for at skabe et personligt design.&nbsp;<br/><br/>Ønsker du at bestille skal det gøres via vores <a href=\"https://www.instagram.com/frauenfrauenfrauen\" target=\"_blank\" title=\"Instagram link\">Instagram</a> eller <a href=\"mailto:hello@frauencph.com\" title=\"Mail til Frauen\">mail</a>.</p>",
+        "text": "<p>Når du bestiller en custom made FRAUEN jakke køber du en jakke, der er syet præcist til dig. Jakken kan specialsyes til dine mål, og vi kan justere detaljer såsom at tilføje en ekstra lomme, tilpasse bredden eller længden eller andre mindre detaljer, så det stemmer overens med dine ønsker. Det er også muligt at kombinere forskellige tæpper for at skabe et personligt design.&nbsp;<br/><br/>Ønsker du at bestille skal det gøres via vores <a href=\"https://www.instagram.com/frauenfrauenfrauen\" target=\"_blank\" title=\"Frauen på Instagram\">Instagram</a> eller <a href=\"mailto:hello@frauencph.com\" title=\"Mail til Frauen\">mail</a>.</p>",
         "button_label": "Skriv til os",
         "button_link": "mailto:hello@frauencph.com?subject=Custom%20made",
         "anchor": "",
