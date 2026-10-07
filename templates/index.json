@@ -183,7 +183,7 @@
         "heading": "Custom made",
         "text": "<p>En kort tekst om custom made skal stå her.</p>",
         "button_label": "Shop custom made",
-        "button_link": "",
+        "button_link": "shopify://pages/custom-made",
         "padding_top": 92,
         "padding_bottom": 52
       }
