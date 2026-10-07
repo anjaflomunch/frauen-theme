@@ -9,9 +9,7 @@
 
 {%- liquid
   assign heading = section.settings.heading | default: collection.title
-  comment
-    Mønster pr. kolonne (højde ift. bredde 448): kolonne 1: 600, 456 / kolonne 2: 456, 600 / kolonne 3: 540, 516
-  endcomment
+  # Mønster pr. kolonne (højde ift. bredde 448): 1: 600/456, 2: 456/600, 3: 540/516
   assign ratios_1 = '448/600,448/456' | split: ','
   assign ratios_2 = '448/456,448/600' | split: ','
   assign ratios_3 = '448/540,448/516' | split: ','
