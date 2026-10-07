@@ -4,7 +4,7 @@
   nederst, så teksten flugter med billedets bund.
 {%- endcomment -%}
 
-<div class="frauen-portrait frauen-wrap{% if section.settings.image_right %} frauen-portrait--right{% endif %}" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
+<div class="frauen-portrait frauen-wrap{% if section.settings.image_right %} frauen-portrait--right{% endif %}{% if section.settings.quote == blank %} frauen-portrait--no-quote{% endif %}" style="--img-w: {{ section.settings.image_width }}%; --pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
   <div class="frauen-portrait__media">
     {%- if section.settings.image != blank -%}
       {{
@@ -20,8 +20,6 @@
   <div class="frauen-portrait__text">
     {%- if section.settings.quote != blank -%}
       <blockquote class="frauen-statement frauen-portrait__quote">{{ section.settings.quote }}</blockquote>
-    {%- else -%}
-      <span></span>
     {%- endif -%}
 
     <div>
@@ -38,17 +36,20 @@
 <style>
   .frauen-portrait {
     display: grid;
-    grid-template-columns: 684fr 653fr;
+    grid-template-columns: var(--img-w, 49%) 1fr;
     column-gap: 55px;
     padding-top: var(--pt);
     padding-bottom: var(--pb);
   }
-  .frauen-portrait--right { grid-template-columns: 653fr 684fr; }
+  .frauen-portrait--right { grid-template-columns: 1fr var(--img-w, 49%); }
   .frauen-portrait--right .frauen-portrait__media { order: 2; }
-  .frauen-portrait__media { position: relative; aspect-ratio: 684 / 848; overflow: hidden; background: #d9d8d3; }
+  .frauen-portrait__media { position: relative; align-self: start; aspect-ratio: 684 / 848; overflow: hidden; background: #d9d8d3; }
   .frauen-portrait__media img,
   .frauen-portrait__media svg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
   .frauen-portrait__text { display: flex; flex-direction: column; justify-content: space-between; gap: 48px; }
+  /* Uden citat står teksten øverst */
+  .frauen-portrait--no-quote .frauen-portrait__text { justify-content: flex-start; }
+  .frauen-portrait__body { max-width: 554px; }
   .frauen-portrait__quote { margin: 0; padding: 0; border: 0; color: inherit; max-width: 494px; font-style: italic; }
   .frauen-portrait__quote p { margin: 0; }
   .frauen-portrait__body { margin-top: 24px; }
@@ -68,8 +69,9 @@
   "class": "frauen-portrait-section",
   "settings": [
     { "type": "image_picker", "id": "image", "label": "Billede" },
+    { "type": "range", "id": "image_width", "label": "Billedets bredde", "min": 30, "max": 60, "step": 1, "unit": "%", "default": 40 },
     { "type": "checkbox", "id": "image_right", "label": "Billede til højre", "default": false },
-    { "type": "richtext", "id": "quote", "label": "Citat", "default": "<p>Et citat her.</p>" },
+    { "type": "richtext", "id": "quote", "label": "Citat", "info": "Lad feltet være tomt, så står teksten øverst." },
     { "type": "text", "id": "heading", "label": "Overskrift", "default": "Emilie – founder & designer" },
     { "type": "richtext", "id": "text", "label": "Tekst", "default": "<p>En tekst om Emilie.</p>" },
     { "type": "header", "content": "Luft" },
