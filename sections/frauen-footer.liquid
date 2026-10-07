@@ -14,6 +14,9 @@
       {%- if section.settings.show_newsletter -%}
         <div class="frauen-footer__newsletter">
           <p class="frauen-footer__muted">{{ section.settings.newsletter_heading | escape }}</p>
+          {%- if section.settings.newsletter_text != blank -%}
+            <div class="frauen-footer__intro">{{ section.settings.newsletter_text }}</div>
+          {%- endif -%}
           {%- form 'customer', id: 'FrauenNewsletter', class: 'frauen-footer__form' -%}
             <input type="hidden" name="contact[tags]" value="newsletter">
             <label class="visually-hidden" for="FrauenNewsletterEmail">{{ section.settings.newsletter_placeholder | escape }}</label>
@@ -76,6 +79,7 @@
     { "type": "header", "content": "Nyhedsbrev" },
     { "type": "checkbox", "id": "show_newsletter", "label": "Vis nyhedsbrev", "default": true },
     { "type": "text", "id": "newsletter_heading", "label": "Overskrift", "default": "Friends of Frauen" },
+    { "type": "richtext", "id": "newsletter_text", "label": "Tekst", "default": "<p>En kort tekst om nyhedsbrevet her.</p>" },
     { "type": "text", "id": "newsletter_placeholder", "label": "Tekst i feltet", "default": "E-mail" },
     { "type": "text", "id": "newsletter_button", "label": "Knap", "default": "Tilmeld" },
     { "type": "text", "id": "newsletter_success", "label": "Tak-besked", "default": "Tak, du er tilmeldt." },

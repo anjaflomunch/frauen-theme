@@ -25,6 +25,19 @@
 }
 
 .frauen-footer__newsletter p { margin-bottom: 20px; }
+.frauen-footer__newsletter .frauen-footer__muted:has(+ .frauen-footer__intro) { margin-bottom: 12px; }
+.frauen-footer__intro {
+  max-width: 456px;
+  margin-bottom: 24px;
+  font-family: var(--frauen-font-body);
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 1.5;
+  letter-spacing: 0;
+  text-transform: none;
+}
+.frauen-footer__intro p { margin: 0 0 0.6em; }
+.frauen-footer__intro p:last-child { margin-bottom: 0; }
 
 .frauen-footer__form {
   display: flex;
