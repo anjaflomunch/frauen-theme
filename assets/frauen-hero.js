@@ -51,11 +51,15 @@ if (!customElements.get('frauen-hero')) {
         if (this.tagline) {
           const heroBottom = this.getBoundingClientRect().bottom;
           const tag = this.tagline.getBoundingClientRect();
-          const gap = window.innerWidth < 750 ? 20 : 26;
-          this.tagline.style.transform = `translateY(${heroBottom - gap - tag.bottom}px)`;
+          this.tagline.style.transform = `translateY(${heroBottom - this.taglineGap() - tag.bottom}px)`;
         }
 
         setTimeout(() => this.finish(), this.duration);
+      }
+
+      // Afstand fra taglinens bund til heroens bund, efter logoet er lagt op
+      taglineGap() {
+        return window.innerWidth < 750 ? 32 : 40;
       }
 
       finish() {
@@ -65,7 +69,7 @@ if (!customElements.get('frauen-hero')) {
           const heroBottom = this.getBoundingClientRect().bottom;
           const tag = this.tagline.getBoundingClientRect();
           this.tagline.style.transition = 'none';
-          this.tagline.style.transform = `translateY(${heroBottom - 26 - tag.bottom}px)`;
+          this.tagline.style.transform = `translateY(${heroBottom - this.taglineGap() - tag.bottom}px)`;
         }
       }
     }
