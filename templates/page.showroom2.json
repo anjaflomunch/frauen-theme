@@ -45,6 +45,7 @@
         "text": "<p>Kom forbi vores showroom på Østerbro i København og prøv dine yndlings FRAUEN styles.</p><p>Vi sørger for, at der er rigelig tid til, at du kan stille alle dine spørgsmål, tage mål, se på forskellige tæpper og materialer samt udforske alle mulige specialtilpasninger - og selvfølgelig byder vi på en kop kaffe eller te, mens du er her.</p>",
         "button_label": "Book din tid",
         "button_link": "",
+        "anchor": "",
         "padding_top": 83,
         "padding_bottom": 160
       }
@@ -55,6 +56,10 @@
         "heading": "",
         "text": "",
         "button_label": "",
+        "button_link": "",
+        "media_type": "image",
+        "image": "shopify://shop_images/Billede__Showroomet_hele_rummet.png",
+        "anchor": "",
         "padding_top": 0,
         "padding_bottom": 16
       }
@@ -62,9 +67,13 @@
     "detaljer": {
       "type": "frauen-trio",
       "settings": {
+        "image_1": "shopify://shop_images/IMG_8391.jpg",
+        "image_2": "shopify://shop_images/IMG_8382_2.jpg",
+        "image_3": "shopify://shop_images/IMG_8383_2.jpg",
+        "big_right": false,
         "heading": "En overskrift her",
         "text": "<p>En tekst om rummet, materialerne og stemningen i showroomet, to til fire linjer.</p>",
-        "big_right": false,
+        "anchor": "",
         "padding_top": 0,
         "padding_bottom": 160
       }
