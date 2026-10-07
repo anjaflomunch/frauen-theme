@@ -61,7 +61,36 @@
       {%- endif -%}
       {%- if section.settings.show_currency -%}
         <li class="frauen-header__hide-mobile">
-          <span class="frauen-header__link" data-text="{{ cart.currency.iso_code }}">{{ cart.currency.iso_code }}</span>
+          {%- if localization.available_countries.size > 1 -%}
+            {%- comment -%} Land/valuta-vælger: vises kun, når der er flere markeder {%- endcomment -%}
+            <details class="frauen-currency">
+              <summary class="frauen-header__link" data-text="{{ cart.currency.iso_code }}">{{ cart.currency.iso_code }}</summary>
+              {%- form 'localization', class: 'frauen-currency__panel' -%}
+                <p class="frauen-currency__label">{{ section.settings.currency_label | escape }}</p>
+                <ul role="list">
+                  {%- for country in localization.available_countries -%}
+                    {%- assign current = false -%}
+                    {%- if country.iso_code == localization.country.iso_code -%}{%- assign current = true -%}{%- endif -%}
+                    <li>
+                      <button
+                        type="submit"
+                        name="country_code"
+                        value="{{ country.iso_code }}"
+                        class="frauen-currency__option{% if current %} is-active{% endif %}"
+                        {% if current %}aria-current="true"{% endif %}
+                      >
+                        <span>{{ country.name | escape }}</span>
+                        <span>{{ country.currency.iso_code }}</span>
+                      </button>
+                    </li>
+                  {%- endfor -%}
+                </ul>
+                <input type="hidden" name="return_to" value="{{ request.path }}">
+              {%- endform -%}
+            </details>
+          {%- else -%}
+            <span class="frauen-header__link frauen-header__link--static" data-text="{{ cart.currency.iso_code }}">{{ cart.currency.iso_code }}</span>
+          {%- endif -%}
         </li>
       {%- endif -%}
       <li>
@@ -72,6 +101,15 @@
     </ul>
   </div>
 </header>
+
+<script>
+  document.addEventListener('click', (e) => {
+    document.querySelectorAll('.frauen-currency[open]').forEach((d) => { if (!d.contains(e.target)) d.removeAttribute('open'); });
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') document.querySelectorAll('.frauen-currency[open]').forEach((d) => d.removeAttribute('open'));
+  });
+</script>
 
 {% schema %}
 {
@@ -119,6 +157,13 @@
       "id": "show_currency",
       "label": "Vis valuta",
       "default": true
+    },
+    {
+      "type": "text",
+      "id": "currency_label",
+      "label": "Overskrift i valutavælgeren",
+      "default": "Land og valuta",
+      "info": "Vælgeren vises kun, når der er sat flere markeder op under Indstillinger → Markets."
     },
     {
       "type": "text",

@@ -166,3 +166,31 @@ h2, .h2, h3, .h3 { font-size: 14px; }
 
 .field__input, .select__select, .customer .field input { font-family: var(--frauen-font-body); }
 .field::after, .select::after { box-shadow: 0 0 0 1px rgba(28, 28, 26, 0.3) !important; }
+
+/* Felter (søgning, kontakt) ---------------------------------------------------
+   Kun en tynd streg under feltet, som i nyhedsbrevet. */
+
+.frauen-field { display: grid; gap: 10px; }
+.frauen-field__label { color: var(--frauen-muted); }
+.frauen-field__input {
+  width: 100%;
+  padding: 0 0 10px;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid rgba(28, 28, 26, 0.3);
+  border-radius: 0;
+  outline: 0;
+  color: var(--frauen-ink);
+  font-family: var(--frauen-font-body);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.5;
+  transition: border-color 0.3s var(--frauen-ease);
+  -webkit-appearance: none;
+  appearance: none;
+}
+.frauen-field__input::placeholder { color: var(--frauen-muted); }
+.frauen-field__input:focus { border-bottom-color: var(--frauen-ink); }
+textarea.frauen-field__input { resize: vertical; min-height: 120px; }
+
+.frauen-btn--submit { background: none; border: 0; padding-left: 0; padding-right: 0; cursor: pointer; }
