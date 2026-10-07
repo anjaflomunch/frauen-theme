@@ -1,0 +1,82 @@
+/* Frauen hero ---------------------------------------------------------------- */
+
+.frauen-hero {
+  position: relative;
+  display: block;
+  height: 100vh;
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+  color: var(--frauen-light);
+  background: var(--frauen-dark);
+}
+
+.frauen-hero__media,
+.frauen-hero__media > * {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.frauen-hero__media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: #000;
+  opacity: var(--hero-overlay, 0);
+  pointer-events: none;
+}
+
+.frauen-hero__content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 52px;
+}
+
+.frauen-hero__tagline {
+  max-width: 640px;
+  margin: 0 0 -14px;
+  font-family: var(--frauen-font-heading);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.1;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: transform var(--hero-duration, 2s) var(--frauen-ease);
+}
+
+.frauen-hero__logo { line-height: 0; transform-origin: 0 0; }
+.frauen-hero__logo-svg { width: 100%; height: auto; display: block; }
+
+.frauen-hero.is-animating .frauen-hero__logo {
+  transition: transform var(--hero-duration, 2s) var(--frauen-ease);
+}
+
+.frauen-hero.is-docked .frauen-hero__logo { visibility: hidden; }
+
+/* Headeren på forsiden: gennemsigtig over hero, indtil logoet er lagt op ----- */
+
+body:has(.frauen-hero) .frauen-header-section { margin-bottom: calc(-1 * var(--frauen-header-height)); }
+
+body:has(.frauen-hero) .frauen-header {
+  transition: background-color var(--hero-duration, 2s) var(--frauen-ease);
+}
+
+body:has(.frauen-hero:not(.is-docking)) .frauen-header { background-color: transparent; }
+
+body:has(.frauen-hero) .frauen-header__logo { opacity: 0; }
+body:has(.frauen-hero.is-docked) .frauen-header__logo { opacity: 1; }
+
+@media screen and (max-width: 749px) {
+  .frauen-hero__content { bottom: 32px; }
+  .frauen-hero__tagline { font-size: 15px; margin-bottom: -6px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .frauen-hero__tagline,
+  .frauen-hero.is-animating .frauen-hero__logo,
+  body:has(.frauen-hero) .frauen-header { transition: none; }
+}
