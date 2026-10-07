@@ -16,28 +16,28 @@
           "type": "fact",
           "settings": {
             "label": "Adresse",
-            "value": "<p>Gade og nummer, postnummer og by</p>"
+            "value": "<p>Livjægergade 42, kld. 2100 København Ø</p>"
           }
         },
         "tider": {
           "type": "fact",
           "settings": {
             "label": "Åbningstider",
-            "value": "<p>Dage og tidspunkter, en til to linjer</p>"
+            "value": "<p>Ingen faste åbningstider. Book derfor altid dit besøg i forvejen.</p>"
           }
         },
         "betingelser": {
           "type": "fact",
           "settings": {
-            "label": "Betingelser",
-            "value": "<p>Hvordan man booker en tid, en linje</p>"
+            "label": "BOOK TID",
+            "value": "<p>Kontakt os via Instagram eller mail for at booke dit besøg</p>"
           }
         },
         "custom": {
           "type": "fact",
           "settings": {
             "label": "Custom made",
-            "value": "<p>En kort tekst om at få taget mål og se tæpperne på lager. Læs mere <a href=\"/pages/custom-made\" title=\"Custom made\">her</a>.</p>"
+            "value": "<p>Ønsker du en custom made Frauen jakke, så kom forbi showroomet for at se hvilke tæpper vi har til rådighed netop nu, få taget mål, prøv de forskellige modeller m.m. Læs mere om vores custom made jakker her.</p>"
           }
         }
       },
