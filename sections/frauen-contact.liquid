@@ -29,38 +29,6 @@
     {%- endif -%}
   </div>
 
-  {%- form 'contact', id: 'FrauenContact', class: 'frauen-contact__form' -%}
-    {%- if form.posted_successfully? -%}
-      <p class="frauen-body frauen-contact__message" tabindex="-1" autofocus>{{ section.settings.success | escape }}</p>
-    {%- elsif form.errors -%}
-      <p class="frauen-body frauen-contact__message" role="alert">{{ form.errors | default_errors }}</p>
-    {%- endif -%}
-
-    <div class="frauen-field">
-      <label class="frauen-label frauen-field__label" for="FrauenContact-name">{{ section.settings.name_label | escape }}</label>
-      <input class="frauen-field__input" id="FrauenContact-name" type="text" name="contact[{{ section.settings.name_label | escape }}]" autocomplete="name" value="{{ form.name }}">
-    </div>
-    <div class="frauen-field">
-      <label class="frauen-label frauen-field__label" for="FrauenContact-email">{{ section.settings.email_label | escape }} *</label>
-      <input class="frauen-field__input" id="FrauenContact-email" type="email" name="contact[email]" autocomplete="email" spellcheck="false" autocapitalize="off" required value="{%- if form.email != blank -%}{{ form.email }}{%- elsif customer -%}{{ customer.email }}{%- endif -%}">
-    </div>
-    {%- if section.settings.show_phone -%}
-      <div class="frauen-field">
-        <label class="frauen-label frauen-field__label" for="FrauenContact-phone">{{ section.settings.phone_label | escape }}</label>
-        <input class="frauen-field__input" id="FrauenContact-phone" type="tel" name="contact[{{ section.settings.phone_label | escape }}]" autocomplete="tel" value="{{ form.phone }}">
-      </div>
-    {%- endif -%}
-    <div class="frauen-field">
-      <label class="frauen-label frauen-field__label" for="FrauenContact-body">{{ section.settings.message_label | escape }}</label>
-      <textarea class="frauen-field__input" id="FrauenContact-body" name="contact[body]" rows="5">{{ form.body }}</textarea>
-    </div>
-
-    <button type="submit" class="frauen-btn frauen-btn--left frauen-btn--submit">
-      <span class="frauen-btn__line"></span>
-      <span class="frauen-btn__label">{{ section.settings.button_label | escape }}</span>
-    </button>
-  {%- endform -%}
-</div>
 
 <style>
   .frauen-contact {
