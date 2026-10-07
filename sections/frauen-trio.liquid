@@ -1,0 +1,90 @@
+{%- comment -%}
+  Frauen billedtrio med tekst (Om Frauen: produktion)
+  Ét stort billede og to stablede ved siden af, med overskrift og tekst under.
+{%- endcomment -%}
+
+<div class="frauen-trio frauen-wrap{% if section.settings.big_right %} frauen-trio--right{% endif %}" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
+  <div class="frauen-trio__grid">
+    {%- for i in (1..3) -%}
+      {%- liquid
+        case i
+          when 1
+            assign img = section.settings.image_1
+          when 2
+            assign img = section.settings.image_2
+          else
+            assign img = section.settings.image_3
+        endcase
+      -%}
+      <div class="frauen-trio__item frauen-trio__item--{{ i }}">
+        {%- if img != blank -%}
+          {{
+            img
+            | image_url: width: 1800
+            | image_tag: loading: 'lazy', sizes: '(min-width: 750px) 50vw, 100vw', widths: '600, 900, 1200, 1800', alt: img.alt
+          }}
+        {%- else -%}
+          {{ 'image' | placeholder_svg_tag }}
+        {%- endif -%}
+      </div>
+    {%- endfor -%}
+  </div>
+
+  {%- if section.settings.heading != blank or section.settings.text != blank -%}
+    <div class="frauen-trio__text">
+      {%- if section.settings.heading != blank -%}
+        <h2 class="frauen-heading">{{ section.settings.heading | escape }}</h2>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <div class="frauen-body frauen-trio__body">{{ section.settings.text }}</div>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+</div>
+
+<style>
+  .frauen-trio { padding-top: var(--pt); padding-bottom: var(--pb); }
+  .frauen-trio__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: var(--frauen-gap);
+    aspect-ratio: 1392 / 848;
+  }
+  .frauen-trio__item { position: relative; overflow: hidden; background: #d9d8d3; min-height: 0; }
+  .frauen-trio__item img,
+  .frauen-trio__item svg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .frauen-trio__item--1 { grid-row: 1 / 3; }
+  .frauen-trio--right .frauen-trio__item--1 { grid-column: 2; }
+  .frauen-trio--right .frauen-trio__item--2,
+  .frauen-trio--right .frauen-trio__item--3 { grid-column: 1; }
+  .frauen-trio__text { margin-top: 40px; }
+  .frauen-trio__body { margin-top: 24px; }
+  .frauen-trio__body p { margin: 0 0 0.8em; }
+  .frauen-trio__body p:last-child { margin-bottom: 0; }
+  @media screen and (max-width: 749px) {
+    .frauen-trio__grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; aspect-ratio: auto; }
+    .frauen-trio__item--1 { grid-column: 1 / 3 !important; grid-row: auto; aspect-ratio: 4 / 5; }
+    .frauen-trio__item--2, .frauen-trio__item--3 { grid-column: auto !important; aspect-ratio: 1; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Frauen billedtrio",
+  "tag": "section",
+  "class": "frauen-trio-section",
+  "settings": [
+    { "type": "image_picker", "id": "image_1", "label": "Stort billede" },
+    { "type": "image_picker", "id": "image_2", "label": "Lille billede øverst" },
+    { "type": "image_picker", "id": "image_3", "label": "Lille billede nederst" },
+    { "type": "checkbox", "id": "big_right", "label": "Stort billede til højre", "default": false },
+    { "type": "text", "id": "heading", "label": "Overskrift", "default": "Produktion" },
+    { "type": "richtext", "id": "text", "label": "Tekst", "default": "<p>En tekst om produktionen.</p>" },
+    { "type": "header", "content": "Luft" },
+    { "type": "range", "id": "padding_top", "label": "Luft over", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding_bottom", "label": "Luft under", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 160 }
+  ],
+  "presets": [{ "name": "Frauen billedtrio" }]
+}
+{% endschema %}
