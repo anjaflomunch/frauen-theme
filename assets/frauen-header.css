@@ -142,12 +142,12 @@
 /* Mobil */
 .frauen-header__mobile { display: none; }
 
-/* Burger: tre tynde streger, der bliver til et kryds */
+/* Burger: to tynde streger, der bliver til et kryds */
 .frauen-header__burger {
   position: relative;
   display: block;
   width: 22px;
-  height: 14px;
+  height: 8px;
   cursor: pointer;
   color: var(--frauen-light);
 }
@@ -160,11 +160,9 @@
   transition: transform 0.4s var(--frauen-ease), opacity 0.3s var(--frauen-ease);
 }
 .frauen-header__burger span:nth-child(1) { top: 0; }
-.frauen-header__burger span:nth-child(2) { top: 50%; }
-.frauen-header__burger span:nth-child(3) { top: 100%; }
-.frauen-header__mobile[open] .frauen-header__burger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.frauen-header__mobile[open] .frauen-header__burger span:nth-child(2) { opacity: 0; }
-.frauen-header__mobile[open] .frauen-header__burger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.frauen-header__burger span:nth-child(2) { top: 100%; }
+.frauen-header__mobile[open] .frauen-header__burger span:nth-child(1) { transform: translateY(4px) rotate(45deg); }
+.frauen-header__mobile[open] .frauen-header__burger span:nth-child(2) { transform: translateY(-4px) rotate(-45deg); }
 
 @media screen and (max-width: 989px) {
   .frauen-header__nav,
@@ -196,14 +194,14 @@
   .frauen-header__drawer ul { list-style: none; margin: 0; padding: 0; display: grid; }
   .frauen-header__drawer-link {
     display: block;
-    padding: 14px 0;
+    padding: 16px 0;
     border-bottom: 1px solid rgba(244, 243, 240, 0.15);
     color: var(--frauen-light);
     text-decoration: none;
     font-family: var(--frauen-font-body);
     font-weight: 400;
-    font-size: 20px;
-    letter-spacing: 0.1em;
+    font-size: 13px;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     opacity: 0.75;
   }
