@@ -11,7 +11,7 @@
   assign shown = 0
 -%}
 
-{%- if source != blank and source.products_count > 1 -%}
+{%- if source != blank and source.products_count > 1 or source != blank and request.design_mode -%}
 <div class="frauen-related frauen-wrap" style="--pb: {{ section.settings.padding_bottom }}px;">
   {%- if section.settings.heading != blank -%}
     <h2 class="frauen-heading">{{ section.settings.heading | escape }}</h2>
@@ -33,6 +33,16 @@
         </div>
       {%- endif -%}
     {%- endfor -%}
+
+    {%- comment -%} Kun i editoren: pladsholderkort, til kollektionen har aktive jakker {%- endcomment -%}
+    {%- if request.design_mode and shown < 2 -%}
+      {%- assign missing = 2 | minus: shown -%}
+      {%- for i in (1..missing) -%}
+        <div class="frauen-related__item">
+          {% render 'frauen-card', title: 'Jakkens navn', subtitle: 'Kort beskrivelse', price: 'Pris' %}
+        </div>
+      {%- endfor -%}
+    {%- endif -%}
   </div>
 </div>
 
@@ -54,13 +64,7 @@
 </style>
 {%- elsif request.design_mode -%}
   <div class="frauen-wrap" style="padding-bottom: 80px;">
-    <p class="frauen-label" style="color: var(--frauen-muted);">
-      {%- if source == blank -%}
-        Andre styles: vælg en kollektion i sektionens indstillinger.
-      {%- else -%}
-        Andre styles: kollektionen "{{ source.title | escape }}" har {{ source.products_count }} synlige produkter. Der skal være mindst 2, og de skal være tilgængelige i Online Store. Teksten her ses kun i editoren.
-      {%- endif -%}
-    </p>
+    <p class="frauen-label" style="color: var(--frauen-muted);">Andre styles: vælg en kollektion i sektionens indstillinger.</p>
   </div>
 {%- endif -%}
 
