@@ -66,22 +66,22 @@
         "f1": {
           "type": "fact",
           "settings": {
-            "label": "OPHAV",
-            "value": "Tekster her"
+            "label": "MATERIALETS OPHAV",
+            "value": "En kort beskrivelse her"
           }
         },
         "f2": {
           "type": "fact",
           "settings": {
             "label": "Fundet",
-            "value": ""
+            "value": "En kort beskrivelse her"
           }
         },
         "f3": {
           "type": "fact",
           "settings": {
             "label": "Antal syet",
-            "value": ""
+            "value": "En kort beskrivelse her"
           }
         }
       },
