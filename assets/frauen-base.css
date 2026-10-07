@@ -138,3 +138,31 @@ body.gradient {
 /* Dawn-elementer vi ikke bruger ------------------------------------------- */
 
 .frauen-hidden { display: none !important; }
+
+/* Dawns standardsider i Frauen-stil -------------------------------------------- */
+
+body { color: var(--frauen-ink); }
+
+h1, h2, h3, .h0, .h1, .h2, .h3 {
+  font-family: var(--frauen-font-heading);
+  font-weight: var(--frauen-font-heading-weight);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+h1, .h1, .h0 { font-size: 14px; }
+h2, .h2, h3, .h3 { font-size: 14px; }
+
+.button,
+.shopify-challenge__button,
+.customer button {
+  font-family: var(--frauen-font-body);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.button::before, .button::after { box-shadow: none !important; }
+.button:not([disabled]):hover::after { box-shadow: none !important; }
+
+.field__input, .select__select, .customer .field input { font-family: var(--frauen-font-body); }
+.field::after, .select::after { box-shadow: 0 0 0 1px rgba(28, 28, 26, 0.3) !important; }
