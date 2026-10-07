@@ -81,7 +81,7 @@
   min-width: 140px;
   max-height: 60vh;
   overflow-y: auto;
-  padding: 20px 24px 24px;
+  padding: 20px 24px;
   background: var(--frauen-dark);
   color: var(--frauen-light);
   animation: frauen-currency-in 0.4s var(--frauen-ease);
