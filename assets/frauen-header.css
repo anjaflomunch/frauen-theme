@@ -5,7 +5,7 @@
 
 .frauen-header {
   background: var(--frauen-dark);
-  color: var(--frauen-light);
+  color: var(--frauen-bg);
 }
 
 .frauen-header__inner {
@@ -83,7 +83,7 @@
   overflow-y: auto;
   padding: 20px 24px;
   background: var(--frauen-dark);
-  color: var(--frauen-light);
+  color: var(--frauen-bg);
   animation: frauen-currency-in 0.4s var(--frauen-ease);
 }
 @keyframes frauen-currency-in { from { opacity: 0; transform: translateY(-6px); } }
@@ -149,7 +149,7 @@
   width: 20px;
   height: 8px;
   cursor: pointer;
-  color: var(--frauen-light);
+  color: var(--frauen-bg);
   opacity: 0.75;
 }
 .frauen-header__burger span {
@@ -204,7 +204,7 @@
   .frauen-header__drawer-currency-list .frauen-currency__option {
     display: block;
     padding: 0;
-    color: var(--frauen-light);
+    color: var(--frauen-bg);
     text-decoration: none;
     font-family: var(--frauen-font-body);
     font-weight: 400;

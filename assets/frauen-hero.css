@@ -7,7 +7,7 @@
   height: 100svh;
   min-height: 560px;
   overflow: hidden;
-  color: var(--frauen-light);
+  color: var(--frauen-bg);
   background: var(--frauen-dark);
 }
 

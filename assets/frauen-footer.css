@@ -2,7 +2,7 @@
 
 .frauen-footer {
   background: var(--frauen-dark);
-  color: var(--frauen-light);
+  color: var(--frauen-bg);
   font-family: var(--frauen-font-body);
   font-weight: 400;
   font-size: 11px;
@@ -54,7 +54,7 @@
   background: none;
   border: 0;
   outline: 0;
-  color: var(--frauen-light);
+  color: var(--frauen-bg);
   font-family: var(--frauen-font-body);
   font-weight: 300;
   font-size: 14px;
@@ -68,7 +68,7 @@
   background: none;
   border: 0;
   padding: 0;
-  color: var(--frauen-light);
+  color: var(--frauen-bg);
   font-family: var(--frauen-font-body);
   font-weight: 500;
   font-size: 12px;
@@ -104,7 +104,7 @@
 }
 
 @media screen and (max-width: 749px) {
-  .frauen-footer__columns { grid-template-columns: 1fr 1fr; row-gap: 32px; }
+  .frauen-footer__columns { grid-template-columns: 1fr; row-gap: 28px; }
   .frauen-footer__bottom { grid-template-columns: 1fr; gap: 8px; }
   .frauen-footer__bottom > :last-child { text-align: left; }
 }
