@@ -71,7 +71,6 @@
         -%}
         {%- if section.settings.show_currency and currency_count > 1 -%}
           {%- form 'localization', class: 'frauen-header__drawer-currency' -%}
-            <p class="frauen-currency__label">{{ section.settings.currency_label | escape }}</p>
             {%- render 'frauen-currency-options', plain: true, currency_list: currency_list -%}
             <input type="hidden" name="return_to" value="{{ request.path }}">
           {%- endform -%}
@@ -127,7 +126,6 @@
             <details class="frauen-currency">
               <summary class="frauen-header__link" data-text="{{ cart.currency.iso_code }}">{{ cart.currency.iso_code }}</summary>
               {%- form 'localization', class: 'frauen-currency__panel' -%}
-                <p class="frauen-currency__label">{{ section.settings.currency_label | escape }}</p>
                 {%- render 'frauen-currency-options', currency_list: currency_list -%}
                 <input type="hidden" name="return_to" value="{{ request.path }}">
               {%- endform -%}
@@ -208,13 +206,6 @@
       "label": "Valutaer i vælgeren",
       "default": "DKK, EUR, GBP, USD",
       "info": "Adskil med komma. Kun valutaer, der er sat op under Indstillinger → Markets, kan vises. Tomt felt = alle."
-    },
-    {
-      "type": "text",
-      "id": "currency_label",
-      "label": "Overskrift i valutavælgeren",
-      "default": "Valuta",
-      "info": "Vælgeren vises kun, når der er markeder med flere valutaer under Indstillinger → Markets."
     },
     {
       "type": "text",

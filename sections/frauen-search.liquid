@@ -13,14 +13,14 @@
   <h1 class="frauen-heading">{{ section.settings.heading | escape }}</h1>
 
   <form action="{{ routes.search_url }}" method="get" role="search" class="frauen-search__form">
-    <label class="visually-hidden" for="FrauenSearch">{{ section.settings.placeholder | escape }}</label>
+    <label class="visually-hidden" for="FrauenSearch">{{ section.settings.heading | escape }}</label>
     <input
       id="FrauenSearch"
       class="frauen-field__input frauen-search__input"
       type="search"
       name="q"
       value="{{ search.terms | escape }}"
-      placeholder="{{ section.settings.placeholder | escape }}"
+      {% if section.settings.placeholder != blank %}placeholder="{{ section.settings.placeholder | escape }}"{% endif %}
       autocomplete="off"
     >
     <input type="hidden" name="options[prefix]" value="last">
@@ -101,7 +101,14 @@
   .frauen-search__form:focus-within { border-bottom-color: var(--frauen-ink); }
   .frauen-search__input,
   .frauen-search__input:focus,
-  .frauen-search__input:focus-visible { border: 0; box-shadow: none; outline: none; background: none; }
+  .frauen-search__input:focus-visible {
+    border: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
+    background: none !important;
+    -webkit-appearance: none;
+    appearance: none;
+  }
   .frauen-search__input { font-size: 16px; line-height: 1.5; padding: 0 0 10px; }
   .frauen-search__input::placeholder { color: var(--frauen-muted); opacity: 1; }
   .frauen-search__input::-webkit-search-cancel-button { -webkit-appearance: none; }
@@ -157,7 +164,7 @@
   "class": "frauen-search-section",
   "settings": [
     { "type": "text", "id": "heading", "label": "Overskrift", "default": "Søg" },
-    { "type": "text", "id": "placeholder", "label": "Tekst i feltet", "default": "Hvad leder du efter?" },
+    { "type": "text", "id": "placeholder", "label": "Tekst i feltet (valgfri)" },
     { "type": "text", "id": "button_label", "label": "Knap", "default": "Søg" },
     { "type": "text", "id": "results_label", "label": "Antal resultater", "default": "resultater for" },
     { "type": "text", "id": "no_results", "label": "Ingen resultater", "default": "Ingen resultater for \"[terms]\"", "info": "[terms] erstattes af det, der er søgt på." },
