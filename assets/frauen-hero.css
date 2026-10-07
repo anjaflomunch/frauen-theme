@@ -57,6 +57,9 @@
 
 .frauen-hero.is-docked .frauen-hero__logo { visibility: hidden; }
 
+/* Under animationen ligger logoet over headeren, så det ikke forsvinder bag den */
+.frauen-hero.is-animating:not(.is-docked) .frauen-hero__content { z-index: 11; }
+
 /* Headeren på forsiden: gennemsigtig over hero, indtil logoet er lagt op ----- */
 
 body:has(.frauen-hero) .frauen-header-section { margin-bottom: calc(-1 * var(--frauen-header-height)); }
