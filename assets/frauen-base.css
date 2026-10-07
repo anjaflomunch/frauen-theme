@@ -190,7 +190,8 @@ h2, .h2, h3, .h3 { font-size: 14px; }
   appearance: none;
 }
 .frauen-field__input::placeholder { color: var(--frauen-muted); }
-.frauen-field__input:focus { border-bottom-color: var(--frauen-ink); }
+.frauen-field__input:focus,
+.frauen-field__input:focus-visible { border-bottom-color: var(--frauen-ink); box-shadow: none; outline: none; }
 textarea.frauen-field__input { resize: vertical; min-height: 120px; }
 
 .frauen-btn--submit { background: none; border: 0; padding-left: 0; padding-right: 0; cursor: pointer; }
