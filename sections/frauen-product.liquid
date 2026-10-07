@@ -65,7 +65,7 @@
       <div class="frauen-body frauen-product__desc">{{ product.description }}</div>
     {%- endif -%}
 
-    {%- form 'product', product, class: 'frauen-product__form', novalidate: 'novalidate' -%}
+    {%- form 'product', product, id: 'FrauenProductForm', class: 'frauen-product__form', novalidate: 'novalidate' -%}
       <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-id>
 
       {%- unless product.has_only_default_variant -%}
@@ -105,6 +105,26 @@
         {{ product.variants | json }}
       </script>
     {%- endform -%}
+
+    {%- comment -%} Mobil: fast bjælke nederst med navn, pris og Læg i kurv {%- endcomment -%}
+    <div class="frauen-product__bar">
+      <div class="frauen-product__bar-text">
+        <p class="frauen-product__bar-title">{{ product.title | escape }}</p>
+        <p class="frauen-product__bar-price" data-price>{{ current_variant.price | money_without_trailing_zeros }}</p>
+      </div>
+      <button
+        type="submit"
+        form="FrauenProductForm"
+        class="frauen-btn frauen-product__add frauen-product__bar-add"
+        {% unless current_variant.available %}disabled{% endunless %}
+        data-add
+      >
+        <span class="frauen-btn__line"></span>
+        <span class="frauen-btn__label" data-add-label data-add-text="{{ section.settings.add_label | escape }}" data-sold-text="{{ section.settings.soldout_label | escape }}">
+          {%- if current_variant.available -%}{{ section.settings.add_label | escape }}{%- else -%}{{ section.settings.soldout_label | escape }}{%- endif -%}
+        </span>
+      </button>
+    </div>
 
     {%- if section.blocks.size > 0 -%}
       <div class="frauen-product__details">

@@ -149,9 +149,49 @@
 
 /* Mobil --------------------------------------------------------------------- */
 
+/* Mobilbjælke: skjult på computer */
+.frauen-product__bar { display: none; }
+
 @media screen and (max-width: 989px) {
   .frauen-product { grid-template-columns: 1fr; row-gap: 40px; padding-top: 24px; }
   .frauen-product__gallery { width: 100%; }
   .frauen-gallery__stage { aspect-ratio: 4 / 5; }
   .frauen-product__info { position: static; }
+}
+
+@media screen and (max-width: 749px) {
+  /* Billedet går helt ud til kanten og starter lige under headeren */
+  .frauen-product.frauen-wrap[style*='--pt'] { padding-top: 0 !important; }
+  .frauen-product__gallery { width: auto; margin: 0 calc(-1 * var(--frauen-gutter)); }
+  .frauen-gallery__nav { padding: 0 var(--frauen-gutter); margin-top: 14px; }
+
+  /* Knappen i formularen erstattes af bjælken */
+  .frauen-product__form > .frauen-product__add { display: none; }
+
+  .frauen-product__bar {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    height: 64px;
+    padding: 0 var(--frauen-gutter);
+    background: var(--frauen-bg);
+    border-top: 1px solid rgba(28, 28, 26, 0.15);
+  }
+  .frauen-product__bar-text { flex: 0 0 auto; }
+  .frauen-product__bar-title {
+    margin: 0;
+    font-family: var(--frauen-font-body);
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .frauen-product__bar-price { margin: 2px 0 0; font-size: 11px; letter-spacing: 0.1em; color: var(--frauen-muted); }
+  .frauen-product__bar-add { flex: 1 1 auto; padding-top: 0; }
+  body:has(.frauen-product__bar) { padding-bottom: 64px; }
 }

@@ -48,7 +48,7 @@
           <div class="frauen-search__grid">
             {%- for item in products -%}
               <div class="frauen-search__item">
-                {% render 'frauen-card', product: item, sizes: '(min-width: 990px) 33vw, (min-width: 750px) 50vw, 100vw' %}
+                {% render 'frauen-card', product: item, class: 'frauen-card--below', sizes: '(min-width: 990px) 33vw, 50vw' %}
               </div>
             {%- endfor -%}
           </div>
@@ -153,7 +153,8 @@
 
   @media screen and (max-width: 989px) { .frauen-search__grid { grid-template-columns: repeat(2, 1fr); } }
   @media screen and (max-width: 749px) {
-    .frauen-search__grid { grid-template-columns: 1fr; }
+    .frauen-search__grid { grid-template-columns: 1fr 1fr; row-gap: 28px; }
+    .frauen-search__item { aspect-ratio: auto; }
   }
 </style>
 

@@ -48,10 +48,12 @@ document.querySelectorAll('.frauen-product__form').forEach((form) => {
   if (!dataEl) return;
   const variants = JSON.parse(dataEl.textContent);
   const idInput = form.querySelector('[data-variant-id]');
-  const addBtn = form.querySelector('[data-add]');
-  const addLabel = form.querySelector('[data-add-label]');
   const section = form.closest('.frauen-product');
-  const priceEl = section && section.querySelector('[data-price]');
+  // Knappen findes både i formularen og i mobilbjælken
+  const addBtns = section ? [...section.querySelectorAll('[data-add]')] : [form.querySelector('[data-add]')];
+  const addLabels = section ? [...section.querySelectorAll('[data-add-label]')] : [form.querySelector('[data-add-label]')];
+  const addLabel = addLabels[0];
+  const priceEls = section ? [...section.querySelectorAll('[data-price]')] : [];
   const addText = addLabel ? addLabel.dataset.addText : '';
   const soldText = addLabel ? addLabel.dataset.soldText : '';
 
@@ -69,9 +71,9 @@ document.querySelectorAll('.frauen-product__form').forEach((form) => {
     const v = variants.find((v) => v.options.every((o, i) => o === opts[i]));
     if (!v) return;
     idInput.value = v.id;
-    if (priceEl) priceEl.textContent = money(v.price);
-    addBtn.disabled = !v.available;
-    if (addLabel) addLabel.textContent = v.available ? addText : soldText;
+    priceEls.forEach((el) => (el.textContent = money(v.price)));
+    addBtns.forEach((b) => (b.disabled = !v.available));
+    addLabels.forEach((l) => (l.textContent = v.available ? addText : soldText));
     const url = new URL(window.location.href);
     url.searchParams.set('variant', v.id);
     window.history.replaceState({}, '', url);

@@ -29,7 +29,7 @@
       {%- if item.id != product.id and shown < 2 -%}
         {%- assign shown = shown | plus: 1 -%}
         <div class="frauen-related__item">
-          {% render 'frauen-card', product: item, sizes: '(min-width: 750px) 50vw, 100vw' %}
+          {% render 'frauen-card', product: item, class: 'frauen-card--below', sizes: '50vw' %}
         </div>
       {%- endif -%}
     {%- endfor -%}
@@ -39,7 +39,7 @@
       {%- assign missing = 2 | minus: shown -%}
       {%- for i in (1..missing) -%}
         <div class="frauen-related__item">
-          {% render 'frauen-card', title: 'Jakkens navn', subtitle: 'Kort beskrivelse', price: 'Pris' %}
+          {% render 'frauen-card', title: 'Jakkens navn', subtitle: 'Kort beskrivelse', price: 'Pris', class: 'frauen-card--below' %}
         </div>
       {%- endfor -%}
     {%- endif -%}
@@ -58,8 +58,7 @@
   }
   .frauen-related__item { min-width: 0; min-height: 0; }
   @media screen and (max-width: 749px) {
-    .frauen-related__grid { grid-template-columns: 1fr; aspect-ratio: auto; }
-    .frauen-related__item { aspect-ratio: 4 / 5; }
+    .frauen-related__grid { grid-template-columns: 1fr 1fr; aspect-ratio: auto; }
   }
 </style>
 {%- elsif request.design_mode -%}
