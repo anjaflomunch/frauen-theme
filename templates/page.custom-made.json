@@ -50,8 +50,9 @@
       "settings": {
         "heading": "Custom made",
         "is_page_heading": true,
-        "text": "<p>En længere beskrivelse af custom made står her.</p>",
+        "text": "<p>En længere beskrivelse af custom made står her, en længere beskrivelse af custom made står her, en længere beskrivelse af custom made står her, en længere beskrivelse af custom made står her, en længere beskrivelse af custom made står her, en længere beskrivelse af custom made står her, en længere beskrivelse af custom made står her, en længere beskrivelse af custom made her,&nbsp;</p>",
         "button_label": "Skriv til os",
+        "button_link": "",
         "padding_top": 83,
         "padding_bottom": 160
       }
@@ -63,56 +64,64 @@
           "type": "piece",
           "settings": {
             "title": "Modelnavn",
-            "price": "Fra pris"
+            "price": "Fra pris",
+            "link": ""
           }
         },
         "p2": {
           "type": "piece",
           "settings": {
             "title": "Modelnavn",
-            "price": "Fra pris"
+            "price": "Fra pris",
+            "link": ""
           }
         },
         "p3": {
           "type": "piece",
           "settings": {
             "title": "Modelnavn",
-            "price": "Fra pris"
+            "price": "Fra pris",
+            "link": ""
           }
         },
         "p4": {
           "type": "piece",
           "settings": {
             "title": "Modelnavn",
-            "price": "Fra pris"
+            "price": "Fra pris",
+            "link": ""
           }
         },
         "p5": {
           "type": "piece",
           "settings": {
             "title": "Modelnavn",
-            "price": "Fra pris"
+            "price": "Fra pris",
+            "link": ""
           }
         },
         "p6": {
           "type": "piece",
           "settings": {
             "title": "Modelnavn",
-            "price": "Fra pris"
+            "price": "Fra pris",
+            "link": ""
           }
         },
         "p7": {
           "type": "piece",
           "settings": {
             "title": "Modelnavn",
-            "price": "Fra pris"
+            "price": "Fra pris",
+            "link": ""
           }
         },
         "p8": {
           "type": "piece",
           "settings": {
             "title": "Modelnavn",
-            "price": "Fra pris"
+            "price": "Fra pris",
+            "link": ""
           }
         }
       },
@@ -140,4 +149,3 @@
     "mosaic"
   ]
 }
-
