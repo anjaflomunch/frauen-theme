@@ -1,7 +1,9 @@
 {%- comment -%}
   Frauen mosaik (custom made)
   Fire kolonner, ens afstand, felter i forskellige størrelser.
-  Mønsteret gentages for hver 8 billeder. Hvert billede er en blok med
+  Mønsteret gentages for hver 8 billeder. Går antallet ikke op, får de sidste
+  billeder andre størrelser, så der aldrig er huller (computer: 4 kolonner,
+  mobil: 2 kolonner med et stort billede og to små). Hvert billede er en blok med
   modelnavn og fra-pris. Klik åbner en mail med modelnavnet i emnefeltet,
   medmindre billedet har sit eget link.
 {%- endcomment -%}
@@ -13,16 +15,69 @@
     <h2 class="frauen-heading frauen-mosaic__heading">{{ section.settings.heading | escape }}</h2>
   {%- endif -%}
 
+  {%- liquid
+    # Størrelser som kolonner x rækker. Hele grupper følger mønsteret på 8.
+    assign pattern = '2x2,1x1,1x2,1x1,1x1,1x1,2x2,2x1' | split: ','
+    assign total = section.blocks.size
+    assign full = total | divided_by: 8 | floor | times: 8
+    assign rest = total | minus: full
+    case rest
+      when 1
+        assign tail = '4x2'
+      when 2
+        assign tail = '2x2,2x2'
+      when 3
+        assign tail = '2x2,1x2,1x2'
+      when 4
+        assign tail = '2x2,1x1,1x2,1x1'
+      when 5
+        assign tail = '2x2,1x1,1x2,1x1,4x2'
+      when 6
+        assign tail = '2x2,1x1,1x2,1x1,2x2,2x2'
+      when 7
+        assign tail = '2x2,1x1,1x2,1x1,2x2,1x2,1x2'
+      else
+        assign tail = ''
+    endcase
+    assign tail = tail | split: ','
+    assign mobile_rest = total | modulo: 3
+  -%}
+
   <div class="frauen-mosaic__grid">
     {%- for block in section.blocks -%}
       {%- liquid
+        assign i = forloop.index0
+        if i < full
+          assign pos = i | modulo: 8
+          assign size = pattern[pos]
+        else
+          assign k = i | minus: full
+          assign size = tail[k]
+        endif
+        assign size_parts = size | split: 'x'
+
+        # Mobil: stort billede, så to små. Står det sidste alene, bliver det bredt.
+        assign mpos = i | modulo: 3
+        if mpos == 0
+          assign msize = '2x2'
+        elsif mobile_rest == 2 and forloop.last
+          assign msize = '2x1'
+        else
+          assign msize = '1x1'
+        endif
+        assign msize_parts = msize | split: 'x'
+
         assign link = block.settings.link
         if link == blank and section.settings.email != blank
           assign subject = section.settings.subject_prefix | append: ' ' | append: block.settings.title | strip | url_encode
           assign link = 'mailto:' | append: section.settings.email | append: '?subject=' | append: subject
         endif
       -%}
-      <div class="frauen-mosaic__item" {{ block.shopify_attributes }}>
+      <div
+        class="frauen-mosaic__item"
+        style="--cs: {{ size_parts[0] }}; --rs: {{ size_parts[1] }}; --mcs: {{ msize_parts[0] }}; --mrs: {{ msize_parts[1] }};"
+        {{ block.shopify_attributes }}
+      >
         {% render 'frauen-card',
           image: block.settings.image,
           title: block.settings.title,
@@ -46,17 +101,13 @@
     grid-auto-flow: dense;
     gap: var(--frauen-gap);
   }
-  .frauen-mosaic__item { min-width: 0; min-height: 0; }
-  .frauen-mosaic__item:nth-child(8n + 1) { grid-column: span 2; grid-row: span 2; }
-  .frauen-mosaic__item:nth-child(8n + 3) { grid-row: span 2; }
-  .frauen-mosaic__item:nth-child(8n + 7) { grid-column: span 2; grid-row: span 2; }
-  .frauen-mosaic__item:nth-child(8n + 8) { grid-column: span 2; }
+  .frauen-mosaic__item { min-width: 0; min-height: 0; grid-column: span var(--cs, 1); grid-row: span var(--rs, 1); }
   @media screen and (max-width: 749px) {
     .frauen-mosaic__grid {
       --col: calc((100vw - 2 * var(--frauen-gutter) - var(--frauen-gap)) / 2);
       grid-template-columns: repeat(2, 1fr);
     }
-    .frauen-mosaic__item:nth-child(8n + 3) { grid-row: span 1; }
+    .frauen-mosaic__item { grid-column: span var(--mcs, 1); grid-row: span var(--mrs, 1); }
   }
 </style>
 
