@@ -40,6 +40,23 @@
             </li>
           {%- endfor -%}
         </ul>
+        {%- if section.settings.show_currency and localization.available_countries.size > 1 -%}
+          {%- form 'localization', class: 'frauen-header__drawer-currency' -%}
+            <p class="frauen-currency__label">{{ section.settings.currency_label | escape }}</p>
+            {%- for country in localization.available_countries -%}
+              <button
+                type="submit"
+                name="country_code"
+                value="{{ country.iso_code }}"
+                class="frauen-currency__option{% if country.iso_code == localization.country.iso_code %} is-active{% endif %}"
+              >
+                <span>{{ country.name | escape }}</span>
+                <span>{{ country.currency.iso_code }}</span>
+              </button>
+            {%- endfor -%}
+            <input type="hidden" name="return_to" value="{{ request.path }}">
+          {%- endform -%}
+        {%- endif -%}
       </div>
     </details>
 

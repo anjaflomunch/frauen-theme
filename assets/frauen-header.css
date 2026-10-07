@@ -172,4 +172,5 @@
     opacity: 0.75;
   }
   .frauen-header__drawer-link.is-active { opacity: 1; }
+  .frauen-header__drawer-currency { margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(244, 243, 240, 0.2); }
 }
