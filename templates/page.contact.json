@@ -16,21 +16,23 @@
           "type": "fact",
           "settings": {
             "label": "Mail",
-            "value": "Mailadresse"
+            "value": "hello@frauencph.com",
+            "link": "mailto:hello@frauencph.com"
           }
         },
         "instagram": {
           "type": "fact",
           "settings": {
             "label": "Instagram",
-            "value": "@frauencph"
+            "value": "@frauenfrauenfrauen",
+            "link": "https://www.instagram.com/frauenfrauenfrauen"
           }
         },
         "showroom": {
           "type": "fact",
           "settings": {
             "label": "Showroom",
-            "value": "Adresse"
+            "value": "Livjægergade 42, kld. 2100 København Ø"
           }
         }
       },
