@@ -195,7 +195,7 @@
         "heading": "Besøg vores showroom",
         "text": "<p>Livjægergade 42, kld. 2100 København Ø</p>",
         "button_label": "Book din tid",
-        "button_link": "",
+        "button_link": "mailto:hello@frauencph.com",
         "media_type": "image",
         "image": "shopify://shop_images/Billede__Showroomet_hele_rummet.png",
         "padding_top": 80,
