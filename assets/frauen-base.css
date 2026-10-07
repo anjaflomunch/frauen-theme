@@ -22,7 +22,8 @@
 
 /* Grundflade ---------------------------------------------------------------- */
 
-body {
+body,
+body.gradient {
   background: var(--frauen-bg);
   color: var(--frauen-ink);
   font-family: var(--frauen-font-body);
