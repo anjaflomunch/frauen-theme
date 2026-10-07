@@ -165,6 +165,12 @@
   .frauen-product__gallery { width: auto; margin: 0 calc(-1 * var(--frauen-gutter)); }
   .frauen-gallery__nav { padding: 0 var(--frauen-gutter); margin-top: 14px; }
 
+  /* Størrelser lige under navn og pris, beskrivelsen bagefter */
+  .frauen-product__head { order: 0; }
+  .frauen-product__form { order: 1; }
+  .frauen-product__desc { order: 2; }
+  .frauen-product__details { order: 3; }
+
   /* Knappen i formularen erstattes af bjælken */
   .frauen-product__form > .frauen-product__add { display: none; }
 

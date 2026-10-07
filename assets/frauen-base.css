@@ -223,3 +223,10 @@ html { scroll-behavior: smooth; }
 @media screen and (max-width: 749px) {
   #MainContent:is([data-template="cart"], [data-template="search"], [data-template="404"]) { min-height: 72svh; }
 }
+
+/* Billeder toner frem ---------------------------------------------------------- */
+.frauen-fade-on #MainContent img { opacity: 0; transition: opacity 0.9s var(--frauen-ease); }
+.frauen-fade-on #MainContent img.is-loaded { opacity: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .frauen-fade-on #MainContent img { opacity: 1; transition: none; }
+}
