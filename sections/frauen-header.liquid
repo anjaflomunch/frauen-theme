@@ -27,8 +27,9 @@
     </nav>
 
     <details class="frauen-header__mobile">
-      <summary class="frauen-header__link" data-text="{{ section.settings.mobile_menu_label | escape }}">
-        {{- section.settings.mobile_menu_label | escape -}}
+      <summary class="frauen-header__link" data-text="{{ section.settings.mobile_menu_label | escape }}" aria-label="{{ section.settings.mobile_menu_label | escape }}">
+        <span class="frauen-header__toggle-open">{{ section.settings.mobile_menu_label | escape }}</span>
+        <span class="frauen-header__toggle-close">{{ section.settings.mobile_close_label | escape }}</span>
       </summary>
       <div class="frauen-header__drawer">
         <ul role="list">
@@ -40,6 +41,9 @@
             </li>
           {%- endfor -%}
         </ul>
+        {%- if section.settings.show_search -%}
+          <a href="{{ routes.search_url }}" class="frauen-header__drawer-small">{{ section.settings.search_label | escape }}</a>
+        {%- endif -%}
         {%- liquid
           # Valutaer fra indstillingen (i den rækkefølge), som også findes i Markets
           assign wanted = section.settings.currencies | upcase | remove: ' ' | split: ','
@@ -85,7 +89,7 @@
 
     <ul class="frauen-header__utils" role="list">
       {%- if section.settings.show_search -%}
-        <li>
+        <li class="frauen-header__hide-mobile">
           <a href="{{ routes.search_url }}" class="frauen-header__link{% if request.page_type == 'search' %} is-active{% endif %}" data-text="{{ section.settings.search_label | escape }}">
             {{- section.settings.search_label | escape -}}
           </a>
@@ -217,6 +221,12 @@
       "id": "cart_label",
       "label": "Kurv",
       "default": "Kurv"
+    },
+    {
+      "type": "text",
+      "id": "mobile_close_label",
+      "label": "Luk (mobilmenu)",
+      "default": "Luk"
     },
     {
       "type": "text",

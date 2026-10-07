@@ -141,6 +141,7 @@
 
 /* Mobil */
 .frauen-header__mobile { display: none; }
+.frauen-header__toggle-close { display: none; }
 
 @media screen and (max-width: 989px) {
   .frauen-header__nav,
@@ -148,29 +149,56 @@
   .frauen-header__mobile { display: block; flex: 1 1 0; }
   .frauen-header__mobile summary { list-style: none; }
   .frauen-header__mobile summary::-webkit-details-marker { display: none; }
+  .frauen-header__mobile[open] .frauen-header__toggle-open { display: none; }
+  .frauen-header__mobile[open] .frauen-header__toggle-close { display: inline; }
   .frauen-header__utils { gap: 20px; }
   .frauen-header__logo-svg,
-  .frauen-header__logo-img { width: 104px; }
+  .frauen-header__logo-img { width: 96px; }
 
+  /* Menuen fylder skærmen under headeren */
   .frauen-header__drawer {
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
     top: var(--frauen-header-height);
+    bottom: 0;
+    overflow-y: auto;
     background: var(--frauen-dark);
-    padding: 24px var(--frauen-gutter) 40px;
+    padding: 32px var(--frauen-gutter) 48px;
+    display: flex;
+    flex-direction: column;
+    animation: frauen-drawer-in 0.5s var(--frauen-ease);
   }
-  .frauen-header__drawer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; }
+  @keyframes frauen-drawer-in { from { opacity: 0; transform: translateY(-8px); } }
+  body:has(.frauen-header__mobile[open]) { overflow: hidden; }
+
+  .frauen-header__drawer ul { list-style: none; margin: 0; padding: 0; display: grid; }
   .frauen-header__drawer-link {
+    display: block;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(244, 243, 240, 0.15);
     color: var(--frauen-light);
     text-decoration: none;
-    font-family: var(--frauen-font-heading);
-    font-weight: var(--frauen-font-heading-weight);
-    font-size: 14px;
+    font-family: var(--frauen-font-body);
+    font-weight: 400;
+    font-size: 20px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     opacity: 0.75;
   }
-  .frauen-header__drawer-link.is-active { opacity: 1; }
-  .frauen-header__drawer-currency { margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(244, 243, 240, 0.2); }
+  .frauen-header__drawer li:first-child .frauen-header__drawer-link { border-top: 1px solid rgba(244, 243, 240, 0.15); }
+  .frauen-header__drawer-link.is-active { font-weight: 500; opacity: 1; }
+  .frauen-header__drawer-small {
+    margin-top: 32px;
+    color: var(--frauen-light);
+    text-decoration: none;
+    font-family: var(--frauen-font-body);
+    font-weight: 400;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0.75;
+  }
+  .frauen-header__drawer-currency { margin-top: auto; padding-top: 32px; }
+  .frauen-header__drawer-currency .frauen-currency__option { justify-content: flex-start; gap: 12px; }
 }
