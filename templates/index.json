@@ -135,12 +135,59 @@
       "settings": {
         "duration": 1
       }
+    },
+    "frauen_custom_teaser_mXGUBL": {
+      "type": "frauen-custom-teaser",
+      "blocks": {
+        "piece_NirwVm": {
+          "type": "piece",
+          "settings": {
+            "image": "shopify://shop_images/IMG_4967.jpg",
+            "title": "Modelnavn",
+            "price": "Fra pris",
+            "link": ""
+          }
+        },
+        "piece_LXDefx": {
+          "type": "piece",
+          "settings": {
+            "image": "shopify://shop_images/Skaermbillede_2025-09-05_kl._19.10.32.png",
+            "title": "Modelnavn",
+            "price": "Fra pris",
+            "link": ""
+          }
+        },
+        "piece_E4egXG": {
+          "type": "piece",
+          "settings": {
+            "image": "shopify://shop_images/Skaermbillede_2025-09-05_kl._19.09.01.png",
+            "title": "Modelnavn",
+            "price": "Fra pris",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "piece_NirwVm",
+        "piece_LXDefx",
+        "piece_E4egXG"
+      ],
+      "name": "Frauen custom made",
+      "settings": {
+        "heading": "Custom made",
+        "text": "<p>En kort tekst om custom made skal stå her.</p>",
+        "button_label": "Shop custom made",
+        "button_link": "",
+        "padding_top": 64,
+        "padding_bottom": 128
+      }
     }
   },
   "order": [
     "hero",
     "classics",
     "frauen_statement_NUGUdF",
-    "frauen_layers_VjEaTC"
+    "frauen_layers_VjEaTC",
+    "frauen_custom_teaser_mXGUBL"
   ]
 }
