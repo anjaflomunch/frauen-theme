@@ -57,7 +57,7 @@
         "prev_label": "Forrige",
         "next_label": "Næste",
         "padding_top": 40,
-        "padding_bottom": 160
+        "padding_bottom": 108
       }
     },
     "story": {
@@ -96,21 +96,11 @@
         "padding_bottom": 160
       }
     },
-    "frauen_related_tGBFCr": {
-      "type": "frauen-related",
-      "name": "Frauen andre styles",
-      "settings": {
-        "heading": "Andre styles",
-        "collection": "frauen-classics",
-        "button_label": "Se alle Frauen Classics",
-        "padding_bottom": 160
-      }
-    },
     "related": {
       "type": "frauen-related",
       "settings": {
         "heading": "Andre styles",
-        "collection": "",
+        "collection": "frauen-classics",
         "button_label": "Se alle Frauen Classics",
         "padding_bottom": 160
       }
@@ -119,7 +109,6 @@
   "order": [
     "main",
     "story",
-    "frauen_related_tGBFCr",
     "related"
   ]
 }
