@@ -1,0 +1,91 @@
+{
+  "sections": {
+    "intro": {
+      "type": "frauen-statement",
+      "settings": {
+        "heading": "Om Frauen",
+        "text": "",
+        "button_label": "",
+        "button_link": "",
+        "button_side": "left",
+        "max_width": 63,
+        "padding_top": 83,
+        "padding_bottom": 40
+      }
+    },
+    "emilie": {
+      "type": "frauen-portrait",
+      "settings": {
+        "quote": "<p>Et citat fra Emilie.</p>",
+        "heading": "Emilie – founder & designer",
+        "text": "<p>En tekst om Emilie.</p>",
+        "image_right": false,
+        "padding_top": 0,
+        "padding_bottom": 160
+      }
+    },
+    "values": {
+      "type": "frauen-intro",
+      "blocks": {
+        "v1": {
+          "type": "fact",
+          "settings": {
+            "label": "En værdi her",
+            "value": "<p>En kort tekst om værdien og hvad den betyder for jakkerne.</p>"
+          }
+        },
+        "v2": {
+          "type": "fact",
+          "settings": {
+            "label": "En værdi her",
+            "value": "<p>En kort tekst om værdien og hvad den betyder for jakkerne.</p>"
+          }
+        },
+        "v3": {
+          "type": "fact",
+          "settings": {
+            "label": "En værdi her",
+            "value": "<p>En kort tekst om værdien og hvad den betyder for jakkerne.</p>"
+          }
+        },
+        "v4": {
+          "type": "fact",
+          "settings": {
+            "label": "En værdi her",
+            "value": "<p>En kort tekst om værdien og hvad den betyder for jakkerne.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "v1",
+        "v2",
+        "v3",
+        "v4"
+      ],
+      "settings": {
+        "heading": "Visioner & værdier",
+        "is_page_heading": false,
+        "text": "<p>En tekst om Frauens visioner og værdier.</p>",
+        "button_label": "",
+        "padding_top": 0,
+        "padding_bottom": 160
+      }
+    },
+    "production": {
+      "type": "frauen-trio",
+      "settings": {
+        "heading": "Produktion",
+        "text": "<p>En tekst om produktionen.</p>",
+        "big_right": false,
+        "padding_top": 0,
+        "padding_bottom": 160
+      }
+    }
+  },
+  "order": [
+    "intro",
+    "emilie",
+    "values",
+    "production"
+  ]
+}
