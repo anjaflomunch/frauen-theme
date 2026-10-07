@@ -53,6 +53,7 @@
       "settings": {
         "button_label": "Shop Frauen Classics",
         "button_link": "",
+        "anchor": "",
         "padding_top": 28,
         "padding_bottom": 60
       }
@@ -67,6 +68,7 @@
         "button_link": "shopify://pages/om-frauen",
         "button_side": "left",
         "max_width": 77,
+        "anchor": "",
         "padding_top": 100,
         "padding_bottom": 160
       }
@@ -184,6 +186,7 @@
         "text": "<p>En kort tekst om custom made skal stå her.</p>",
         "button_label": "Shop custom made",
         "button_link": "shopify://pages/custom-made",
+        "anchor": "",
         "padding_top": 92,
         "padding_bottom": 52
       }
@@ -198,6 +201,7 @@
         "button_link": "mailto:hello@frauencph.com",
         "media_type": "image",
         "image": "shopify://shop_images/Billede__Showroomet_hele_rummet.png",
+        "anchor": "",
         "padding_top": 80,
         "padding_bottom": 160
       }
