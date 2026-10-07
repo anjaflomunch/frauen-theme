@@ -82,7 +82,7 @@
             "image": "shopify://shop_images/IMG_8382_2.jpg",
             "overlay": 25,
             "button_label": "Om Frauen",
-            "button_link": ""
+            "button_link": "shopify://pages/om-frauen"
           }
         },
         "layer_7Yf3kB": {
@@ -93,7 +93,7 @@
             "image": "shopify://shop_images/IMG_8381_2.jpg",
             "overlay": 25,
             "button_label": "Vores materialer",
-            "button_link": ""
+            "button_link": "shopify://pages/om-frauen"
           }
         },
         "layer_fKyVmw": {
@@ -104,7 +104,7 @@
             "image": "shopify://shop_images/IMG_8391.jpg",
             "overlay": 25,
             "button_label": "Vores produktion",
-            "button_link": ""
+            "button_link": "shopify://pages/om-frauen"
           }
         },
         "layer_G6bB9U": {
@@ -115,7 +115,7 @@
             "image": "shopify://shop_images/IMG_8383_2.jpg",
             "overlay": 25,
             "button_label": "Shop Frauen Classics",
-            "button_link": ""
+            "button_link": "shopify://collections/frauen-classics"
           }
         },
         "layer_QKQbHP": {
@@ -126,7 +126,7 @@
             "image": "shopify://shop_images/Showroom.png",
             "overlay": 40,
             "button_label": "Shop Frauen Classics",
-            "button_link": ""
+            "button_link": "shopify://collections/frauen-classics"
           }
         }
       },
