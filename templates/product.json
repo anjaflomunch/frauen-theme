@@ -73,8 +73,8 @@
         "f2": {
           "type": "fact",
           "settings": {
-            "label": "Fundet",
-            "value": "En kort beskrivelse her"
+            "label": "Antal syet",
+            "value": "{{ product.metafields.custom.syet.value }}"
           }
         },
         "f3": {
