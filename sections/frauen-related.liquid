@@ -1,0 +1,70 @@
+{%- comment -%}
+  Frauen andre styles (produktside)
+  Overskrift, linjeknap og to kort i forskellig bredde fra en valgt kollektion.
+  Den jakke, man står på, springes over.
+{%- endcomment -%}
+
+{{ 'frauen-card.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign source = section.settings.collection
+  assign shown = 0
+-%}
+
+{%- if source != blank and source.products_count > 1 -%}
+<div class="frauen-related frauen-wrap" style="--pb: {{ section.settings.padding_bottom }}px;">
+  {%- if section.settings.heading != blank -%}
+    <h2 class="frauen-heading">{{ section.settings.heading | escape }}</h2>
+  {%- endif -%}
+
+  {%- if section.settings.button_label != blank -%}
+    <a href="{{ source.url }}" class="frauen-btn frauen-related__btn">
+      <span class="frauen-btn__line"></span>
+      <span class="frauen-btn__label">{{ section.settings.button_label | escape }}</span>
+    </a>
+  {%- endif -%}
+
+  <div class="frauen-related__grid">
+    {%- for item in source.products -%}
+      {%- if item.id != product.id and shown < 2 -%}
+        {%- assign shown = shown | plus: 1 -%}
+        <div class="frauen-related__item">
+          {% render 'frauen-card', product: item, sizes: '(min-width: 750px) 50vw, 100vw' %}
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+<style>
+  .frauen-related { padding-bottom: var(--pb); }
+  .frauen-related__btn { margin-top: 4px; }
+  .frauen-related__grid {
+    display: grid;
+    grid-template-columns: 567fr 801fr;
+    gap: var(--frauen-gap);
+    margin-top: 40px;
+    aspect-ratio: 1392 / 800;
+  }
+  .frauen-related__item { min-width: 0; min-height: 0; }
+  @media screen and (max-width: 749px) {
+    .frauen-related__grid { grid-template-columns: 1fr; aspect-ratio: auto; }
+    .frauen-related__item { aspect-ratio: 4 / 5; }
+  }
+</style>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Frauen andre styles",
+  "tag": "section",
+  "class": "frauen-related-section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Overskrift", "default": "Andre styles" },
+    { "type": "collection", "id": "collection", "label": "Vis jakker fra", "info": "Vælg Frauen Classics." },
+    { "type": "text", "id": "button_label", "label": "Knaptekst", "default": "Se alle Frauen Classics" },
+    { "type": "range", "id": "padding_bottom", "label": "Luft under", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 160 }
+  ],
+  "presets": [{ "name": "Frauen andre styles" }]
+}
+{% endschema %}

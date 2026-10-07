@@ -1,0 +1,168 @@
+{%- comment -%}
+  Frauen produkt
+  Venstre: slider med produktets billeder (ét ad gangen, fade, Forrige / 1/3 / Næste,
+  klik på venstre/højre halvdel, swipe på mobil). Højden følger skærmen.
+  Højre: navn, pris, beskrivelse, størrelser, Læg i kurv og foldbare rækker.
+  Rækkerne er blokke, så indholdet kan redigeres og flyttes.
+{%- endcomment -%}
+
+{{ 'frauen-product.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign media_count = product.media.size
+-%}
+
+<div class="frauen-product frauen-wrap" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
+  <frauen-gallery class="frauen-product__gallery" data-count="{{ media_count }}">
+    <div class="frauen-gallery__stage">
+      {%- for media in product.media -%}
+        <div class="frauen-gallery__slide{% if forloop.first %} is-active{% endif %}" data-index="{{ forloop.index0 }}">
+          {%- if media.media_type == 'video' or media.media_type == 'external_video' -%}
+            {{ media | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: false }}
+          {%- else -%}
+            {%- liquid
+              assign loading = 'lazy'
+              if forloop.first
+                assign loading = 'eager'
+              endif
+            -%}
+            {{
+              media.preview_image
+              | image_url: width: 2000
+              | image_tag:
+                loading: loading,
+                sizes: '(min-width: 750px) 50vw, 100vw',
+                widths: '600, 900, 1200, 1600, 2000',
+                alt: media.alt | default: product.title
+            }}
+          {%- endif -%}
+        </div>
+      {%- else -%}
+        <div class="frauen-gallery__slide is-active">{{ 'product-apparel-1' | placeholder_svg_tag }}</div>
+      {%- endfor -%}
+      {%- if media_count > 1 -%}
+        <button type="button" class="frauen-gallery__hit frauen-gallery__hit--prev" aria-label="Forrige billede"></button>
+        <button type="button" class="frauen-gallery__hit frauen-gallery__hit--next" aria-label="Næste billede"></button>
+      {%- endif -%}
+    </div>
+    {%- if media_count > 1 -%}
+      <div class="frauen-gallery__nav frauen-label">
+        <button type="button" class="frauen-gallery__prev">{{ section.settings.prev_label | escape }}</button>
+        <span class="frauen-gallery__count"><span data-current>1</span>/{{ media_count }}</span>
+        <button type="button" class="frauen-gallery__next">{{ section.settings.next_label | escape }}</button>
+      </div>
+    {%- endif -%}
+  </frauen-gallery>
+
+  <div class="frauen-product__info">
+    <div class="frauen-product__head">
+      <h1 class="frauen-heading frauen-product__title">{{ product.title | escape }}</h1>
+      <p class="frauen-product__price" data-price>{{ current_variant.price | money_without_trailing_zeros }}</p>
+    </div>
+
+    {%- if product.description != blank -%}
+      <div class="frauen-body frauen-product__desc">{{ product.description }}</div>
+    {%- endif -%}
+
+    {%- form 'product', product, class: 'frauen-product__form', novalidate: 'novalidate' -%}
+      <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-id>
+
+      {%- unless product.has_only_default_variant -%}
+        {%- for option in product.options_with_values -%}
+          <fieldset class="frauen-product__option">
+            <legend class="frauen-label frauen-product__option-label">{{ option.name | escape }}</legend>
+            <div class="frauen-product__values">
+              {%- for value in option.values -%}
+                <label class="frauen-product__value">
+                  <input
+                    type="radio"
+                    name="option-{{ forloop.parentloop.index0 }}"
+                    value="{{ value | escape }}"
+                    {% if option.selected_value == value %}checked{% endif %}
+                  >
+                  <span>{{ value | escape }}</span>
+                </label>
+              {%- endfor -%}
+            </div>
+          </fieldset>
+        {%- endfor -%}
+      {%- endunless -%}
+
+      <button
+        type="submit"
+        class="frauen-btn frauen-btn--left frauen-product__add"
+        {% unless current_variant.available %}disabled{% endunless %}
+        data-add
+      >
+        <span class="frauen-btn__line"></span>
+        <span class="frauen-btn__label" data-add-label data-add-text="{{ section.settings.add_label | escape }}" data-sold-text="{{ section.settings.soldout_label | escape }}">
+          {%- if current_variant.available -%}{{ section.settings.add_label | escape }}{%- else -%}{{ section.settings.soldout_label | escape }}{%- endif -%}
+        </span>
+      </button>
+
+      <script type="application/json" data-variants>
+        {{ product.variants | json }}
+      </script>
+    {%- endform -%}
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="frauen-product__details">
+        {%- for block in section.blocks -%}
+          <details class="frauen-product__row" {{ block.shopify_attributes }}>
+            <summary class="frauen-label">
+              <span>{{ block.settings.heading | escape }}</span>
+              <span class="frauen-product__icon" aria-hidden="true"></span>
+            </summary>
+            <div class="frauen-body frauen-product__row-body">
+              {{ block.settings.content }}
+              {%- if block.settings.page != blank -%}{{ block.settings.page.content }}{%- endif -%}
+            </div>
+          </details>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<script src="{{ 'frauen-product.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "Frauen produkt",
+  "tag": "section",
+  "class": "frauen-product-section",
+  "settings": [
+    { "type": "text", "id": "add_label", "label": "Knap: læg i kurv", "default": "Læg i kurv" },
+    { "type": "text", "id": "soldout_label", "label": "Knap: udsolgt", "default": "Udsolgt" },
+    { "type": "text", "id": "prev_label", "label": "Galleri: forrige", "default": "Forrige" },
+    { "type": "text", "id": "next_label", "label": "Galleri: næste", "default": "Næste" },
+    { "type": "header", "content": "Luft" },
+    { "type": "range", "id": "padding_top", "label": "Luft over", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 100 },
+    { "type": "range", "id": "padding_bottom", "label": "Luft under", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 160 }
+  ],
+  "blocks": [
+    {
+      "type": "row",
+      "name": "Foldbar række",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Overskrift", "default": "Materiale" },
+        { "type": "richtext", "id": "content", "label": "Tekst", "info": "Kan kobles til et metafelt på produktet, så teksten er forskellig pr. jakke." },
+        { "type": "page", "id": "page", "label": "Eller vis indhold fra en side", "info": "Fx en fælles side om levering og retur." }
+      ]
+    }
+  ],
+  "enabled_on": { "templates": ["product"] },
+  "presets": [
+    {
+      "name": "Frauen produkt",
+      "blocks": [
+        { "type": "row", "settings": { "heading": "Materiale" } },
+        { "type": "row", "settings": { "heading": "Pasform og mål" } },
+        { "type": "row", "settings": { "heading": "Pleje" } },
+        { "type": "row", "settings": { "heading": "Levering og retur" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
