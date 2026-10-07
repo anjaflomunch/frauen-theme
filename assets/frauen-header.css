@@ -174,7 +174,7 @@
   .frauen-header__logo-svg,
   .frauen-header__logo-img { width: 96px; }
 
-  /* Menuen fylder skærmen under headeren */
+  /* Menuen fylder skærmen under headeren (Figma: Mobilmenu A) */
   .frauen-header__drawer {
     position: fixed;
     left: 0;
@@ -183,41 +183,39 @@
     bottom: 0;
     overflow-y: auto;
     background: var(--frauen-dark);
-    padding: 32px var(--frauen-gutter) 48px;
+    /* Teksten flugter med krydsets synlige venstre kant */
+    padding: 94px var(--frauen-gutter) 34px calc(var(--frauen-gutter) + 3px);
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     animation: frauen-drawer-in 0.5s var(--frauen-ease);
   }
-  @keyframes frauen-drawer-in { from { opacity: 0; transform: translateY(-8px); } }
+  @keyframes frauen-drawer-in { from { opacity: 0; } }
   body:has(.frauen-header__mobile[open]) { overflow: hidden; }
 
-  .frauen-header__drawer ul { list-style: none; margin: 0; padding: 0; display: grid; }
-  .frauen-header__drawer-link {
+  .frauen-header__drawer ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 30px; }
+
+  .frauen-header__drawer-link,
+  .frauen-header__drawer-small,
+  .frauen-header__drawer-currency .frauen-currency__option {
     display: block;
-    padding: 16px 0;
-    border-bottom: 1px solid rgba(244, 243, 240, 0.15);
-    color: var(--frauen-light);
-    text-decoration: none;
-    font-family: var(--frauen-font-body);
-    font-weight: 400;
-    font-size: 13px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    opacity: 0.75;
-  }
-  .frauen-header__drawer li:first-child .frauen-header__drawer-link { border-top: 1px solid rgba(244, 243, 240, 0.15); }
-  .frauen-header__drawer-link.is-active { font-weight: 500; opacity: 1; }
-  .frauen-header__drawer-small {
-    margin-top: 32px;
+    padding: 0;
     color: var(--frauen-light);
     text-decoration: none;
     font-family: var(--frauen-font-body);
     font-weight: 400;
     font-size: 12px;
+    line-height: 1.4;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     opacity: 0.75;
   }
-  .frauen-header__drawer-currency { margin-top: auto; padding-top: 32px; }
-  .frauen-header__drawer-currency .frauen-currency__option { justify-content: flex-start; gap: 12px; }
+  .frauen-header__drawer-link.is-active { font-weight: 500; opacity: 1; }
+  .frauen-header__drawer-small { margin-top: 81px; }
+
+  /* Valuta nederst på én linje: DKK EUR GBP USD */
+  .frauen-header__drawer-currency { margin-top: auto; padding-top: 48px; display: flex; gap: 20px; }
+  .frauen-header__drawer-currency .frauen-currency__option { width: auto; background: none; border: 0; cursor: pointer; }
+  .frauen-header__drawer-currency .frauen-currency__option span + span { display: none; }
+  .frauen-header__drawer-currency .frauen-currency__option.is-active { font-weight: 500; opacity: 1; }
 }
