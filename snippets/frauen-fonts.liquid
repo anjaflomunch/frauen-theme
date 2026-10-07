@@ -1,0 +1,29 @@
+{%- comment -%}
+  Frauen: skrifttyper fra Shopifys font-bibliotek (hostes af Shopify, ingen Google-kald).
+  Vælges under Tilpas → Temaindstillinger → Frauen.
+{%- endcomment -%}
+{%- liquid
+  assign body = settings.frauen_font_body
+  assign body_light = body | font_modify: 'weight', '300'
+  assign body_regular = body | font_modify: 'weight', '400'
+  assign body_medium = body | font_modify: 'weight', '500'
+  assign heading = settings.frauen_font_heading
+-%}
+<style>
+  {{ body_light | font_face: font_display: 'swap' }}
+  {{ body_regular | font_face: font_display: 'swap' }}
+  {{ body_medium | font_face: font_display: 'swap' }}
+  {{ heading | font_face: font_display: 'swap' }}
+
+  :root {
+    --frauen-font-body: {{ body.family }}, {{ body.fallback_families }};
+    --frauen-font-heading: {{ heading.family }}, {{ heading.fallback_families }};
+    --frauen-font-heading-weight: {{ heading.weight }};
+
+    --frauen-bg: {{ settings.frauen_bg }};
+    --frauen-ink: {{ settings.frauen_ink }};
+    --frauen-muted: {{ settings.frauen_muted }};
+    --frauen-dark: {{ settings.frauen_dark }};
+    --frauen-light: {{ settings.frauen_light }};
+  }
+</style>

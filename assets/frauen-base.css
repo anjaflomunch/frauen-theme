@@ -1,0 +1,139 @@
+/* ==========================================================================
+   Frauen – grundstile
+   Bygger oven på Dawn. Variabler for farver og skrift sættes i
+   snippets/frauen-fonts.liquid ud fra temaindstillingerne.
+   ========================================================================== */
+
+:root {
+  --frauen-gutter: 24px;
+  --frauen-gap: 24px;
+  --frauen-section: 160px;
+  --frauen-header-height: 64px;
+  --frauen-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+@media screen and (max-width: 749px) {
+  :root {
+    --frauen-gutter: 16px;
+    --frauen-gap: 16px;
+    --frauen-section: 96px;
+  }
+}
+
+/* Grundflade ---------------------------------------------------------------- */
+
+body {
+  background: var(--frauen-bg);
+  color: var(--frauen-ink);
+  font-family: var(--frauen-font-body);
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Fuld bredde med 24 px margen i stedet for Dawns smalle container */
+.frauen-wrap {
+  width: 100%;
+  padding-left: var(--frauen-gutter);
+  padding-right: var(--frauen-gutter);
+  box-sizing: border-box;
+}
+
+/* Typografi ----------------------------------------------------------------- */
+
+.frauen-heading {
+  font-family: var(--frauen-font-heading);
+  font-weight: var(--frauen-font-heading-weight);
+  font-size: 14px;
+  line-height: 1.3;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.frauen-body {
+  font-family: var(--frauen-font-body);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.frauen-statement {
+  font-family: var(--frauen-font-body);
+  font-weight: 300;
+  font-size: 25px;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.frauen-label {
+  font-family: var(--frauen-font-body);
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Linjeknap ------------------------------------------------------------------
+   Linjen løber til næste naturlige kant. Ved hover trækker den sig
+   sammen og ligger kun under teksten.
+   Brug: <a class="frauen-btn frauen-btn--right"><span class="frauen-btn__line"></span><span class="frauen-btn__label">Tekst</span></a>
+   --right: teksten står til højre, linjen kommer fra venstre.
+   --left:  teksten står til venstre, linjen fortsætter til højre.
+   -------------------------------------------------------------------------- */
+
+.frauen-btn {
+  display: flex;
+  align-items: flex-end;
+  width: 100%;
+  color: inherit;
+  text-decoration: none;
+  font-family: var(--frauen-font-body);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  line-height: 1;
+  padding-top: 12px; /* større klikflade */
+}
+
+.frauen-btn--left { flex-direction: row-reverse; }
+
+.frauen-btn__label {
+  position: relative;
+  flex: 0 0 auto;
+  padding-bottom: 6px;
+  white-space: nowrap;
+}
+
+.frauen-btn__label::after,
+.frauen-btn__line {
+  content: '';
+  display: block;
+  height: 1px;
+  background: currentColor;
+}
+
+.frauen-btn__label::after {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.frauen-btn__line {
+  flex: 1 1 auto;
+  transform-origin: right center;
+  transition: transform 0.4s var(--frauen-ease);
+}
+
+.frauen-btn--left .frauen-btn__line { transform-origin: left center; }
+
+@media (hover: hover) {
+  .frauen-btn:hover .frauen-btn__line { transform: scaleX(0); }
+}
+
+/* Dawn-elementer vi ikke bruger ------------------------------------------- */
+
+.frauen-hidden { display: none !important; }

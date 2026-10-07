@@ -1466,5 +1466,60 @@
         "label": "t:settings_schema.customer_accounts.settings.customer_account_menu.label"
       }
     ]
+  },
+  {
+    "name": "Frauen",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Skrifttyper"
+      },
+      {
+        "type": "font_picker",
+        "id": "frauen_font_body",
+        "label": "Brødtekst og knapper",
+        "default": "jost_n4"
+      },
+      {
+        "type": "font_picker",
+        "id": "frauen_font_heading",
+        "label": "Overskrifter",
+        "default": "lato_n7"
+      },
+      {
+        "type": "header",
+        "content": "Farver"
+      },
+      {
+        "type": "color",
+        "id": "frauen_bg",
+        "label": "Baggrund",
+        "default": "#F3F3F1"
+      },
+      {
+        "type": "color",
+        "id": "frauen_ink",
+        "label": "Tekst",
+        "default": "#1C1C1A"
+      },
+      {
+        "type": "color",
+        "id": "frauen_muted",
+        "label": "Dæmpet tekst",
+        "default": "#85847F"
+      },
+      {
+        "type": "color",
+        "id": "frauen_dark",
+        "label": "Header og footer",
+        "default": "#34322E"
+      },
+      {
+        "type": "color",
+        "id": "frauen_light",
+        "label": "Lys tekst",
+        "default": "#F4F3F0"
+      }
+    ]
   }
 ]
