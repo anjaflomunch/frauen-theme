@@ -194,3 +194,20 @@ h2, .h2, h3, .h3 { font-size: 14px; }
 textarea.frauen-field__input { resize: vertical; min-height: 120px; }
 
 .frauen-btn--submit { background: none; border: 0; padding-left: 0; padding-right: 0; cursor: pointer; }
+
+/* Links i brødtekst (fx "Instagram" i en tekst) følger tekstfarven */
+.frauen-body a,
+.frauen-statement a,
+.frauen-card a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.2em;
+}
+
+/* Mobil: al luft over/under sektioner skaleres ned, så rytmen passer til skærmen */
+@media screen and (max-width: 749px) {
+  .frauen-wrap[style*='--pt'] { padding-top: calc(var(--pt, 0px) * 0.6) !important; }
+  .frauen-wrap[style*='--pb'] { padding-bottom: calc(var(--pb, 0px) * 0.6) !important; }
+  .frauen-statement { font-size: 21px; }
+}
