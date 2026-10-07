@@ -32,7 +32,8 @@
           "type": "fact",
           "settings": {
             "label": "Showroom",
-            "value": "Livjægergade 42, kld. 2100 København Ø"
+            "value": "Livjægergade 42, kld. 2100 København Ø",
+            "link": ""
           }
         }
       },
@@ -41,7 +42,19 @@
         "instagram",
         "showroom"
       ],
-      "settings": {}
+      "settings": {
+        "heading": "Kontakt",
+        "text": "",
+        "name_label": "Navn",
+        "email_label": "E-mail",
+        "show_phone": false,
+        "phone_label": "Telefon",
+        "message_label": "Besked",
+        "button_label": "Send",
+        "success": "Tak for din besked. Vi vender tilbage hurtigst muligt.",
+        "padding_top": 83,
+        "padding_bottom": 160
+      }
     }
   },
   "order": [
