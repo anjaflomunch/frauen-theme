@@ -199,6 +199,8 @@ textarea.frauen-field__input { resize: vertical; min-height: 120px; }
 
 /* Links i brødtekst (fx "Instagram" i en tekst) følger tekstfarven */
 .frauen-body a,
+.frauen-intro__value a,
+.frauen-story__fact a,
 .frauen-statement a,
 .frauen-card a {
   color: inherit;
