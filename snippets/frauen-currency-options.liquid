@@ -1,0 +1,37 @@
+{%- comment -%}
+  Valutavalg: én knap pr. valuta (fx DKK, EUR, GBP, USD), ikke pr. land.
+  Klik skifter til et land med den valuta. Hvis kundens eget land har valutaen,
+  bruges det, ellers det første land på listen med valutaen.
+  - plain: true giver knapper uden liste (mobilmenuen)
+{%- endcomment -%}
+{%- liquid
+  assign current_currency = localization.country.currency.iso_code
+  assign seen = ''
+-%}
+{%- unless plain -%}<ul role="list">{%- endunless -%}
+{%- for country in localization.available_countries -%}
+  {%- assign code = country.currency.iso_code -%}
+  {%- assign key = '|' | append: code | append: '|' -%}
+  {%- unless seen contains key -%}
+    {%- assign seen = seen | append: key -%}
+    {%- liquid
+      assign target = country.iso_code
+      if code == current_currency
+        assign target = localization.country.iso_code
+      endif
+    -%}
+    {%- unless plain -%}<li>{%- endunless -%}
+    <button
+      type="submit"
+      name="country_code"
+      value="{{ target }}"
+      class="frauen-currency__option{% if code == current_currency %} is-active{% endif %}"
+      {% if code == current_currency %}aria-current="true"{% endif %}
+    >
+      <span>{{ code }}</span>
+      <span>{{ country.currency.symbol }}</span>
+    </button>
+    {%- unless plain -%}</li>{%- endunless -%}
+  {%- endunless -%}
+{%- endfor -%}
+{%- unless plain -%}</ul>{%- endunless -%}
