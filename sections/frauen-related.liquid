@@ -52,6 +52,16 @@
     .frauen-related__item { aspect-ratio: 4 / 5; }
   }
 </style>
+{%- elsif request.design_mode -%}
+  <div class="frauen-wrap" style="padding-bottom: 80px;">
+    <p class="frauen-label" style="color: var(--frauen-muted);">
+      {%- if source == blank -%}
+        Andre styles: vælg en kollektion i sektionens indstillinger.
+      {%- else -%}
+        Andre styles: kollektionen "{{ source.title | escape }}" har {{ source.products_count }} synlige produkter. Der skal være mindst 2, og de skal være tilgængelige i Online Store. Teksten her ses kun i editoren.
+      {%- endif -%}
+    </p>
+  </div>
 {%- endif -%}
 
 {% schema %}
