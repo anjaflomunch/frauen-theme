@@ -12,7 +12,7 @@
 /* Galleri: billedet + navigation skal kunne ses ved 100vh */
 .frauen-product__gallery {
   display: block;
-  --gallery-h: clamp(360px, calc(100svh - var(--frauen-header-height) - var(--pt, 100px) - 116px), 900px);
+  --gallery-h: clamp(360px, calc(100svh - var(--frauen-header-height) - var(--pt, 40px) - 72px), 960px);
   /* Fast bredde ud fra højden, så navigationen flugter med billedets kanter */
   width: min(calc(var(--gallery-h) * 630 / 620), 50vw);
 }
