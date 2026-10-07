@@ -11,9 +11,10 @@
   assign heading_regular = heading | font_modify: 'weight', '400'
 -%}
 <style>
-  {{ body_light | font_face: font_display: 'swap' }}
-  {{ body_regular | font_face: font_display: 'swap' }}
-  {{ body_medium | font_face: font_display: 'swap' }}
+  {%- comment -%} Mangler en vægt i den valgte skrift, bruger browseren den nærmeste {%- endcomment -%}
+  {%- if body_light -%}{{ body_light | font_face: font_display: 'swap' }}{%- endif %}
+  {%- if body_regular -%}{{ body_regular | font_face: font_display: 'swap' }}{%- else -%}{{ body | font_face: font_display: 'swap' }}{%- endif %}
+  {%- if body_medium -%}{{ body_medium | font_face: font_display: 'swap' }}{%- endif %}
   {{ heading | font_face: font_display: 'swap' }}
   {%- if heading_regular -%}{{ heading_regular | font_face: font_display: 'swap' }}{%- endif %}
 
