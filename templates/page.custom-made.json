@@ -9,6 +9,25 @@
  */
 {
   "sections": {
+    "hero": {
+      "type": "frauen-media",
+      "settings": {
+        "media_type": "video",
+        "video": "shopify://files/videos/Frauen bred skift ved vej .mp4",
+        "height": "screen",
+        "full_bleed": true,
+        "overlay": 20,
+        "heading": "Yours, from the first stitch",
+        "is_page_heading": false,
+        "text": "",
+        "show_sound": false,
+        "sound_off_label": "Lyd til",
+        "sound_on_label": "Lyd fra",
+        "anchor": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
     "intro": {
       "type": "frauen-intro",
       "blocks": {
@@ -53,6 +72,7 @@
         "text": "<p>Når du bestiller en custom made FRAUEN jakke køber du en jakke, der er syet præcist til dig. Jakken kan specialsyes til dine mål, og vi kan justere detaljer såsom at tilføje en ekstra lomme, tilpasse bredden eller længden eller andre mindre detaljer, så det stemmer overens med dine ønsker. Det er også muligt at kombinere forskellige tæpper for at skabe et personligt design.&nbsp;<br/><br/>Ønsker du at bestille skal det gøres via vores <a href=\"https://www.instagram.com/frauenfrauenfrauen\" target=\"_blank\" title=\"Instagram link\">Instagram</a> eller <a href=\"mailto:hello@frauencph.com\" title=\"Mail til Frauen\">mail</a>.</p>",
         "button_label": "Skriv til os",
         "button_link": "mailto:hello@frauencph.com?subject=Custom%20made",
+        "anchor": "",
         "padding_top": 83,
         "padding_bottom": 104
       }
@@ -147,22 +167,9 @@
         "heading": "",
         "email": "hello@frauencph.com",
         "subject_prefix": "Forespørgsel:",
+        "anchor": "",
         "padding_top": 0,
         "padding_bottom": 160
-      }
-    },
-    "hero": {
-      "type": "frauen-media",
-      "settings": {
-        "media_type": "video",
-        "height": "screen",
-        "full_bleed": true,
-        "overlay": 0,
-        "show_sound": false,
-        "padding_top": 0,
-        "padding_bottom": 0,
-        "heading": "Yours, from the first stitch",
-        "is_page_heading": false
       }
     }
   },
