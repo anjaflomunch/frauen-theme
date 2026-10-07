@@ -52,6 +52,7 @@
     },
     "rummet": {
       "type": "frauen-showroom",
+      "disabled": true,
       "settings": {
         "heading": "",
         "text": "",
