@@ -181,6 +181,19 @@
         "padding_top": 64,
         "padding_bottom": 128
       }
+    },
+    "frauen_showroom_CcJKKV": {
+      "type": "frauen-showroom",
+      "name": "Frauen showroom",
+      "settings": {
+        "heading": "Besøg vores showroom",
+        "text": "<p>Adresse og åbningstider</p>",
+        "button_label": "Book din tid",
+        "button_link": "",
+        "media_type": "image",
+        "padding_top": 80,
+        "padding_bottom": 160
+      }
     }
   },
   "order": [
@@ -188,6 +201,7 @@
     "classics",
     "frauen_statement_NUGUdF",
     "frauen_layers_VjEaTC",
-    "frauen_custom_teaser_mXGUBL"
+    "frauen_custom_teaser_mXGUBL",
+    "frauen_showroom_CcJKKV"
   ]
 }
