@@ -1,0 +1,77 @@
+{
+  "sections": {
+    "intro": {
+      "type": "frauen-intro",
+      "blocks": {
+        "adresse": {
+          "type": "fact",
+          "settings": {
+            "label": "Adresse",
+            "value": "<p>Gade og nummer, postnummer og by</p>"
+          }
+        },
+        "tider": {
+          "type": "fact",
+          "settings": {
+            "label": "Åbningstider",
+            "value": "<p>Dage og tidspunkter, en til to linjer</p>"
+          }
+        },
+        "book": {
+          "type": "fact",
+          "settings": {
+            "label": "Book tid",
+            "value": "<p>Hvordan man booker en tid, en linje</p>"
+          }
+        },
+        "kontakt": {
+          "type": "fact",
+          "settings": {
+            "label": "Kontakt",
+            "value": "<p>Mail og telefon</p>"
+          }
+        }
+      },
+      "block_order": [
+        "adresse",
+        "tider",
+        "book",
+        "kontakt"
+      ],
+      "settings": {
+        "heading": "Showroom",
+        "is_page_heading": true,
+        "text": "<p>En kort tekst om showroomet: hvad man kan se, prøve og få hjælp til, og hvordan et besøg foregår.</p>",
+        "button_label": "Book din tid",
+        "button_link": "",
+        "padding_top": 83,
+        "padding_bottom": 160
+      }
+    },
+    "rummet": {
+      "type": "frauen-showroom",
+      "settings": {
+        "heading": "",
+        "text": "",
+        "button_label": "",
+        "padding_top": 0,
+        "padding_bottom": 160
+      }
+    },
+    "detaljer": {
+      "type": "frauen-trio",
+      "settings": {
+        "heading": "En overskrift her",
+        "text": "<p>En tekst om rummet, materialerne og stemningen i showroomet, to til fire linjer.</p>",
+        "big_right": false,
+        "padding_top": 0,
+        "padding_bottom": 160
+      }
+    }
+  },
+  "order": [
+    "intro",
+    "rummet",
+    "detaljer"
+  ]
+}

@@ -1,5 +1,6 @@
 {%- comment -%}
-  Frauen showroom (forside)
+  Frauen showroom (forside og showroom-siden)
+  Uden overskrift, tekst og knap er det bare et stort billede/video.
   Overskrift og adresse, linjeknap (fx "Book din tid") og et stort billede
   eller en video i fuld bredde under.
 {%- endcomment -%}
@@ -46,9 +47,9 @@
   .frauen-showroom__text { margin-top: 12px; max-width: 640px; }
   .frauen-showroom__text p { margin: 0; }
   .frauen-showroom__btn { margin-top: 4px; }
+  .frauen-showroom > * + .frauen-showroom__media { margin-top: 40px; }
   .frauen-showroom__media {
     position: relative;
-    margin-top: 40px;
     aspect-ratio: 1392 / 636;
     overflow: hidden;
     background: #d9d8d3;
