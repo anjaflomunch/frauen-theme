@@ -66,8 +66,8 @@
         "f1": {
           "type": "fact",
           "settings": {
-            "label": "MATERIALETS OPHAV",
-            "value": "En kort beskrivelse her"
+            "label": "Materialets ophav",
+            "value": "{{ product.metafields.custom.ophav.value }}"
           }
         },
         "f2": {
