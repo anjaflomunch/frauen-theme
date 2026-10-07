@@ -80,9 +80,9 @@
   .frauen-card__info { flex-direction: column; align-items: flex-start; gap: 4px; padding: 14px; }
 }
 
-/* Mobil: kort med navn og pris under billedet (Shop, søgning, andre styles) */
+/* Mobil: alle kort har navn og pris under billedet (forside, shop, custom made …) */
 @media screen and (max-width: 749px) {
-  .frauen-card--below {
+  .frauen-card {
     display: flex;
     flex-direction: column;
     height: auto;
@@ -90,24 +90,24 @@
     color: var(--frauen-ink);
     container-type: normal;
   }
-  .frauen-card--below .frauen-card__media { position: relative; aspect-ratio: 4 / 5; background: #d9d8d3; overflow: hidden; }
-  .frauen-card--below .frauen-card__media::after { display: none; }
-  .frauen-card--below .frauen-card__info {
+  .frauen-card .frauen-card__media { position: relative; aspect-ratio: 4 / 5; background: #d9d8d3; overflow: hidden; }
+  .frauen-card .frauen-card__media::after { display: none; }
+  .frauen-card .frauen-card__info {
     position: static;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: baseline;
     justify-content: space-between;
-    gap: 8px;
+    gap: 4px 8px;
     padding: 10px 0 0;
     background: none !important;
     color: inherit !important;
   }
-  .frauen-card--below .frauen-card__title {
-    font-family: var(--frauen-font-body);
-    font-weight: 500;
-    font-size: 11px;
-    letter-spacing: 0.1em;
-  }
-  .frauen-card--below .frauen-card__subtitle { display: none; }
-  .frauen-card--below .frauen-card__price { margin-top: 0; text-transform: none; }
+  .frauen-card .frauen-card__title { font-family: var(--frauen-font-body); font-weight: 500; font-size: 11px; letter-spacing: 0.1em; }
+  .frauen-card .frauen-card__subtitle { display: none; }
+  .frauen-card .frauen-card__price { margin-top: 0; text-transform: none; }
+
+  /* Kort i felter med fast højde (mosaikken): billedet fylder resten */
+  .frauen-card--fill { height: 100%; }
+  .frauen-card--fill .frauen-card__media { aspect-ratio: auto; flex: 1 1 auto; min-height: 0; }
 }

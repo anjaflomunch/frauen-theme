@@ -26,5 +26,5 @@
     aspect-ratio: auto;
   }
   .frauen-classics__item--1 { grid-row: auto; }
-  .frauen-classics__item { aspect-ratio: 4 / 5; }
+  .frauen-classics__grid { row-gap: 28px; }
 }

@@ -1484,7 +1484,7 @@
         "type": "font_picker",
         "id": "frauen_font_heading",
         "label": "Overskrifter",
-        "default": "lato_n7"
+        "default": "jost_n5"
       },
       {
         "type": "header",

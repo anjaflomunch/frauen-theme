@@ -83,6 +83,7 @@
           title: block.settings.title,
           price: block.settings.price,
           url: link,
+          class: 'frauen-card--fill',
           sizes: '(min-width: 750px) 50vw, 100vw'
         %}
       </div>
@@ -106,6 +107,9 @@
     .frauen-mosaic__grid {
       --col: calc((100vw - 2 * var(--frauen-gutter) - var(--frauen-gap)) / 2);
       grid-template-columns: repeat(2, 1fr);
+      /* plads til navn og pris under hvert billede */
+      grid-auto-rows: calc(var(--col) * 412 / 330 + 26px);
+      row-gap: 24px;
     }
     .frauen-mosaic__item { grid-column: span var(--mcs, 1); grid-row: span var(--mrs, 1); }
   }
