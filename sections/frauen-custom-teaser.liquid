@@ -7,7 +7,7 @@
 
 {{ 'frauen-card.css' | asset_url | stylesheet_tag }}
 
-<div class="frauen-cteaser frauen-wrap" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
+<div{% if section.settings.anchor != blank %} id="{{ section.settings.anchor | handleize }}"{% endif %} class="frauen-cteaser frauen-wrap" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
   <div class="frauen-cteaser__head">
     {%- if section.settings.heading != blank -%}
       <h2 class="frauen-heading">{{ section.settings.heading | escape }}</h2>
@@ -81,6 +81,7 @@
     { "type": "richtext", "id": "text", "label": "Tekst", "default": "<p>En kort tekst om custom made skal stå her.</p>" },
     { "type": "text", "id": "button_label", "label": "Knaptekst", "default": "Shop custom made" },
     { "type": "url", "id": "button_link", "label": "Knaplink", "info": "Bruges også som link på billederne, hvis de ikke har deres eget." },
+    { "type": "text", "id": "anchor", "label": "Anker (til links)", "info": "Fx produktion. Link hertil med /pages/om-frauen#produktion" },
     { "type": "header", "content": "Luft" },
     { "type": "range", "id": "padding_top", "label": "Luft over", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 64 },
     { "type": "range", "id": "padding_bottom", "label": "Luft under", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 128 }

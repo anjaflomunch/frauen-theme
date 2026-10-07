@@ -4,7 +4,7 @@
   nederst, der flugter med billedets bund.
 {%- endcomment -%}
 
-<div class="frauen-portrait frauen-wrap{% if section.settings.image_right %} frauen-portrait--right{% endif %}{% if section.settings.quote == blank %} frauen-portrait--no-quote{% endif %}" style="--img-w: {{ section.settings.image_width }}%; --pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
+<div{% if section.settings.anchor != blank %} id="{{ section.settings.anchor | handleize }}"{% endif %} class="frauen-portrait frauen-wrap{% if section.settings.image_right %} frauen-portrait--right{% endif %}{% if section.settings.quote == blank %} frauen-portrait--no-quote{% endif %}" style="--img-w: {{ section.settings.image_width }}%; --pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
   <div class="frauen-portrait__media">
     {%- if section.settings.image != blank -%}
       {{
@@ -75,6 +75,7 @@
     { "type": "richtext", "id": "quote", "label": "Citat", "info": "Står nederst ved billedets bund. Kan være tomt." },
     { "type": "text", "id": "heading", "label": "Overskrift", "default": "Emilie – founder & designer" },
     { "type": "richtext", "id": "text", "label": "Tekst", "default": "<p>En tekst om Emilie.</p>" },
+    { "type": "text", "id": "anchor", "label": "Anker (til links)", "info": "Fx produktion. Link hertil med /pages/om-frauen#produktion" },
     { "type": "header", "content": "Luft" },
     { "type": "range", "id": "padding_top", "label": "Luft over", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 0 },
     { "type": "range", "id": "padding_bottom", "label": "Luft under", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 160 }

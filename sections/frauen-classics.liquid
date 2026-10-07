@@ -8,7 +8,7 @@
 {{ 'frauen-card.css' | asset_url | stylesheet_tag }}
 {{ 'frauen-classics.css' | asset_url | stylesheet_tag }}
 
-<div class="frauen-classics frauen-wrap" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
+<div{% if section.settings.anchor != blank %} id="{{ section.settings.anchor | handleize }}"{% endif %} class="frauen-classics frauen-wrap" style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px;">
   <div class="frauen-classics__grid">
     {%- for block in section.blocks limit: 3 -%}
       <div class="frauen-classics__item frauen-classics__item--{{ forloop.index }}" {{ block.shopify_attributes }}>
@@ -43,6 +43,7 @@
   "settings": [
     { "type": "text", "id": "button_label", "label": "Knaptekst", "default": "Shop Frauen Classics" },
     { "type": "url", "id": "button_link", "label": "Knaplink" },
+    { "type": "text", "id": "anchor", "label": "Anker (til links)", "info": "Fx produktion. Link hertil med /pages/om-frauen#produktion" },
     { "type": "header", "content": "Luft" },
     { "type": "range", "id": "padding_top", "label": "Luft over", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 28 },
     { "type": "range", "id": "padding_bottom", "label": "Luft under", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 60 }

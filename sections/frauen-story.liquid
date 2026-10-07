@@ -5,7 +5,7 @@
 {%- endcomment -%}
 
 {%- if section.settings.text != blank or section.settings.image != blank or section.blocks.size > 0 -%}
-<div class="frauen-story frauen-wrap" style="--pb: {{ section.settings.padding_bottom }}px;">
+<div{% if section.settings.anchor != blank %} id="{{ section.settings.anchor | handleize }}"{% endif %} class="frauen-story frauen-wrap" style="--pb: {{ section.settings.padding_bottom }}px;">
   <div class="frauen-story__text">
     <div>
       {%- if section.settings.heading != blank -%}
@@ -79,6 +79,7 @@
   "tag": "section",
   "class": "frauen-story-section",
   "settings": [
+    { "type": "text", "id": "anchor", "label": "Anker (til links)", "info": "Fx historie. Link hertil med #historie" },
     { "type": "text", "id": "heading", "label": "Overskrift", "default": "Jakkens historie" },
     { "type": "richtext", "id": "text", "label": "Tekst", "info": "Kobl til et metafelt på produktet (ikonet ved feltet), så teksten er forskellig pr. jakke." },
     { "type": "image_picker", "id": "image", "label": "Billede", "info": "Fx et billede af tæppet eller materialet. Kan også kobles til et metafelt." },
