@@ -1,0 +1,81 @@
+{%- comment -%}
+  Frauen udsagn
+  Et stort, roligt udsagn med valgfri overskrift og linjeknap under.
+  Bruges på forsiden ("Frauens historie") og kan genbruges på andre sider.
+{%- endcomment -%}
+
+{%- liquid
+  assign btn_side = section.settings.button_side
+-%}
+
+<div
+  class="frauen-statement-block frauen-wrap"
+  style="--pt: {{ section.settings.padding_top }}px; --pb: {{ section.settings.padding_bottom }}px; --max: {{ section.settings.max_width }}%;"
+>
+  {%- if section.settings.heading != blank -%}
+    <h2 class="frauen-heading frauen-statement-block__heading">{{ section.settings.heading | escape }}</h2>
+  {%- endif -%}
+
+  {%- if section.settings.text != blank -%}
+    <div class="frauen-statement frauen-statement-block__text">{{ section.settings.text }}</div>
+  {%- endif -%}
+
+  {%- if section.settings.button_label != blank -%}
+    <a
+      href="{{ section.settings.button_link | default: '#' }}"
+      class="frauen-btn frauen-btn--{{ btn_side }} frauen-statement-block__btn"
+    >
+      <span class="frauen-btn__line"></span>
+      <span class="frauen-btn__label">{{ section.settings.button_label | escape }}</span>
+    </a>
+  {%- endif -%}
+</div>
+
+<style>
+  .frauen-statement-block { padding-top: var(--pt); padding-bottom: var(--pb); }
+  .frauen-statement-block__heading { margin-bottom: 24px; }
+  .frauen-statement-block__text,
+  .frauen-statement-block__btn { max-width: var(--max); }
+  .frauen-statement-block__text p { margin: 0; }
+  .frauen-statement-block__text p + p { margin-top: 0.8em; }
+  .frauen-statement-block__btn { margin-top: 48px; }
+  @media screen and (max-width: 749px) {
+    .frauen-statement-block__text,
+    .frauen-statement-block__btn { max-width: none; }
+    .frauen-statement-block .frauen-statement { font-size: 21px; }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Frauen udsagn",
+  "tag": "section",
+  "class": "frauen-statement-section",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Lille overskrift (valgfri)" },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Udsagn",
+      "default": "<p>En overskriftsagtig tekst om Frauen her, to til tre linjer i stor og rolig størrelse.</p>"
+    },
+    { "type": "text", "id": "button_label", "label": "Knaptekst", "default": "Frauens historie" },
+    { "type": "url", "id": "button_link", "label": "Knaplink" },
+    {
+      "type": "select",
+      "id": "button_side",
+      "label": "Knaptekst placering",
+      "options": [
+        { "value": "left", "label": "Venstre (linje mod højre)" },
+        { "value": "right", "label": "Højre (linje fra venstre)" }
+      ],
+      "default": "left"
+    },
+    { "type": "range", "id": "max_width", "label": "Bredde", "min": 40, "max": 100, "step": 1, "unit": "%", "default": 63 },
+    { "type": "header", "content": "Luft" },
+    { "type": "range", "id": "padding_top", "label": "Luft over", "min": 0, "max": 280, "step": 4, "unit": "px", "default": 100 },
+    { "type": "range", "id": "padding_bottom", "label": "Luft under", "min": 0, "max": 280, "step": 4, "unit": "px", "default": 160 }
+  ],
+  "presets": [{ "name": "Frauen udsagn" }]
+}
+{% endschema %}

@@ -55,10 +55,24 @@
         "padding_top": 28,
         "padding_bottom": 60
       }
+    },
+    "statement": {
+      "type": "frauen-statement",
+      "settings": {
+        "heading": "",
+        "text": "<p>En overskriftsagtig tekst om Frauen her, to til tre linjer i stor og rolig størrelse.</p>",
+        "button_label": "Frauens historie",
+        "button_link": "",
+        "button_side": "left",
+        "max_width": 63,
+        "padding_top": 100,
+        "padding_bottom": 180
+      }
     }
   },
   "order": [
     "hero",
-    "classics"
+    "classics",
+    "statement"
   ]
 }
