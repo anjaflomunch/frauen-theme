@@ -22,7 +22,6 @@
       value="{{ search.terms | escape }}"
       placeholder="{{ section.settings.placeholder | escape }}"
       autocomplete="off"
-      {% unless search.performed %}autofocus{% endunless %}
     >
     <input type="hidden" name="options[prefix]" value="last">
     <button type="submit" class="frauen-search__submit">{{ section.settings.button_label | escape }}</button>
@@ -94,17 +93,21 @@
     display: flex;
     align-items: flex-end;
     gap: 24px;
-    max-width: 684px;
-    margin-top: 40px;
+    max-width: 456px;
+    margin-top: 32px;
     border-bottom: 1px solid rgba(28, 28, 26, 0.3);
     transition: border-color 0.3s var(--frauen-ease);
   }
   .frauen-search__form:focus-within { border-bottom-color: var(--frauen-ink); }
-  .frauen-search__input { border-bottom: 0; font-size: 25px; line-height: 1.3; padding-bottom: 12px; }
+  .frauen-search__input,
+  .frauen-search__input:focus,
+  .frauen-search__input:focus-visible { border: 0; box-shadow: none; outline: none; background: none; }
+  .frauen-search__input { font-size: 16px; line-height: 1.5; padding: 0 0 10px; }
+  .frauen-search__input::placeholder { color: var(--frauen-muted); opacity: 1; }
   .frauen-search__input::-webkit-search-cancel-button { -webkit-appearance: none; }
   .frauen-search__submit {
     flex: 0 0 auto;
-    padding: 0 0 14px;
+    padding: 0 0 12px;
     background: none;
     border: 0;
     color: inherit;
@@ -144,7 +147,6 @@
   @media screen and (max-width: 989px) { .frauen-search__grid { grid-template-columns: repeat(2, 1fr); } }
   @media screen and (max-width: 749px) {
     .frauen-search__grid { grid-template-columns: 1fr; }
-    .frauen-search__input { font-size: 21px; }
   }
 </style>
 
