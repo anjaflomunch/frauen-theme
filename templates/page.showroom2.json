@@ -52,7 +52,7 @@
         "is_page_heading": true,
         "text": "<p>Kom forbi vores showroom på Østerbro i København og prøv dine yndlings FRAUEN styles.</p><p>Vi sørger for, at der er rigelig tid til, at du kan stille alle dine spørgsmål, tage mål, se på forskellige tæpper og materialer samt udforske alle mulige specialtilpasninger - og selvfølgelig byder vi på en kop kaffe eller te, mens du er her.</p>",
         "button_label": "Book din tid",
-        "button_link": "mailto:hello@frauencph.com?subject=Book%20tid%20i%20showroomet",
+        "button_link": "/pages/kontakt?emne=Book%20tid%20i%20showroomet",
         "anchor": "",
         "padding_top": 83,
         "padding_bottom": 160
