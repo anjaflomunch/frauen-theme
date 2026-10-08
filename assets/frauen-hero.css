@@ -33,7 +33,7 @@
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 52px;
+  bottom: 40px;
 }
 
 .frauen-hero__tagline {
@@ -74,7 +74,7 @@ body:has(.frauen-hero) .frauen-header__logo { opacity: 0; }
 body:has(.frauen-hero.is-docked) .frauen-header__logo { opacity: 1; }
 
 @media screen and (max-width: 749px) {
-  .frauen-hero__content { bottom: 32px; }
+  .frauen-hero__content { bottom: 24px; }
   .frauen-hero__tagline { font-size: 15px; margin-bottom: 20px; }
 }
 
