@@ -98,7 +98,7 @@
         "layer_fKyVmw": {
           "type": "layer",
           "settings": {
-            "title": "Produktionen",
+            "title": "Jakken produceres",
             "media_type": "image",
             "image": "shopify://shop_images/IMG_8391.jpg",
             "overlay": 25,
@@ -120,7 +120,7 @@
         "layer_QKQbHP": {
           "type": "layer",
           "settings": {
-            "title": "Livet",
+            "title": "Jakken lever",
             "media_type": "image",
             "image": "shopify://shop_images/Showroom.png",
             "overlay": 40,
