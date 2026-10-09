@@ -44,12 +44,12 @@
       "settings": {
         "show_newsletter": true,
         "newsletter_heading": "Friends of Frauen",
-        "newsletter_text": "<p>Som en del af friends of FRAUEN får du eksklusive invitationer til pop-up events, tidlig adgang til nye produkter, limited drops og nyt fra vores community som du ikke finder andre steder.&nbsp;</p>",
+        "newsletter_text": "<p>Som en del af Friends of FRAUEN får du eksklusive invitationer til pop-up events, tidlig adgang til nye produkter, limited drops og nyt fra vores community som du ikke finder andre steder.&nbsp;</p>",
         "newsletter_placeholder": "E-mail",
         "newsletter_button": "Tilmeld",
         "newsletter_success": "Tak, du er tilmeldt.",
         "address": "Livjægergade 42, kld. 2100 københavn ø",
-        "instagram_url": "https://www.instagram.com/frauenfrauenfrauen",
+        "instagram_url": "https://www.instagram.com/",
         "instagram_label": "Instagram"
       }
     }
