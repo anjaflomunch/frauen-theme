@@ -195,7 +195,7 @@
         "heading": "Besøg vores showroom",
         "text": "<p>Livjægergade 42, kld. 2100 København Ø</p>",
         "button_label": "Book din tid",
-        "button_link": "/pages/kontakt?emne=Book%20tid%20i%20showroomet",
+        "button_link": "/showroom",
         "media_type": "image",
         "image": "shopify://shop_images/Billede__Showroomet_hele_rummet.png",
         "anchor": "",
