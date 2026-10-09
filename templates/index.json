@@ -87,7 +87,7 @@
         "layer_7Yf3kB": {
           "type": "layer",
           "settings": {
-            "title": "Materialerne",
+            "title": "Jakkens materiale",
             "media_type": "image",
             "image": "shopify://shop_images/IMG_8381_2.jpg",
             "overlay": 25,
@@ -98,7 +98,7 @@
         "layer_fKyVmw": {
           "type": "layer",
           "settings": {
-            "title": "Jakken produceres",
+            "title": "Jakkens produktion",
             "media_type": "image",
             "image": "shopify://shop_images/IMG_8391.jpg",
             "overlay": 25,
